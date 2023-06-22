@@ -1,6 +1,6 @@
 import pkg_resources
 import os
-import voyager.utils as U
+import grass.utils as U
 
 
 def load_control_primitives(primitive_names=None):

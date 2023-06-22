@@ -1,0 +1,66 @@
+stone shovel 100.0 fishing rod 80.0 redstone block 45.0
+stone stairs 100.0 flint and steel 80.0 beetroot 40.0
+acacia boat 100.0 stone sword 100.0 gravel 80.0 beetroot seeds 40.0
+acacia door 100.0 stonebrick 100.0 iron boots 80.0 diamond boots 40.0
+acacia fence 100.0 sugar 100.0 iron trapdoor 80.0 diamond helmet 40.0
+acacia fence gate 100.0 tallgrass 100.0 leather tunic 80.0 golden axe 40.0
+acacia stairs 100.0 trapdoor 100.0 leather pants 80.0 golden pickaxe 40.0
+beef 100.0 wheat 100.0 bone block 75.0 red mushroom 40.0
+birch boat 100.0 wheat seeds 100.0 bow 75.0 red mushroom block 40.0
+birch door 100.0 wooden axe 100.0 chest minecart 75.0 diamond leggings 35.0
+birch fence 100.0 wooden button 100.0 furnace minecart 75.0 golden boots 35.0
+birch fence gate 100.0 wooden door 100.0 hopper 75.0 ink sac 35.0
+birch stairs 100.0 wooden hoe 100.0 iron helmet 75.0 sticky piston 35.0
+boat 100.0 wooden pickaxe 100.0 minecart 75.0 beetroot soup 30.0
+bone 100.0 wooden pressure plate 100.0 mossy cobblestone 75.0 golden helmet 30.0
+bone meal 100.0 wooden shovel 100.0 vine 75.0 lead 30.0
+bowl 100.0 wooden slab 100.0 waterlily 75.0 map 30.0
+chest 100.0 wooden sword 100.0 banner 70.0 mushroom stew 30.0
+chicken 100.0 brick 70.0 brick stairs 25.0
+cobblestone 100.0 armor stand 95.0 clay ball 70.0 cactus 25.0
+cobblestone wall 100.0 book 95.0 diamond 70.0 cake 25.0
+cooked beef 100.0 bread 95.0 diamond shovel 70.0 clock 25.0
+cooked chicken 100.0 coal 95.0 dropper 70.0 cooked rabbit 25.0
+cooked mutton 100.0 fireworks 95.0 feather 70.0 diamond chestplate 25.0
+cooked porkchop 100.0 gunpowder 95.0 iron bars 70.0 obsidian 25.0
+crafting table 100.0 iron ingot 95.0 iron door 70.0 rabbit 25.0
+dark oak boat 100.0 iron nugget 95.0 jukebox 70.0 rabbit hide 25.0
+dark oak door 100.0 iron ore 95.0 lapis lazuli 70.0 dead bush 20.0
+dark oak fence 100.0 iron shovel 95.0 noteblock 70.0 golden leggings 20.0
+dark oak fence gate 100.0 item frame 95.0 piston 70.0 golden rail 20.0
+dark oak stairs 100.0 leather 95.0 rail 70.0 lapis block 20.0
+dirt 100.0 rotten flesh 95.0 redstone 70.0 writable book 20.0
+sunflower 100.0 shield 95.0 redstone torch 70.0 baked potato 15.0
+fence 100.0 spider eye 95.0 cauldron 65.0 carrot 15.0
+dandelion 100.0 fence gate 100.0 stone slab 95.0 diamond hoe 65.0 diamond block 15.0
+poppy 100.0 azure bluet 100.0 furnace 100.0 torch 95.0 diamond sword 65.0 emerald block 15.0
+allium 100.0 glass 100.0 trapped chest 95.0 emerald 65.0 golden chestplate 15.0
+blue orchid 100.0 cornflower 100.0 glass bottle 100.0 tripwire hook 95.0 iron leggings 65.0 potato 15.0
+lily of the valley 100.0 glass pane 100.0 carpet 90.0 tnt 65.0 pumpkin 15.0
+tulip 100.0 ladder 100.0 coal block 90.0 arrow 60.0 pumpkin seeds 15.0
+lever 100.0 grass 90.0 compass 60.0 carrot on a stick 10.0
+log 100.0 heavy weighted pressure plate 90.0 flower pot 60.0 jungle boat 10.0
+mutton 100.0 iron hoe 90.0 iron chestplate 60.0 jungle door 10.0
+rose 100.0 oak stairs 100.0 iron sword 90.0 brick block 55.0 jungle fence 10.0
+paper 100.0 leather boots 90.0 clay 55.0 jungle fence gate 10.0
+planks 100.0 leather cap 90.0 dispenser 55.0 jungle stairs 10.0
+porkchop 100.0 leaves 90.0 gold ingot 55.0 jack o'lantern 10.0
+painting 90.0 gold nugget 55.0 melon 10.0
+reeds 100.0 shears 90.0 gold ore 55.0 melon block 10.0
+sand 100.0 snow 90.0 golden shovel 55.0 melon seeds 10.0
+sandstone 100.0 snow layer 90.0 hardened clay 55.0 gold block 8.0
+sapling 100.0 snowball 90.0 hopper minecart 55.0 golden carrot 8.0
+sign 100.0 string 90.0 iron block 55.0 pumpkin pie 8.0
+spruce boat 100.0 wool 90.0 slime ball 55.0 red sandstone 6.0
+spruce door 100.0 bed 85.0 activator rail 50.0 red sandstone stairs 6.0
+spruce fence 100.0 brown mushroom 85.0 detector rail 50.0 glistering melon slice 6.0
+spruce fence gate 100.0 brown mushroom block 85.0 diamond axe 50.0
+spruce stairs 100.0 bucket 85.0 diamond pickaxe 50.0 anvil 4.0
+stick 100.0 flint 85.0 egg 50.0 apple 4.0
+stone 100.0 hay block 85.0 lava bucket 50.0 enchanting table 4.0
+stone axe 100.0 iron axe 85.0 repeater 50.0 enchanted book 3.0
+stone brick stairs 100.0 iron pickaxe 85.0 minecart with tnt 50.0 poisonous potato 2.0
+stone button 100.0 milk bucket 85.0 bookshelf 45.0 golden apple 1.0
+stone hoe 100.0 sandstone stairs 85.0 golden hoe 45.0 rabbit foot 1.0
+stone pickaxe 100.0 water bucket 85.0 golden sword 45.0 slime 1.0
+stone pressure plate 100.0 fermented spider eye 80.0 light weighted pressure plate 45.0 rabbit stew 0.5
