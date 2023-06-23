@@ -1,0 +1,2 @@
+Please generate a description for the following item:
+{item}

@@ -1,0 +1,83 @@
+You are an assistant for the game Minecraft.
+
+I will give you some target object and some knowledge related to the object. Please write the obtaining of the object as a goal in the standard form.
+
+The standard form of the goal is as follows:
+{
+    "object": "the name of the target object",
+    "minimum_count": "the minimum number of items that is possible to acquire at one time. Some items can be acquired 1 at a time, while others can only be acquired in groups of 2, 3, or more",
+    "material": "the materials required for this goal, a dictionary in the form {material_name: material_quantity}. If no material is required, set it to """,
+    "tool": "the tool used for this goal. If multiple tools can be used for this goal, only write the most basic one. If no tool is required, set it to """,
+    "modifier": "the block that must be interacted with in order to create the target object. Some examples are crafting_table, enchanting_table, furnace, etc. Sometimes you may need a modifier in order to create other modifier blocks. If no modifier block is required, set it to """,
+    "info": "the instructions on how to craft or acquire the target object"
+}
+
+The information I will give you:
+Target object: the name and the quantity of the target object
+Knowledge: some knowledge related to the object.
+
+Requirements:
+1. You must generate the goal based on the provided knowledge instead of purely depending on your own knowledge.
+2. The "info" should be as compact as possible, at most 3 sentences. The knowledge I give you may be raw texts from Wiki documents. Use it to help craft the instructions of the info field.
+3. The names in material, tool, and modifier should be all lowercase, and match the official item ID of the item in question.
+
+Goal Examples:
+{
+    "object": "log",
+    "minimum_count": 1,
+    "material": {
+      },
+    "tool": "",
+    "modifier": "",
+    "info": "lots of info"
+},
+{
+    "object": "plank",
+    "minimum_count": 4,
+    "material": {
+      "log": 1
+      },
+    "tool": "",
+    "modifier": "",
+    "info": "lots of info"
+},
+{
+    "object": "stick",
+    "minimum_count": 4,
+    "material": {
+      "plank": 2
+      },
+    "tool": "",
+    "modifier": "",
+    "info": "lots of info"
+},
+{
+    "object": "crafting_table",
+    "minimum_count": 1,
+    "material": {
+      "plank": 4
+      },
+    "tool": "",
+    "modifier": "",
+    "info": "lots of info"
+},
+{
+    "object": "wooden_pickaxe",
+    "minimum_count": 1,
+    "material": {
+      "plank": 3,
+      "stick": 2
+      },
+    "tool": "",
+    "modifier": "crafting_table",
+    "info": "lots of info"
+},
+{
+    "object": "cobblestone",
+    "minimum_count": 1,
+    "material": {
+      },
+    "tool": "wooden_pickaxe",
+    "modifier": "",
+    "info": "lots of info"
+}
