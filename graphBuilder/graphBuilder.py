@@ -1,7 +1,6 @@
 import json
-import networkx as nx
 import pandas as pd
-from fandom.error import PageError
+import networkx as nx
 from networkx.readwrite import json_graph
 
 from queue import PriorityQueue
@@ -14,6 +13,7 @@ import openai
 import pkg_resources
 
 import fandom
+from fandom.error import PageError
 
 
 def loadText(textFile):
@@ -54,7 +54,7 @@ def listNodesByScore(graph):
 
 
 def saveStoredGraph(graphObject, fileName):
-    # Save completed grpah object to json
+    # Save completed graph object to json
     print("saving graph to file: " + fileName)
     with open('graphBuilder/' + fileName, 'w') as file:
         json.dump(json_graph.node_link_data(graphObject), file, indent=4)
@@ -63,20 +63,20 @@ def saveStoredGraph(graphObject, fileName):
 def cleanList(itemFile):
     # cleans up the copy and pasted list of items from GITM
     print("cleaning up names text file")
-    read_file = pd.read_csv(itemFile)
+    read_file = pd.read_csv('graphBuilder/' + itemFile)
     df = []
     for i in range(65):
         listOfWordsNums = read_file.iloc[i][0].split()
         k = ""
         for x in listOfWordsNums:
             if (not isinstance(x, str)) or '.' in x:
-                print(x)
                 df.append(k)
                 k = ""
             else:
                 if k != "":
-                    k += " "
+                    k += "_"
                 k += x
+
     return df
 
 
@@ -100,7 +100,7 @@ def getGPTItemDesc(name, llm, system_message, human_prompt):
     assert isinstance(human_message, HumanMessage)
     DESCRIPTION_message = [system_message, human_message]
     ai_description = llm(DESCRIPTION_message)
-    desc = DESCRIPTION_message.content
+    desc = ai_description.content
     return desc
 
 def generateNode(stringContent, graph):
@@ -120,8 +120,9 @@ def generateNode(stringContent, graph):
                    required_tool=tool, required_modifier=modifier, info=info, score=-1)
 
     # Add edges for the material dependencies
-    for item, quantity in material.items():
-        graph.add_edge(item, obj, quantity=quantity)
+    if not isinstance(material, str):
+        for item, quantity in material.items():
+            graph.add_edge(item, obj, quantity=quantity)
 
     # Add edge for the tool dependency
     if tool != '':
@@ -130,6 +131,8 @@ def generateNode(stringContent, graph):
     # Add edge for the modifier dependency
     if modifier != '':
         graph.add_edge(modifier, obj)
+
+    return obj
 
 
 
@@ -167,13 +170,13 @@ def graphFromNames(itemFile, graphFile):
 
         # Check if node is actually JSON format, if not then add it's name to the end of the names list to try again later
         try:
-            generateNode(stringContent, graph)
+            item_name = generateNode(stringContent, graph)
 
             # Check if predecessors are in item list, if not then add to list
-            pred = graph.predecessors(name)
+            pred = graph.predecessors(item_name)
             for p in pred:
-                if p.object_name not in names:
-                    names.append(p.object_name)
+                if p not in names:
+                    names.append(p)
 
         except ValueError as e:
             names.append(name)
