@@ -4,7 +4,7 @@ import os
 import time
 from typing import Dict
 
-import voyager.utils as U
+import grass.utils as U
 from .env import VoyagerEnv
 
 from .agents import ActionAgent
@@ -14,7 +14,7 @@ from .agents import SkillManager
 
 
 # TODO: remove event memory
-class Voyager:
+class Grass:
     def __init__(
         self,
         mc_port: int = None,
@@ -101,7 +101,7 @@ class Voyager:
         :param resume: whether to resume from checkpoint
         """
         # init env
-        self.env = VoyagerEnv(
+        self.env = GrassEnv(
             mc_port=mc_port,
             azure_login=azure_login,
             server_port=server_port,

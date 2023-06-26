@@ -1,1 +1,1 @@
-from .bridge import VoyagerEnv
+from .bridge import GrassEnv

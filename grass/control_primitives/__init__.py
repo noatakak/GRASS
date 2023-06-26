@@ -1,10 +1,10 @@
 import pkg_resources
 import os
-import voyager.utils as U
+import grass.utils as U
 
 
 def load_control_primitives(primitive_names=None):
-    package_path = pkg_resources.resource_filename("voyager", "")
+    package_path = pkg_resources.resource_filename("grass", "")
     if primitive_names is None:
         primitive_names = [
             primitives[:-3]
