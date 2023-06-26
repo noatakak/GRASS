@@ -5,7 +5,7 @@ import time
 from typing import Dict
 
 import grass.utils as U
-from .env import VoyagerEnv
+from .env import GrassEnv
 
 from .agents import ActionAgent
 from .agents import CriticAgent
@@ -50,7 +50,7 @@ class Grass:
         resume: bool = False,
     ):
         """
-        The main class for Voyager.
+        The main class for Grass.
         Action agent is the iterative prompting mechanism in paper.
         Curriculum agent is the automatic curriculum in paper.
         Critic agent is the self-verification in paper.
