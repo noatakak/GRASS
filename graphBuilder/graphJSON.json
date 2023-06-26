@@ -1,0 +1,5812 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "object_name": "stone_stairs",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "cobblestone": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Stone stairs allow players and mobs to change elevation without jumping. Craft 4 stone stairs at a crafting table using 6 cobblestone.",
+            "score": 14,
+            "id": "stone_stairs"
+        },
+        {
+            "object_name": "cobblestone",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "wooden_pickaxe",
+            "required_modifier": "",
+            "info": "Cobblestone is obtained from mining stone. Mainly used for crafting or as a building block.",
+            "score": 10,
+            "id": "cobblestone"
+        },
+        {
+            "object_name": "crafting_table",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "plank": 4
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Craft a crafting table using 4 planks in the player's inventory crafting grid. It provides access to all crafting recipes.",
+            "score": 3,
+            "id": "crafting_table"
+        },
+        {
+            "object_name": "flint_and_steel",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "flint": 1,
+                "iron_ingot": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Flint and steel is used to create fire or ignite certain blocks, structures, and mobs. Craft it with 1 flint and 1 iron ingot on a crafting table.",
+            "score": 40,
+            "id": "flint_and_steel"
+        },
+        {
+            "object_name": "flint",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "gravel": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Flint is a mineral obtained from breaking gravel.",
+            "score": 2,
+            "id": "flint"
+        },
+        {
+            "object_name": "iron_ingot",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ore": 1
+            },
+            "required_tool": "wooden_pickaxe",
+            "required_modifier": "furnace",
+            "info": "Mine iron_ore with a wooden_pickaxe or better. Smelt the iron_ore in a furnace to obtain iron_ingot.",
+            "score": 34,
+            "id": "iron_ingot"
+        },
+        {
+            "object_name": "beetroot",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A beetroot is a food and dye ingredient.",
+            "score": 1,
+            "id": "beetroot"
+        },
+        {
+            "object_name": "acacia_boat",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "acacia_planks": 5
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft an acacia boat using 5 acacia planks and a crafting table.",
+            "score": 6,
+            "id": "acacia_boat"
+        },
+        {
+            "object_name": "acacia_planks",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "acacia_log": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Acacia planks are common blocks used as building materials and in crafting recipes. Craft them by placing an acacia log in the inventory crafting grid.",
+            "score": 2,
+            "id": "acacia_planks"
+        },
+        {
+            "object_name": "stone_sword",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "cobblestone": 2,
+                "stick": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A sword is a melee weapon mainly used to deal damage or break certain blocks. Craft a stone sword using 2 cobblestone and 1 stick at a crafting table.",
+            "score": 17,
+            "id": "stone_sword"
+        },
+        {
+            "object_name": "stick",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "plank": 2
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A stick is an item used for crafting many tools and items.",
+            "score": 3,
+            "id": "stick"
+        },
+        {
+            "object_name": "gravel",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Gravel is found in the Overworld and the Nether. It is a gravity-affected block and can drop flint when broken.",
+            "score": 1,
+            "id": "gravel"
+        },
+        {
+            "object_name": "beetroot_seeds",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Beetroot seeds are used to plant beetroot crops.",
+            "score": 1,
+            "id": "beetroot_seeds"
+        },
+        {
+            "object_name": "acacia_door",
+            "minimum_count": 3,
+            "minimum_materials": {
+                "acacia_planks": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft an acacia door using 6 acacia planks in the crafting table. It can be opened by hand or with redstone.",
+            "score": 6,
+            "id": "acacia_door"
+        },
+        {
+            "object_name": "stonebrick",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "stone": 1
+            },
+            "required_tool": "",
+            "required_modifier": "furnace",
+            "info": "Stone bricks can be found in structures like strongholds, igloo basements, and jungle temples. Smelt stone in a furnace to create stone bricks.",
+            "score": 25,
+            "id": "stonebrick"
+        },
+        {
+            "object_name": "stone",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "wooden_pickaxe",
+            "required_modifier": "",
+            "info": "Stone is found underground in the Overworld or on mountain surfaces. Mine it with a wooden pickaxe.",
+            "score": 10,
+            "id": "stone"
+        },
+        {
+            "object_name": "furnace",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "cobblestone": 8
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A furnace is used for smelting blocks and items. Craft it using 8 cobblestone in a crafting table.",
+            "score": 14,
+            "id": "furnace"
+        },
+        {
+            "object_name": "iron_boots",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 4
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Iron boots are a type of armor. Craft them using 4 iron ingots on a crafting table.",
+            "score": 38,
+            "id": "iron_boots"
+        },
+        {
+            "object_name": "diamond_boots",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "diamond": 4
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft diamond boots using 4 diamonds at a crafting table. Boots are a type of armor that covers the feet of the player.",
+            "score": 46,
+            "id": "diamond_boots"
+        },
+        {
+            "object_name": "diamond",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "iron_pickaxe",
+            "required_modifier": "",
+            "info": "A diamond is obtained from diamond ore or loot chests. Use an iron pickaxe or higher to mine diamond ore.",
+            "score": 42,
+            "id": "diamond"
+        },
+        {
+            "object_name": "acacia_fence",
+            "minimum_count": 3,
+            "minimum_materials": {
+                "acacia_planks": 4,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A fence is a barrier block that cannot normally be jumped over. Unlike a wall, a player (but not mobs) can see through the openings in a fence.",
+            "score": 9,
+            "id": "acacia_fence"
+        },
+        {
+            "object_name": "sugar",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "sugar_cane": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Sugar is a food ingredient and brewing ingredient made from sugar canes.",
+            "score": 2,
+            "id": "sugar"
+        },
+        {
+            "object_name": "sugar_cane",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Sugar cane is found as 1-4-block-tall plants near water in the Overworld. Collect it by breaking the plant.",
+            "score": 1,
+            "id": "sugar_cane"
+        },
+        {
+            "object_name": "iron_trapdoor",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 4
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A trapdoor is a solid, transparent block that can be used as an openable 1x1 barrier. Craft it using 4 iron ingots on a crafting table.",
+            "score": 38,
+            "id": "iron_trapdoor"
+        },
+        {
+            "object_name": "diamond_helmet",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "diamond": 5
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a diamond helmet to protect the player's head. Use 5 diamonds and a crafting table to create the helmet.",
+            "score": 46,
+            "id": "diamond_helmet"
+        },
+        {
+            "object_name": "acacia_fence_gate",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "acacia_plank": 4,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A fence gate shares the functions of doors and fences. Craft it with 4 acacia planks and 2 sticks on a crafting table.",
+            "score": 9,
+            "id": "acacia_fence_gate"
+        },
+        {
+            "object_name": "acacia_plank",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "acacia_log": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Obtain acacia planks by breaking acacia logs with any tool or by hand. Craft acacia planks by placing an acacia log in any slot of the crafting grid.",
+            "score": 2,
+            "id": "acacia_plank"
+        },
+        {
+            "object_name": "tallgrass",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Grass is a non-solid plant block with wheat seeds as a drop. Its color is biome-dependent and matches the color of grass blocks.",
+            "score": 1,
+            "id": "tallgrass"
+        },
+        {
+            "object_name": "leather_tunic",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "leather": 8
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Chestplates are a type of armor for the upper body. Leather_tunic is one of six types. Craft with 8 leather at a crafting_table.",
+            "score": 5,
+            "id": "leather_tunic"
+        },
+        {
+            "object_name": "leather",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Leather is used to craft item frames, armor, and books.",
+            "score": 1,
+            "id": "leather"
+        },
+        {
+            "object_name": "golden_axe",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "gold_ingot": 3,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A golden axe is used to break wood-based blocks faster, strip or scrape certain blocks, and can disable shields in combat. Craft it using 3 gold ingots and 2 sticks on a crafting table.",
+            "score": 105,
+            "id": "golden_axe"
+        },
+        {
+            "object_name": "gold_ingot",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "gold_ore": 1
+            },
+            "required_tool": "iron_pickaxe",
+            "required_modifier": "furnace",
+            "info": "Mine gold ore with an iron pickaxe or better. Smelt the gold ore in a furnace to obtain a gold ingot.",
+            "score": 98,
+            "id": "gold_ingot"
+        },
+        {
+            "object_name": "acacia_stairs",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "acacia_planks": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Stairs allow players and mobs to change elevation without jumping. Craft using 6 acacia planks in a crafting table.",
+            "score": 6,
+            "id": "acacia_stairs"
+        },
+        {
+            "object_name": "trapdoor",
+            "minimum_count": 2,
+            "minimum_materials": {
+                "plank": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft trapdoors using 6 planks in a crafting table. They function as openable 1x1 barriers.",
+            "score": 6,
+            "id": "trapdoor"
+        },
+        {
+            "object_name": "plank",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "log": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Planks are a common building block and crafting material. They can be crafted in Survival and Adventure modes. Craft 4 planks using 1 log.",
+            "score": 2,
+            "id": "plank"
+        },
+        {
+            "object_name": "golden_pickaxe",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "gold_ingot": 3,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A pickaxe is used to mine ores, rocks, and metal-based blocks. A golden_pickaxe mines faster and can obtain more block types. Craft it using 3 gold_ingots and 2 sticks on a crafting_table.",
+            "score": 105,
+            "id": "golden_pickaxe"
+        },
+        {
+            "object_name": "beef",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Steak (Java Edition) or cooked beef (Bedrock Edition) is obtained from cows, mooshrooms, or cooking raw beef.",
+            "score": 1,
+            "id": "beef"
+        },
+        {
+            "object_name": "wheat",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Wheat is obtained by harvesting fully-grown wheat crops. It is used for crafting and feeding certain animals.",
+            "score": 1,
+            "id": "wheat"
+        },
+        {
+            "object_name": "bone_block",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "bone_meal": 9
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a bone block using 9 bone meal on a crafting table.",
+            "score": 6,
+            "id": "bone_block"
+        },
+        {
+            "object_name": "bone_meal",
+            "minimum_count": 3,
+            "minimum_materials": {
+                "bone": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Bone meal is used as a fertilizer for plants and fungi, and as a crafting ingredient for dyes. Obtain it by placing a bone in the crafting grid.",
+            "score": 2,
+            "id": "bone_meal"
+        },
+        {
+            "object_name": "red_mushroom",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Mushrooms are a variety of fungus that grows in dark areas. Red mushrooms can be found and collected in these dark environments.",
+            "score": 1,
+            "id": "red_mushroom"
+        },
+        {
+            "object_name": "birch_boat",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "For other kinds of boats, see Boat (disambiguation).",
+            "score": 1,
+            "id": "birch_boat"
+        },
+        {
+            "object_name": "wheat_seeds",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Obtain wheat seeds by breaking grass or harvesting wheat crops. They are used for planting wheat.",
+            "score": 1,
+            "id": "wheat_seeds"
+        },
+        {
+            "object_name": "bow",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "stick": 3,
+                "string": 3
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A bow is a ranged weapon that shoots arrows. Craft it using 3 sticks and 3 strings on a crafting table.",
+            "score": 8,
+            "id": "bow"
+        },
+        {
+            "object_name": "string",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "String is used in crafting recipes like bows, fishing rods, and leads. When placed, it becomes tripwire, combinable with tripwire hooks to form a circuit.",
+            "score": 1,
+            "id": "string"
+        },
+        {
+            "object_name": "red_mushroom_block",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Find a huge red mushroom and mine its red mushroom blocks to obtain a red_mushroom_block.",
+            "score": 1,
+            "id": "red_mushroom_block"
+        },
+        {
+            "object_name": "birch_door",
+            "minimum_count": 3,
+            "minimum_materials": {
+                "birch_planks": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a birch door by placing 6 birch planks on a crafting table in two vertical columns.",
+            "score": 6,
+            "id": "birch_door"
+        },
+        {
+            "object_name": "birch_planks",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "birch_log": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Planks are common blocks used as building blocks and in crafting recipes. Craft birch planks by converting birch logs.",
+            "score": 2,
+            "id": "birch_planks"
+        },
+        {
+            "object_name": "wooden_axe",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "plank": 3,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a wooden axe using 3 planks and 2 sticks at a crafting table. It is used to break wood-based blocks faster and can disable shields in combat.",
+            "score": 9,
+            "id": "wooden_axe"
+        },
+        {
+            "object_name": "chest_minecart",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "minecart": 1,
+                "chest": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A minecart with chest is a single chest inside a minecart, and functions as such.",
+            "score": 42,
+            "id": "chest_minecart"
+        },
+        {
+            "object_name": "minecart",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 5
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A minecart is a train-like vehicle entity that runs on rails. Craft it using 5 iron ingots on a crafting table.",
+            "score": 38,
+            "id": "minecart"
+        },
+        {
+            "object_name": "chest",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "plank": 8
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A chest is a block used to store items.",
+            "score": 3,
+            "id": "chest"
+        },
+        {
+            "object_name": "diamond_leggings",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "diamond": 7
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft diamond leggings using 7 diamonds at a crafting table. It is a type of armor that covers the lower body of the player.",
+            "score": 46,
+            "id": "diamond_leggings"
+        },
+        {
+            "object_name": "birch_fence",
+            "minimum_count": 3,
+            "minimum_materials": {
+                "birch_planks": 4,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Fences are barrier blocks with openings. Craft using 4 birch planks and 2 sticks on a crafting table.",
+            "score": 9,
+            "id": "birch_fence"
+        },
+        {
+            "object_name": "wooden_button",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "plank": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A button is a non-solid block that produces a temporary redstone signal when pressed. Craft it using 1 plank at a crafting table.",
+            "score": 6,
+            "id": "wooden_button"
+        },
+        {
+            "object_name": "furnace_minecart",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "minecart": 1,
+                "furnace": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a furnace_minecart by combining a minecart and a furnace. Power it with coal or charcoal to propel it across a rail line.",
+            "score": 56,
+            "id": "furnace_minecart"
+        },
+        {
+            "object_name": "golden_boots",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "gold_ingot": 4
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Boots are a type of armor. Craft golden boots using 4 gold ingots on a crafting table.",
+            "score": 102,
+            "id": "golden_boots"
+        },
+        {
+            "object_name": "birch_fence_gate",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "birch_plank": 4,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A fence gate shares the functions of doors and fences. Craft it with 4 birch planks and 2 sticks on a crafting table.",
+            "score": 9,
+            "id": "birch_fence_gate"
+        },
+        {
+            "object_name": "birch_plank",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "birch_log": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Place a birch log in any slot of the crafting grid to yield 4 birch planks. They can be used for construction or crafting recipes.",
+            "score": 2,
+            "id": "birch_plank"
+        },
+        {
+            "object_name": "wooden_door",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "plank": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a wooden door using 6 planks on a crafting table. It can be opened by hand or with redstone.",
+            "score": 6,
+            "id": "wooden_door"
+        },
+        {
+            "object_name": "ink_sac",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Ink sacs are dropped by squids upon death. They are used to create black dye, dark prismarine, and books and quills.",
+            "score": 1,
+            "id": "ink_sac"
+        },
+        {
+            "object_name": "birch_stairs",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "birch_planks": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft birch stairs by placing six birch planks on a crafting table in an L-shape pattern.",
+            "score": 6,
+            "id": "birch_stairs"
+        },
+        {
+            "object_name": "wooden_hoe",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "plank": 2,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A hoe is used to harvest specific plant-based blocks and till dirt into farmland. Craft with 2 planks and 2 sticks on a crafting table.",
+            "score": 9,
+            "id": "wooden_hoe"
+        },
+        {
+            "object_name": "iron_helmet",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 5
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Iron helmets are a type of armor. Craft it using 5 iron ingots at a crafting table.",
+            "score": 38,
+            "id": "iron_helmet"
+        },
+        {
+            "object_name": "sticky_piston",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "piston": 1,
+                "slime_ball": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a sticky piston by combining a piston with a slime ball in a crafting table.",
+            "score": 97,
+            "id": "sticky_piston"
+        },
+        {
+            "object_name": "piston",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "cobblestone": 4,
+                "iron_ingot": 1,
+                "redstone_dust": 1,
+                "plank": 3
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a piston using 4 cobblestone, 1 iron ingot, 1 redstone dust, and 3 planks in a crafting table.",
+            "score": 92,
+            "id": "piston"
+        },
+        {
+            "object_name": "slime_ball",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A slimeball is commonly dropped by slimes or sneezed out by pandas.",
+            "score": 1,
+            "id": "slime_ball"
+        },
+        {
+            "object_name": "boat",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "For other kinds of boats, see Boat (disambiguation).",
+            "score": 1,
+            "id": "boat"
+        },
+        {
+            "object_name": "wooden_pickaxe",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "plank": 3,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A pickaxe is required to mine ores, rocks, and metal-based blocks. Craft a wooden_pickaxe using 3 planks and 2 sticks on a crafting_table.",
+            "score": 9,
+            "id": "wooden_pickaxe"
+        },
+        {
+            "object_name": "beetroot_soup",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "beetroot": 6,
+                "bowl": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft beetroot soup by combining 6 beetroots and 1 bowl on a crafting table.",
+            "score": 8,
+            "id": "beetroot_soup"
+        },
+        {
+            "object_name": "bowl",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "plank": 3
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Bowls are containers that can hold certain foods.",
+            "score": 3,
+            "id": "bowl"
+        },
+        {
+            "object_name": "bone",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Obtain bone from defeating skeletons or similar mobs. Use it to craft bone meal or tame wild wolves.",
+            "score": 1,
+            "id": "bone"
+        },
+        {
+            "object_name": "wooden_pressure_plate",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "plank": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a wooden pressure plate using 2 planks in a crafting table.",
+            "score": 6,
+            "id": "wooden_pressure_plate"
+        },
+        {
+            "object_name": "mossy_cobblestone",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "cobblestone": 1,
+                "vine": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Mossy cobblestone is a variant of cobblestone with moss on it. Craft with 1 cobblestone and 1 vine.",
+            "score": 53,
+            "id": "mossy_cobblestone"
+        },
+        {
+            "object_name": "vine",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "shears",
+            "required_modifier": "",
+            "info": "Vines are climbable non-solid vegetation blocks that grow on walls. Use shears to collect them.",
+            "score": 39,
+            "id": "vine"
+        },
+        {
+            "object_name": "golden_helmet",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "gold_ingot": 5
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Helmets are a type of armor that covers the player's head. Craft a golden_helmet using 5 gold_ingots on a crafting_table.",
+            "score": 102,
+            "id": "golden_helmet"
+        },
+        {
+            "object_name": "wooden_shovel",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "plank": 1,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Wooden shovels are used to break dirt, sand, gravel, and other soil blocks faster, as well as convert dirt blocks into dirt paths.",
+            "score": 9,
+            "id": "wooden_shovel"
+        },
+        {
+            "object_name": "shears",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Shears are used to obtain organic blocks, mine faster, and shear entities and blocks. Craft using 2 iron ingots.",
+            "score": 38,
+            "id": "shears"
+        },
+        {
+            "object_name": "lead",
+            "minimum_count": 2,
+            "minimum_materials": {
+                "string": 4,
+                "slimeball": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Leads are used to leash and lead passive, neutral animals, golems, and some monsters. Craft them using 4 strings and 1 slimeball on a crafting table.",
+            "score": 6,
+            "id": "lead"
+        },
+        {
+            "object_name": "slimeball",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Obtain a slimeball by killing slimes or waiting for pandas to sneeze one out.",
+            "score": 1,
+            "id": "slimeball"
+        },
+        {
+            "object_name": "waterlily",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A waterlily can be found naturally growing on water in swamps and wheat farm rooms in woodland mansions. No crafting or tools required.",
+            "score": 1,
+            "id": "waterlily"
+        },
+        {
+            "object_name": "map",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "paper": 8,
+                "compass": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A map is used to view explored terrain and mark landmarks. Craft it using 8 paper and 1 compass on a crafting table.",
+            "score": 86,
+            "id": "map"
+        },
+        {
+            "object_name": "paper",
+            "minimum_count": 3,
+            "minimum_materials": {
+                "sugar_cane": 3
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Craft paper from 3 sugar cane in a horizontal row in the crafting grid.",
+            "score": 2,
+            "id": "paper"
+        },
+        {
+            "object_name": "compass",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 4,
+                "redstone": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A compass is used to point to the world spawn or a lodestone. Craft it using 4 iron ingots and 1 redstone on a crafting table.",
+            "score": 80,
+            "id": "compass"
+        },
+        {
+            "object_name": "wooden_sword",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "plank": 2,
+                "stick": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A wooden sword is a melee weapon. Craft it using 2 planks and 1 stick on a crafting table.",
+            "score": 9,
+            "id": "wooden_sword"
+        },
+        {
+            "object_name": "banner",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "wool": 6,
+                "stick": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Banners are tall decorative blocks, customizable with dyes and patterns. Craft using 6 wool and 1 stick.",
+            "score": 9,
+            "id": "banner"
+        },
+        {
+            "object_name": "wool",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "sheep": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Wool is obtained from sheep and can be dyed in sixteen different colors. It is used as a crafting material and to block vibrations.",
+            "score": 2,
+            "id": "wool"
+        },
+        {
+            "object_name": "mushroom_stew",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "red_mushroom": 1,
+                "brown_mushroom": 1,
+                "bowl": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Combine red mushroom, brown mushroom, and a bowl to create mushroom stew.",
+            "score": 6,
+            "id": "mushroom_stew"
+        },
+        {
+            "object_name": "brown_mushroom",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A mushroom is a fungus that grows in dark areas. Find and collect brown mushrooms in dark environments.",
+            "score": 1,
+            "id": "brown_mushroom"
+        },
+        {
+            "object_name": "chicken",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A chicken is a passive mob found in grass biomes, providing chicken, feathers, and eggs.",
+            "score": 1,
+            "id": "chicken"
+        },
+        {
+            "object_name": "brick",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "clay_ball": 1
+            },
+            "required_tool": "",
+            "required_modifier": "furnace",
+            "info": "Smelt a clay_ball in a furnace to obtain a brick. Bricks are used to craft brick blocks, flower pots, and decorated pots.",
+            "score": 17,
+            "id": "brick"
+        },
+        {
+            "object_name": "clay_ball",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "clay": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Obtain a clay block and break it to get clay balls.",
+            "score": 2,
+            "id": "clay_ball"
+        },
+        {
+            "object_name": "brick_stairs",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "brick": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Place 6 bricks in the crafting table in a stair-shaped pattern to create 4 brick stairs.",
+            "score": 21,
+            "id": "brick_stairs"
+        },
+        {
+            "object_name": "armor_stand",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "stick": 6,
+                "smooth_stone_slab": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft an armor stand by placing 6 sticks and 1 smooth stone slab in the crafting table. It can wear armor, hold items, and be posed.",
+            "score": 36,
+            "id": "armor_stand"
+        },
+        {
+            "object_name": "smooth_stone_slab",
+            "minimum_count": 2,
+            "minimum_materials": {
+                "smooth_stone": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a smooth_stone_slab by placing a smooth_stone on a crafting_table.",
+            "score": 29,
+            "id": "smooth_stone_slab"
+        },
+        {
+            "object_name": "clay",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Find clay in lush caves, shallow surface water, or convert mud using pointed dripstone. Can be smelted into terracotta or broken into clay balls for bricks.",
+            "score": 1,
+            "id": "clay"
+        },
+        {
+            "object_name": "cactus",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A cactus is a plant block that generates naturally in dry areas and causes damage.",
+            "score": 1,
+            "id": "cactus"
+        },
+        {
+            "object_name": "cobblestone_wall",
+            "minimum_count": 6,
+            "minimum_materials": {
+                "cobblestone": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A cobblestone wall is a decorative block used for creating boundaries. Craft it using 6 cobblestone on a crafting table.",
+            "score": 14,
+            "id": "cobblestone_wall"
+        },
+        {
+            "object_name": "book",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "paper": 3,
+                "leather": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Books are used in enchanting and crafting. Craft a book using 3 paper and 1 leather at a crafting table.",
+            "score": 7,
+            "id": "book"
+        },
+        {
+            "object_name": "iron_pickaxe",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 3,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A pickaxe is used to mine ores, rocks, and metal-based blocks. Iron pickaxe mines faster and can obtain more block types. Craft at a crafting table using 3 iron ingots and 2 sticks.",
+            "score": 41,
+            "id": "iron_pickaxe"
+        },
+        {
+            "object_name": "cake",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Cake is a food and a block that can be eaten by the player.",
+            "score": 1,
+            "id": "cake"
+        },
+        {
+            "object_name": "cooked_beef",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "raw_beef": 1
+            },
+            "required_tool": "",
+            "required_modifier": "furnace",
+            "info": "Obtain raw beef from cows or mooshrooms, then cook it in a furnace.",
+            "score": 16,
+            "id": "cooked_beef"
+        },
+        {
+            "object_name": "raw_beef",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Raw beef can be eaten or cooked in a furnace, smoker, or campfire to make steak.",
+            "score": 1,
+            "id": "raw_beef"
+        },
+        {
+            "object_name": "bread",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "wheat": 3
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft bread using 3 wheat on a crafting table.",
+            "score": 5,
+            "id": "bread"
+        },
+        {
+            "object_name": "diamond_shovel",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "diamond": 1,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Shovels are used to break soil blocks faster. Craft a diamond shovel using 1 diamond and 2 sticks on a crafting table.",
+            "score": 49,
+            "id": "diamond_shovel"
+        },
+        {
+            "object_name": "clock",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "gold_ingot": 4,
+                "redstone": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Clocks are time-telling devices. They display the current in-game position of the sun and the moon. Clocks only function properly in the Overworld.",
+            "score": 144,
+            "id": "clock"
+        },
+        {
+            "object_name": "redstone",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "iron_pickaxe",
+            "required_modifier": "",
+            "info": "Redstone dust is obtained by mining redstone ore with an iron pickaxe or stronger. It is used for redstone power transmission, crafting, and brewing.",
+            "score": 42,
+            "id": "redstone"
+        },
+        {
+            "object_name": "cooked_chicken",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "raw_chicken": 1
+            },
+            "required_tool": "",
+            "required_modifier": "furnace",
+            "info": "Cook raw chicken in a furnace to obtain cooked chicken, which can be eaten by the player.",
+            "score": 16,
+            "id": "cooked_chicken"
+        },
+        {
+            "object_name": "raw_chicken",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Raw chicken is a food item. It can be cooked in a furnace, smoker, or campfire to make cooked chicken.",
+            "score": 1,
+            "id": "raw_chicken"
+        },
+        {
+            "object_name": "coal",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "wooden_pickaxe",
+            "required_modifier": "",
+            "info": "Coal is obtained from coal ore. Use a wooden pickaxe or better to mine it. Primary uses include crafting torches, campfires, and fuel.",
+            "score": 10,
+            "id": "coal"
+        },
+        {
+            "object_name": "dropper",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "cobblestone": 7,
+                "redstone": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A dropper is a low-capacity storage block that ejects contents into the world or other containers with a redstone signal. Craft it using 7 cobblestones and 1 redstone on a crafting table.",
+            "score": 56,
+            "id": "dropper"
+        },
+        {
+            "object_name": "cooked_rabbit",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "raw_rabbit": 1
+            },
+            "required_tool": "",
+            "required_modifier": "furnace",
+            "info": "Cook raw rabbit in a furnace to obtain cooked rabbit, which can be eaten by the player.",
+            "score": 16,
+            "id": "cooked_rabbit"
+        },
+        {
+            "object_name": "raw_rabbit",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Raw rabbit can be eaten or cooked in a furnace or campfire to make cooked rabbit.",
+            "score": 1,
+            "id": "raw_rabbit"
+        },
+        {
+            "object_name": "cooked_mutton",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "raw_mutton": 1
+            },
+            "required_tool": "",
+            "required_modifier": "furnace",
+            "info": "Cook raw_mutton in a furnace to obtain cooked_mutton.",
+            "score": 16,
+            "id": "cooked_mutton"
+        },
+        {
+            "object_name": "raw_mutton",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Raw mutton is a food item dropped by sheep when killed.",
+            "score": 1,
+            "id": "raw_mutton"
+        },
+        {
+            "object_name": "firework_rocket",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "paper": 1,
+                "gunpowder": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a firework rocket by combining paper and gunpowder on a crafting table. Add firework stars for custom explosion effects.",
+            "score": 7,
+            "id": "firework_rocket"
+        },
+        {
+            "object_name": "gunpowder",
+            "minimum_count": 1,
+            "minimum_materials": "",
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Gunpowder is used for explosion-related recipes and as an ingredient in potions.",
+            "score": 1,
+            "id": "gunpowder"
+        },
+        {
+            "object_name": "feather",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Feathers are dropped by chickens, parrots, and tamed cats as morning gifts. Obtain by killing chickens or parrots or receiving from tamed cats.",
+            "score": 1,
+            "id": "feather"
+        },
+        {
+            "object_name": "diamond_chestplate",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "diamond": 8
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Chestplates are a type of armor. Craft a diamond chestplate using 8 diamonds at a crafting table.",
+            "score": 46,
+            "id": "diamond_chestplate"
+        },
+        {
+            "object_name": "cooked_porkchop",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "raw_porkchop": 1
+            },
+            "required_tool": "",
+            "required_modifier": "furnace",
+            "info": "Obtain a raw_porkchop by killing a pig. Cook the raw_porkchop in a furnace to obtain cooked_porkchop.",
+            "score": 16,
+            "id": "cooked_porkchop"
+        },
+        {
+            "object_name": "raw_porkchop",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Obtain a raw porkchop by killing a pig. It can be eaten or cooked to make a cooked porkchop.",
+            "score": 1,
+            "id": "raw_porkchop"
+        },
+        {
+            "object_name": "iron_bars",
+            "minimum_count": 16,
+            "minimum_materials": {
+                "iron_ingot": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Iron bars are similar to glass panes, but made of iron. Craft them at a crafting table using 6 iron ingots.",
+            "score": 38,
+            "id": "iron_bars"
+        },
+        {
+            "object_name": "obsidian",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "diamond_pickaxe",
+            "required_modifier": "",
+            "info": "Obsidian is found in all dimensions or created when water flows over a lava source. It has high hardness and blast resistance. Mine it with a diamond or netherite pickaxe.",
+            "score": 50,
+            "id": "obsidian"
+        },
+        {
+            "object_name": "diamond_pickaxe",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "diamond": 3,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A diamond pickaxe is used to mine ores, rocks, and metal-based blocks quickly. Craft it with 3 diamonds and 2 sticks on a crafting table.",
+            "score": 49,
+            "id": "diamond_pickaxe"
+        },
+        {
+            "object_name": "iron_ore",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "wooden_pickaxe",
+            "required_modifier": "",
+            "info": "Iron ore is a mineral block found underground and can be mined with a wooden pickaxe or better.",
+            "score": 10,
+            "id": "iron_ore"
+        },
+        {
+            "object_name": "iron_door",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft an iron door using 6 iron ingots in a crafting table. It can be opened by hand or with redstone.",
+            "score": 38,
+            "id": "iron_door"
+        },
+        {
+            "object_name": "rabbit",
+            "minimum_count": 1,
+            "minimum_materials": "",
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A rabbit is an uncommon passive mob. It is a source of rabbit's foot, rabbit hide, and raw rabbit.",
+            "score": 1,
+            "id": "rabbit"
+        },
+        {
+            "object_name": "dark_oak_boat",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "dark_oak_plank": 5
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a dark oak boat using 5 dark oak planks on a crafting table.",
+            "score": 6,
+            "id": "dark_oak_boat"
+        },
+        {
+            "object_name": "dark_oak_plank",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "dark_oak_log": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Dark Oak Planks are created by placing a Dark Oak Log in a crafting interface. Obtain Dark Oak Logs by chopping down Dark Oak Trees in the Roofed Forest biome.",
+            "score": 2,
+            "id": "dark_oak_plank"
+        },
+        {
+            "object_name": "iron_nugget",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_tool_or_weapon_or_armor": 1
+            },
+            "required_tool": "",
+            "required_modifier": "furnace",
+            "info": "Obtain iron nugget by smelting iron tools, weapons or iron/chainmail armor in a furnace. One iron nugget is worth one-ninth of an iron ingot.",
+            "score": 56,
+            "id": "iron_nugget"
+        },
+        {
+            "object_name": "iron_tool_or_weapon_or_armor",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": "varies",
+                "stick": "varies for tools and weapons"
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Place iron ingots and sticks in the appropriate patterns on a crafting table for tools and weapons. Arrange iron ingots in the shape of the desired armor piece for armor.",
+            "score": 41,
+            "id": "iron_tool_or_weapon_or_armor"
+        },
+        {
+            "object_name": "jukebox",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "plank": 8,
+                "diamond": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A jukebox is a block used to play music discs. Craft it with 8 planks surrounding 1 diamond on a crafting table.",
+            "score": 48,
+            "id": "jukebox"
+        },
+        {
+            "object_name": "rabbit_hide",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Rabbit hide is an item dropped by rabbits.",
+            "score": 1,
+            "id": "rabbit_hide"
+        },
+        {
+            "object_name": "dark_oak_door",
+            "minimum_count": 3,
+            "minimum_materials": {
+                "dark_oak_planks": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a dark_oak_door using 6 dark_oak_planks on a crafting_table. Can be used as a barrier opened by hand or redstone.",
+            "score": 6,
+            "id": "dark_oak_door"
+        },
+        {
+            "object_name": "dark_oak_planks",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "dark_oak_log": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Dark oak planks are common blocks used as building blocks and in crafting recipes. Craft them by placing a dark oak log in the crafting interface.",
+            "score": 2,
+            "id": "dark_oak_planks"
+        },
+        {
+            "object_name": "lapis_lazuli",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "For the ore, see Lapis Lazuli Ore. For the mineral block, see Lapis Lazuli Block.",
+            "score": 1,
+            "id": "lapis_lazuli"
+        },
+        {
+            "object_name": "dead_bush",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Dead bushes are transparent blocks in the form of an aesthetic plant.",
+            "score": 1,
+            "id": "dead_bush"
+        },
+        {
+            "object_name": "dark_oak_fence",
+            "minimum_count": 3,
+            "minimum_materials": {
+                "dark_oak_plank": 4,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A fence is a barrier block that cannot normally be jumped over. A player can see through the openings in a fence. Craft it using a crafting table.",
+            "score": 9,
+            "id": "dark_oak_fence"
+        },
+        {
+            "object_name": "iron_shovel",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 1,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Shovels are used to break dirt, sand, gravel, and other soil blocks faster. Craft an iron shovel using 1 iron ingot and 2 sticks at a crafting table.",
+            "score": 41,
+            "id": "iron_shovel"
+        },
+        {
+            "object_name": "noteblock",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "plank": 8,
+                "redstone": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A noteblock emits sounds when attacked, used, or powered with redstone. The sound can be altered by using it or placing certain blocks above or below it. It can be used to direct allays to stay nearby and drop collected items.",
+            "score": 48,
+            "id": "noteblock"
+        },
+        {
+            "object_name": "golden_leggings",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "gold_ingot": 7
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft golden leggings using 7 gold ingots at a crafting table. Arrange the ingots in an upside-down U shape.",
+            "score": 102,
+            "id": "golden_leggings"
+        },
+        {
+            "object_name": "dark_oak_fence_gate",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "dark_oak_planks": 4,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a dark oak fence gate using 4 dark oak planks and 2 sticks at a crafting table.",
+            "score": 9,
+            "id": "dark_oak_fence_gate"
+        },
+        {
+            "object_name": "item_frame",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "stick": 8,
+                "leather": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "An item frame displays the item or block inside it. Craft it with 8 sticks and 1 leather on a crafting table.",
+            "score": 8,
+            "id": "item_frame"
+        },
+        {
+            "object_name": "redstone_dust",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "iron_pickaxe",
+            "required_modifier": "",
+            "info": "Redstone dust is a mineral that transmits redstone power. It is obtained by mining redstone ore with an iron pickaxe or better. Used in crafting and brewing.",
+            "score": 42,
+            "id": "redstone_dust"
+        },
+        {
+            "object_name": "golden_rail",
+            "minimum_count": 6,
+            "minimum_materials": {
+                "gold_ingot": 6,
+                "stick": 1,
+                "redstone": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a golden rail (powered rail) using 6 gold ingots, 1 stick, and 1 redstone at a crafting table. It can increase or decrease minecart velocity depending on its power state.",
+            "score": 147,
+            "id": "golden_rail"
+        },
+        {
+            "object_name": "dark_oak_stairs",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "dark_oak_planks": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft using 6 dark_oak_planks on a crafting_table. Stairs allow changing elevation without jumping.",
+            "score": 6,
+            "id": "dark_oak_stairs"
+        },
+        {
+            "object_name": "rail",
+            "minimum_count": 16,
+            "minimum_materials": {
+                "iron_ingot": 6,
+                "stick": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Rails are non-solid blocks for minecart paths. Craft 16 rails using 6 iron ingots and 1 stick on a crafting table.",
+            "score": 41,
+            "id": "rail"
+        },
+        {
+            "object_name": "lapis_block",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "lapis_lazuli": 9
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a lapis_block using 9 lapis_lazuli pieces on a crafting_table.",
+            "score": 5,
+            "id": "lapis_block"
+        },
+        {
+            "object_name": "dirt",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Dirt is found abundantly in most biomes under a layer of grass blocks at the top of the Overworld.",
+            "score": 1,
+            "id": "dirt"
+        },
+        {
+            "object_name": "rotten_flesh",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Rotten flesh is a food item that can be eaten by the player, at the high risk of inflicting Hunger.",
+            "score": 1,
+            "id": "rotten_flesh"
+        },
+        {
+            "object_name": "writable_book",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "book": 1,
+                "ink_sac": 1,
+                "feather": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A book and quill is used to write written books. Combine a book, ink sac, and feather in your inventory to create a writable book.",
+            "score": 10,
+            "id": "writable_book"
+        },
+        {
+            "object_name": "sunflower",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Flowers are non-solid plants in various shapes and colors. Sunflowers occur naturally and are used for decoration and dyes.",
+            "score": 1,
+            "id": "sunflower"
+        },
+        {
+            "object_name": "shield",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "plank": 6,
+                "iron_ingot": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A shield protects against attacks. Craft it with 6 planks and 1 iron ingot using a crafting table.",
+            "score": 40,
+            "id": "shield"
+        },
+        {
+            "object_name": "redstone_torch",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "stick": 1,
+                "redstone": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a redstone torch using 1 stick and 1 redstone on a crafting table. Produces a full-strength redstone signal on all sides, except its attached block. Deactivates when the attached block is powered.",
+            "score": 49,
+            "id": "redstone_torch"
+        },
+        {
+            "object_name": "baked_potato",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "potato": 1
+            },
+            "required_tool": "",
+            "required_modifier": "furnace",
+            "info": "Cook a potato in a furnace to obtain a baked potato.",
+            "score": 16,
+            "id": "baked_potato"
+        },
+        {
+            "object_name": "potato",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Obtain potato from potato crops. Can be consumed raw or cooked to make baked potatoes.",
+            "score": 1,
+            "id": "potato"
+        },
+        {
+            "object_name": "fence",
+            "minimum_count": 3,
+            "minimum_materials": {
+                "plank": 2,
+                "stick": 4
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A fence is a barrier block that cannot be jumped over. Craft it using 2 planks and 4 sticks at a crafting table.",
+            "score": 9,
+            "id": "fence"
+        },
+        {
+            "object_name": "spider_eye",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A spider eye is a poisonous food and brewing item.",
+            "score": 1,
+            "id": "spider_eye"
+        },
+        {
+            "object_name": "cauldron",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 7
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Cauldrons can hold water, lava, or powder snow and collect it from the environment. In Bedrock Edition, it can hold potions or dyed water, and serves as a leatherworker's job site block.",
+            "score": 38,
+            "id": "cauldron"
+        },
+        {
+            "object_name": "carrot",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A carrot is obtained from carrot crops. It can be eaten, planted, or used as a crafting ingredient.",
+            "score": 1,
+            "id": "carrot"
+        },
+        {
+            "object_name": "dandelion",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Flowers are non-solid plants in various shapes and colors. Dandelions can be found naturally and used for decoration or crafted into dyes.",
+            "score": 1,
+            "id": "dandelion"
+        },
+        {
+            "object_name": "fence_gate",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "plank": 2,
+                "stick": 4
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A fence gate functions like a door and fence. Craft it using 2 planks and 4 sticks on a crafting table.",
+            "score": 9,
+            "id": "fence_gate"
+        },
+        {
+            "object_name": "diamond_hoe",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "diamond": 2,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A diamond hoe is used to harvest plant-based blocks and till dirt into farmland. Craft it using 2 diamonds and 2 sticks on a crafting table.",
+            "score": 49,
+            "id": "diamond_hoe"
+        },
+        {
+            "object_name": "diamond_block",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "diamond": 9
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Combine 9 diamonds in a crafting table to create a diamond block.",
+            "score": 46,
+            "id": "diamond_block"
+        },
+        {
+            "object_name": "poppy",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Flowers, like poppies, are non-solid plants found in various colors. They are used for decoration and crafting dyes.",
+            "score": 1,
+            "id": "poppy"
+        },
+        {
+            "object_name": "azure_bluet",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Flowers are non-solid plants. Azure bluets are primarily used for decoration and crafted into dyes. Find and collect them in the world.",
+            "score": 1,
+            "id": "azure_bluet"
+        },
+        {
+            "object_name": "torch",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "coal": 1,
+                "stick": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Torches are non-solid blocks that emit light. Craft them using coal and sticks.",
+            "score": 14,
+            "id": "torch"
+        },
+        {
+            "object_name": "diamond_sword",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "diamond": 2,
+                "stick": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A diamond sword is a melee weapon. It can be crafted using 2 diamonds and 1 stick on a crafting table.",
+            "score": 49,
+            "id": "diamond_sword"
+        },
+        {
+            "object_name": "emerald_block",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "emerald": 9
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft an emerald block using 9 emeralds on a crafting table.",
+            "score": 46,
+            "id": "emerald_block"
+        },
+        {
+            "object_name": "emerald",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "iron_pickaxe",
+            "required_modifier": "",
+            "info": "Emeralds are rare minerals used as currency for trading. They are rarer than diamonds. Mine them with an iron pickaxe or better.",
+            "score": 42,
+            "id": "emerald"
+        },
+        {
+            "object_name": "allium",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Flowers like allium are non-solid plants in various shapes and colors. They are used for decoration and can be crafted into dyes.",
+            "score": 1,
+            "id": "allium"
+        },
+        {
+            "object_name": "glass",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "sand": 1
+            },
+            "required_tool": "",
+            "required_modifier": "furnace",
+            "info": "Smelt sand in a furnace to create glass. Glass can be dyed or crafted into tinted glass.",
+            "score": 16,
+            "id": "glass"
+        },
+        {
+            "object_name": "sand",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Sand is a gravity-affected block found abundantly in deserts and beaches, and less commonly in or near surface water.",
+            "score": 1,
+            "id": "sand"
+        },
+        {
+            "object_name": "trapped_chest",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "chest": 1,
+                "tripwire_hook": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a trapped chest by combining a chest and a tripwire hook on a crafting table. It functions like a regular chest but emits redstone power when open.",
+            "score": 50,
+            "id": "trapped_chest"
+        },
+        {
+            "object_name": "tripwire_hook",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 1,
+                "stick": 1,
+                "wooden_plank": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a tripwire hook using 1 iron ingot, 1 stick, and 1 wooden plank at a crafting table. It emits a redstone signal when triggered by an entity in a valid tripwire circuit.",
+            "score": 43,
+            "id": "tripwire_hook"
+        },
+        {
+            "object_name": "golden_chestplate",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "gold_ingot": 8
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Chestplates are a type of armor. To craft a golden chestplate, place 8 gold ingots in a crafting table, leaving the center slot empty.",
+            "score": 102,
+            "id": "golden_chestplate"
+        },
+        {
+            "object_name": "blue_orchid",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Flowers are non-solid plants in various shapes and colors. Blue orchids are primarily used for decoration and crafted into dyes.",
+            "score": 1,
+            "id": "blue_orchid"
+        },
+        {
+            "object_name": "cornflower",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Flowers are non-solid plants in various shapes and colors. Cornflowers are used for decoration and crafted into dyes.",
+            "score": 1,
+            "id": "cornflower"
+        },
+        {
+            "object_name": "glass_bottle",
+            "minimum_count": 3,
+            "minimum_materials": {
+                "glass": 3
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A glass bottle holds water, potions, honey, or dragon's breath. Craft it using 3 glass on a crafting table.",
+            "score": 20,
+            "id": "glass_bottle"
+        },
+        {
+            "object_name": "wooden_plank",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "log": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Planks are common building blocks and used in crafting. Crafted from tree logs, bamboo blocks, or huge fungus stems for different variations.",
+            "score": 2,
+            "id": "wooden_plank"
+        },
+        {
+            "object_name": "iron_leggings",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 7
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Iron leggings are a type of armor. Craft them using 7 iron ingots on a crafting table.",
+            "score": 38,
+            "id": "iron_leggings"
+        },
+        {
+            "object_name": "lily_of_the_valley",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Flowers are non-solid plants occurring in various shapes and colors. They are primarily used for decoration and crafted into dyes. Find and collect lily_of_the_valley.",
+            "score": 1,
+            "id": "lily_of_the_valley"
+        },
+        {
+            "object_name": "glass_pane",
+            "minimum_count": 16,
+            "minimum_materials": {
+                "glass": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A glass pane is a transparent block used as an alternative to glass blocks. Craft 16 glass panes by placing 6 glass blocks in a crafting table.",
+            "score": 20,
+            "id": "glass_pane"
+        },
+        {
+            "object_name": "carpet",
+            "minimum_count": 3,
+            "minimum_materials": {
+                "wool": 2
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Carpets are thin variants of wool. They can be dyed in any of the 16 colors.",
+            "score": 3,
+            "id": "carpet"
+        },
+        {
+            "object_name": "tnt",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "sand": 4,
+                "gunpowder": 5
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "TNT can be crafted using 4 sand and 5 gunpowder. It can be primed by redstone signal, flint and steel, stray fire, flaming projectile, or explosion.",
+            "score": 6,
+            "id": "tnt"
+        },
+        {
+            "object_name": "pumpkin",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A pumpkin is a fruit block found in patches in grassy biomes. It has the same texture on all 4 sides.",
+            "score": 1,
+            "id": "pumpkin"
+        },
+        {
+            "object_name": "tulip",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Flowers like tulips are non-solid plants found in various colors. They are used for decoration and can be crafted into dyes.",
+            "score": 1,
+            "id": "tulip"
+        },
+        {
+            "object_name": "ladder",
+            "minimum_count": 3,
+            "minimum_materials": {
+                "stick": 7
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Ladders are used for climbing walls. Craft using 7 sticks at a crafting table.",
+            "score": 7,
+            "id": "ladder"
+        },
+        {
+            "object_name": "coal_block",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "coal": 9
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A coal block is a storage block equivalent to nine coal. It can also be used as fuel.",
+            "score": 14,
+            "id": "coal_block"
+        },
+        {
+            "object_name": "arrow",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "flint": 1,
+                "stick": 1,
+                "feather": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "An arrow is used as ammunition for bows, crossbows, and dispensers. Craft 4 arrows using 1 flint, 1 stick, and 1 feather at a crafting table.",
+            "score": 10,
+            "id": "arrow"
+        },
+        {
+            "object_name": "pumpkin_seeds",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "pumpkin": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Pumpkin seeds are obtained from pumpkins and can be used to grow pumpkin stems.",
+            "score": 2,
+            "id": "pumpkin_seeds"
+        },
+        {
+            "object_name": "lever",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "cobblestone": 1,
+                "stick": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A lever is a non-solid block that can provide switchable redstone power. Craft it with 1 cobblestone and 1 stick on a crafting table.",
+            "score": 17,
+            "id": "lever"
+        },
+        {
+            "object_name": "grass",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Grass is a non-solid plant block with wheat seeds as a drop. Its color is biome-dependent and matches the color of grass blocks.",
+            "score": 1,
+            "id": "grass"
+        },
+        {
+            "object_name": "carrot_on_a_stick",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "carrot": 1,
+                "fishing_rod": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A carrot on a stick is used to control saddled pigs. Craft it by combining a carrot and a fishing rod on a crafting table.",
+            "score": 13,
+            "id": "carrot_on_a_stick"
+        },
+        {
+            "object_name": "fishing_rod",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "stick": 3,
+                "string": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A fishing rod is used to fish in water or to hook and pull mobs, items, and some entities towards the user.",
+            "score": 8,
+            "id": "fishing_rod"
+        },
+        {
+            "object_name": "log",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A log is a naturally occurring block found in trees or huge fungi. It is primarily used as a building block and to create planks. Logs come in ten types.",
+            "score": 1,
+            "id": "log"
+        },
+        {
+            "object_name": "heavy_weighted_pressure_plate",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 2
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Craft a heavy_weighted_pressure_plate using 2 iron ingots. It produces a redstone signal when stood on by an entity.",
+            "score": 35,
+            "id": "heavy_weighted_pressure_plate"
+        },
+        {
+            "object_name": "flower_pot",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "brick": 3
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a flower pot using 3 bricks on a crafting table. Can contain flowers, bamboo, saplings, cacti, mushrooms, fungi, and other small plants.",
+            "score": 21,
+            "id": "flower_pot"
+        },
+        {
+            "object_name": "jungle_boat",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "jungle_planks": 5
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "To craft a jungle boat, you need 5 jungle planks.",
+            "score": 3,
+            "id": "jungle_boat"
+        },
+        {
+            "object_name": "jungle_planks",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "jungle_log": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Planks are common building blocks and used in crafting recipes. They're one of the first items to craft in Survival and Adventure modes. Craft jungle planks from jungle logs.",
+            "score": 2,
+            "id": "jungle_planks"
+        },
+        {
+            "object_name": "mutton",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Mutton is obtained by cooking raw mutton. Raw mutton is dropped by sheep when they are killed.",
+            "score": 1,
+            "id": "mutton"
+        },
+        {
+            "object_name": "iron_hoe",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 2,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A hoe is used to harvest organic blocks and till dirt into farmland. Craft it using 2 iron ingots and 2 sticks on a crafting table.",
+            "score": 41,
+            "id": "iron_hoe"
+        },
+        {
+            "object_name": "iron_chestplate",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 8
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Iron chestplates are a type of armor. Craft it using 8 iron ingots on a crafting table.",
+            "score": 38,
+            "id": "iron_chestplate"
+        },
+        {
+            "object_name": "jungle_door",
+            "minimum_count": 3,
+            "minimum_materials": {
+                "jungle_planks": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a jungle door using 6 jungle planks in a crafting table. Doors can be used as barriers and opened by hand or with redstone.",
+            "score": 6,
+            "id": "jungle_door"
+        },
+        {
+            "object_name": "rose",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Flowers are non-solid plants in various shapes and colors. They are primarily used for decoration and crafted into dyes.",
+            "score": 1,
+            "id": "rose"
+        },
+        {
+            "object_name": "oak_stairs",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "oak_planks": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Stairs allow changing elevation without jumping. Craft oak stairs using 6 oak planks on a crafting table.",
+            "score": 6,
+            "id": "oak_stairs"
+        },
+        {
+            "object_name": "oak_planks",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "oak_log": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Planks are common blocks used as building blocks and in crafting recipes. They can be crafted from tree logs. Oak planks are made from oak logs.",
+            "score": 2,
+            "id": "oak_planks"
+        },
+        {
+            "object_name": "iron_sword",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 2,
+                "stick": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "An iron sword is a melee weapon for dealing damage or breaking certain blocks. Craft it using 2 iron ingots and 1 stick on a crafting table.",
+            "score": 41,
+            "id": "iron_sword"
+        },
+        {
+            "object_name": "brick_block",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "brick": 4
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft the brick_block by placing 4 bricks in a 2x2 square on a crafting table.",
+            "score": 21,
+            "id": "brick_block"
+        },
+        {
+            "object_name": "jungle_fence",
+            "minimum_count": 3,
+            "minimum_materials": {
+                "jungle_planks": 4,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A fence is a barrier block that cannot normally be jumped over, similar to a wall. Craft it using 4 jungle planks and 2 sticks on a crafting table.",
+            "score": 9,
+            "id": "jungle_fence"
+        },
+        {
+            "object_name": "leather_boots",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "leather": 4
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft leather boots using 4 leather on a crafting table. Boots are a type of armor that covers the feet.",
+            "score": 5,
+            "id": "leather_boots"
+        },
+        {
+            "object_name": "jungle_fence_gate",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "jungle_planks": 4,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft using 4 jungle planks and 2 sticks in a crafting table. It shares functions of both doors and fences.",
+            "score": 9,
+            "id": "jungle_fence_gate"
+        },
+        {
+            "object_name": "planks",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "log": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Planks are common building blocks and used in crafting. Crafted from tree logs, bamboo blocks, or huge fungus stems. One log yields 4 planks.",
+            "score": 2,
+            "id": "planks"
+        },
+        {
+            "object_name": "leather_cap",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "leather": 5
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Helmets are a type of armor that covers the head. Craft a leather cap at a crafting table using 5 leather.",
+            "score": 5,
+            "id": "leather_cap"
+        },
+        {
+            "object_name": "dispenser",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "cobblestone": 7,
+                "redstone": 1,
+                "bow": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A dispenser can fire projectiles, use items or tools, or place blocks when given a redstone signal. Craft one using 7 cobblestones, 1 redstone, and 1 bow.",
+            "score": 64,
+            "id": "dispenser"
+        },
+        {
+            "object_name": "jungle_stairs",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "jungle_planks": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Stairs allow changing elevation without jumping. Craft 4 jungle stairs with 6 jungle planks at a crafting table.",
+            "score": 6,
+            "id": "jungle_stairs"
+        },
+        {
+            "object_name": "porkchop",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Please provide more information about how to obtain porkchop in Minecraft.",
+            "score": 1,
+            "id": "porkchop"
+        },
+        {
+            "object_name": "leaves",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "For the removed Pocket Edition block, see Leaves carried.",
+            "score": 1,
+            "id": "leaves"
+        },
+        {
+            "object_name": "gold_ore",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "iron_pickaxe",
+            "required_modifier": "",
+            "info": "Gold ore is a rare mineral block found underground. Mine it using an iron pickaxe or higher.",
+            "score": 42,
+            "id": "gold_ore"
+        },
+        {
+            "object_name": "jack_o'lantern",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "pumpkin": 1,
+                "torch": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A jack_o'lantern is a solid block that provides light. Craft it by combining a pumpkin and a torch on a crafting table.",
+            "score": 19,
+            "id": "jack_o'lantern"
+        },
+        {
+            "object_name": "painting",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "stick": 8,
+                "wool": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a painting using 8 sticks and 1 wool on a crafting table.",
+            "score": 9,
+            "id": "painting"
+        },
+        {
+            "object_name": "gold_nugget",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "gold_ingot": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Gold nuggets are used to make various golden items. One gold nugget is worth one-ninth of a gold ingot. Craft nuggets from an ingot.",
+            "score": 99,
+            "id": "gold_nugget"
+        },
+        {
+            "object_name": "melon",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "melon_seeds": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Plant melon seeds and wait for them to grow into a fully-grown melon stem. A melon will eventually grow from the stem.",
+            "score": 3,
+            "id": "melon"
+        },
+        {
+            "object_name": "melon_seeds",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "melon_slice": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Obtain melon seeds from melon slices. Use them to grow melon stems.",
+            "score": 2,
+            "id": "melon_seeds"
+        },
+        {
+            "object_name": "melon_block",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Grow a melon block from a fully-grown melon stem, which is grown from melon seeds.",
+            "score": 1,
+            "id": "melon_block"
+        },
+        {
+            "object_name": "snow",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Snow is a ground cover block found in snowy biomes and can be replenished during snowfall.",
+            "score": 1,
+            "id": "snow"
+        },
+        {
+            "object_name": "golden_shovel",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "gold_ingot": 1,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Shovels are used to break dirt, sand, gravel, and other soil blocks. Craft a golden shovel using 1 gold ingot and 2 sticks at a crafting table.",
+            "score": 105,
+            "id": "golden_shovel"
+        },
+        {
+            "object_name": "melon_slice",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A melon slice is a food item that can be eaten by the player.",
+            "score": 1,
+            "id": "melon_slice"
+        },
+        {
+            "object_name": "sandstone",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Sandstone is a solid block commonly found in deserts and beaches underneath sand.",
+            "score": 1,
+            "id": "sandstone"
+        },
+        {
+            "object_name": "snow_layer",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "shovel",
+            "required_modifier": "",
+            "info": "Snow is found in snowy biomes. Use a shovel to obtain snow_layer during snowfall.",
+            "score": 8,
+            "id": "snow_layer"
+        },
+        {
+            "object_name": "shovel",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a shovel at a crafting table by using 2 sticks and a material like wood, stone, iron, diamond, or netherite. Shovels are used to break dirt, sand, gravel, and other soil blocks faster and to convert dirt blocks into dirt paths.",
+            "score": 7,
+            "id": "shovel"
+        },
+        {
+            "object_name": "hardened_clay",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "clay": 1
+            },
+            "required_tool": "",
+            "required_modifier": "furnace",
+            "info": "Terracotta is found in badlands biomes or can be obtained by smelting clay in a furnace.",
+            "score": 16,
+            "id": "hardened_clay"
+        },
+        {
+            "object_name": "gold_block",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "gold_ingot": 9
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "To obtain a gold block, craft it using 9 gold ingots on a crafting table.",
+            "score": 102,
+            "id": "gold_block"
+        },
+        {
+            "object_name": "sapling",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A sapling is a non-solid block that can be grown into a tree.",
+            "score": 1,
+            "id": "sapling"
+        },
+        {
+            "object_name": "snowball",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "snow": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Snowballs are throwable combat items that hit but do not damage most mobs on impact. Obtain by digging snow blocks.",
+            "score": 2,
+            "id": "snowball"
+        },
+        {
+            "object_name": "hopper_minecart",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "minecart": 1,
+                "hopper": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a hopper_minecart by combining 1 minecart and 1 hopper at a crafting table. It pulls items quickly and can collect items through solid blocks.",
+            "score": 83,
+            "id": "hopper_minecart"
+        },
+        {
+            "object_name": "hopper",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 5,
+                "chest": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A hopper is a low-capacity storage block. It collects item entities and transfers items between containers. Lock with redstone power to stop item movement.",
+            "score": 41,
+            "id": "hopper"
+        },
+        {
+            "object_name": "golden_carrot",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "carrot": 1,
+                "gold_nugget": 8
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A golden carrot is a valuable food item and brewing ingredient. It provides the second most saturation in the game. Craft it with 1 carrot and 8 gold nuggets.",
+            "score": 104,
+            "id": "golden_carrot"
+        },
+        {
+            "object_name": "sign",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "plank": 6,
+                "stick": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A sign displays text and can be placed on blocks. Customize text with a dye item and a glow ink sac. Craft it with 6 planks and 1 stick at a crafting table.",
+            "score": 9,
+            "id": "sign"
+        },
+        {
+            "object_name": "iron_block",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 9
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A block of iron is crafted using 9 iron ingots in a crafting table.",
+            "score": 38,
+            "id": "iron_block"
+        },
+        {
+            "object_name": "pumpkin_pie",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "pumpkin": 1,
+                "egg": 1,
+                "sugar": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "To make pumpkin pie, combine pumpkin, egg, and sugar in a crafting table.",
+            "score": 8,
+            "id": "pumpkin_pie"
+        },
+        {
+            "object_name": "egg",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "An egg can be used to craft food items or thrown to potentially spawn chicks on impact.",
+            "score": 1,
+            "id": "egg"
+        },
+        {
+            "object_name": "spruce_boat",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "spruce_plank": 5
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a spruce boat using 5 spruce planks at a crafting table.",
+            "score": 6,
+            "id": "spruce_boat"
+        },
+        {
+            "object_name": "spruce_plank",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "spruce_log": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Place a spruce log in any slot of the crafting grid to create four spruce planks.",
+            "score": 2,
+            "id": "spruce_plank"
+        },
+        {
+            "object_name": "sheep",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Sheep are common passive mobs found in many grassy biomes. They supply wool and mutton when interacted with.",
+            "score": 1,
+            "id": "sheep"
+        },
+        {
+            "object_name": "red_sandstone",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Sandstone is a solid block commonly found in deserts and beaches underneath sand.",
+            "score": 1,
+            "id": "red_sandstone"
+        },
+        {
+            "object_name": "spruce_door",
+            "minimum_count": 3,
+            "minimum_materials": {
+                "spruce_planks": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft spruce_door using 6 spruce_planks in a crafting_table. Can be used as a barrier and opened by hand or redstone.",
+            "score": 6,
+            "id": "spruce_door"
+        },
+        {
+            "object_name": "spruce_planks",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "spruce_log": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Spruce planks are common building blocks and crafting materials. Craft them in Survival and Adventure modes by converting spruce logs.",
+            "score": 2,
+            "id": "spruce_planks"
+        },
+        {
+            "object_name": "bed",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "wool": 3,
+                "plank": 3
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A bed allows a player to sleep and reset their spawn point. If obstructed or removed, the player spawns at the default world location. Craft it using 3 wool and 3 planks on a crafting table.",
+            "score": 8,
+            "id": "bed"
+        },
+        {
+            "object_name": "activator_rail",
+            "minimum_count": 6,
+            "minimum_materials": {
+                "iron_ingot": 6,
+                "redstone_torch": 1,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft an activator rail using 6 iron ingots, 1 redstone torch, and 2 sticks on a crafting table. It can eject players and mobs from minecarts, lock/unlock hopper minecarts, and ignite TNT minecarts.",
+            "score": 90,
+            "id": "activator_rail"
+        },
+        {
+            "object_name": "red_sandstone_stairs",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "red_sandstone": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft 4 red_sandstone_stairs using 6 red_sandstone blocks at a crafting table. Stairs allow changing elevation without jumping.",
+            "score": 5,
+            "id": "red_sandstone_stairs"
+        },
+        {
+            "object_name": "spruce_fence",
+            "minimum_count": 3,
+            "minimum_materials": {
+                "spruce_planks": 4,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A fence is a barrier block that cannot normally be jumped over, and players can see through the openings. Craft it using 4 spruce planks and 2 sticks on a crafting table.",
+            "score": 9,
+            "id": "spruce_fence"
+        },
+        {
+            "object_name": "detector_rail",
+            "minimum_count": 6,
+            "minimum_materials": {
+                "iron_ingot": 6,
+                "stone_pressure_plate": 1,
+                "redstone": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a detector rail using 6 iron ingots, 1 stone pressure plate, and 1 redstone at a crafting table.",
+            "score": 94,
+            "id": "detector_rail"
+        },
+        {
+            "object_name": "stone_pressure_plate",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "stone": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a stone pressure plate by placing 2 stone blocks horizontally in a crafting table.",
+            "score": 14,
+            "id": "stone_pressure_plate"
+        },
+        {
+            "object_name": "glistering_melon_slice",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "melon_slice": 1,
+                "gold_nugget": 8
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Combine 1 melon_slice and 8 gold_nuggets in a crafting table. Used for brewing potions of Healing and making mundane potions.",
+            "score": 104,
+            "id": "glistering_melon_slice"
+        },
+        {
+            "object_name": "spruce_fence_gate",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "spruce_planks": 4,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a spruce fence gate by combining 4 spruce planks and 2 sticks on a crafting table.",
+            "score": 9,
+            "id": "spruce_fence_gate"
+        },
+        {
+            "object_name": "brown_mushroom_block",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Find a huge mushroom with brown mushroom blocks. Break the brown mushroom blocks to obtain them.",
+            "score": 1,
+            "id": "brown_mushroom_block"
+        },
+        {
+            "object_name": "diamond_axe",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "diamond": 3,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "An axe is used to break wood-based blocks, strip or scrape certain blocks, or as a melee weapon. Craft a diamond axe using 3 diamonds and 2 sticks at a crafting table.",
+            "score": 49,
+            "id": "diamond_axe"
+        },
+        {
+            "object_name": "spruce_stairs",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "spruce_planks": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft spruce stairs by placing 6 spruce planks in a stair shape on a crafting table.",
+            "score": 6,
+            "id": "spruce_stairs"
+        },
+        {
+            "object_name": "bucket",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 3
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A bucket is used to carry water, lava, milk, powder snow, and various aquatic mobs. Craft it with 3 iron ingots on a crafting table.",
+            "score": 38,
+            "id": "bucket"
+        },
+        {
+            "object_name": "anvil",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_block": 3,
+                "iron_ingot": 4
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "An anvil is used to rename items, combine enchantments, and repair items without losing enchantments. It has limited durability and can become chipped, damaged, and eventually break.",
+            "score": 76,
+            "id": "anvil"
+        },
+        {
+            "object_name": "apple",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Apples are food items that can be eaten by the player.",
+            "score": 1,
+            "id": "apple"
+        },
+        {
+            "object_name": "hay_block",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "wheat": 9
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Hay bales are crafted using 9 pieces of wheat. They can be used for feeding llamas, horses, reducing fall damage, or extending campfire smoke.",
+            "score": 2,
+            "id": "hay_block"
+        },
+        {
+            "object_name": "lava_bucket",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "bucket": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Find a lava source and right-click it with an empty bucket to fill it with lava.",
+            "score": 39,
+            "id": "lava_bucket"
+        },
+        {
+            "object_name": "enchanting_table",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "obsidian": 4,
+                "diamond": 2,
+                "book": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft an enchanting table using 4 obsidian, 2 diamonds, and 1 book. Place it near bookshelves to increase enchantment power at the expense of level requirement.",
+            "score": 103,
+            "id": "enchanting_table"
+        },
+        {
+            "object_name": "stone_axe",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "cobblestone": 3,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Create a stone axe using 3 cobblestone and 2 sticks at a crafting table. Hastens breaking of wood-based blocks, and can disable shields when used as a melee weapon.",
+            "score": 17,
+            "id": "stone_axe"
+        },
+        {
+            "object_name": "iron_axe",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 3,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "An iron axe is used to quickly break wood-based blocks, strip or scrape certain blocks, and as a melee weapon that can disable shields.",
+            "score": 41,
+            "id": "iron_axe"
+        },
+        {
+            "object_name": "enchanted_book",
+            "minimum_count": 1,
+            "minimum_materials": "",
+            "required_tool": "",
+            "required_modifier": "anvil",
+            "info": "An enchanted book allows players to add enchantments to items. Obtain one and use an anvil to apply the enchantment to a compatible item.",
+            "score": 77,
+            "id": "enchanted_book"
+        },
+        {
+            "object_name": "stone_brick_stairs",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "stone_bricks": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Stairs allow players to change elevation without jumping. Craft 4 stone_brick_stairs using 6 stone_bricks at a crafting_table.",
+            "score": 5,
+            "id": "stone_brick_stairs"
+        },
+        {
+            "object_name": "stone_bricks",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Stone bricks can be found in structures like strongholds, igloo basements, jungle temples, ocean ruins, ruined portals, and trail ruins.",
+            "score": 1,
+            "id": "stone_bricks"
+        },
+        {
+            "object_name": "minecart_with_tnt",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "minecart": 1,
+                "tnt": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A minecart with TNT combines a minecart and a block of TNT. It can detonate instantly under certain conditions and its damage and blast radius increases with its speed.",
+            "score": 48,
+            "id": "minecart_with_tnt"
+        },
+        {
+            "object_name": "poisonous_potato",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A poisonous potato is a type of potato that can poison the player.",
+            "score": 1,
+            "id": "poisonous_potato"
+        },
+        {
+            "object_name": "stone_button",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "stone": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A button is a non-solid block that produces a temporary redstone signal when pressed. Craft a stone button using 1 stone on a crafting table.",
+            "score": 14,
+            "id": "stone_button"
+        },
+        {
+            "object_name": "milk_bucket",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "bucket": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Use a bucket on cows, mooshrooms, or goats. Consume to clear all effects.",
+            "score": 39,
+            "id": "milk_bucket"
+        },
+        {
+            "object_name": "bookshelf",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "book": 3,
+                "plank": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Bookshelves enhance enchantments on an enchanting table. Place up to 15 bookshelves around the enchanting table to increase the level requirement and improve enchantments.",
+            "score": 13,
+            "id": "bookshelf"
+        },
+        {
+            "object_name": "golden_apple",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "gold_ingot": 8,
+                "apple": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A golden apple bestows beneficial effects when consumed and can cure a zombie villager. Craft it using 8 gold ingots and 1 apple on a crafting table.",
+            "score": 103,
+            "id": "golden_apple"
+        },
+        {
+            "object_name": "stone_hoe",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "cobblestone": 2,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A hoe is used to harvest plant-based blocks and till dirt into farmland. Craft it using 2 cobblestone and 2 sticks at a crafting table.",
+            "score": 17,
+            "id": "stone_hoe"
+        },
+        {
+            "object_name": "sandstone_stairs",
+            "minimum_count": 4,
+            "minimum_materials": {
+                "sandstone": 6
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Stairs change elevation without jumping. Craft 4 sandstone stairs using 6 sandstone blocks at a crafting table.",
+            "score": 5,
+            "id": "sandstone_stairs"
+        },
+        {
+            "object_name": "golden_hoe",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "gold_ingot": 2,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A hoe is used to harvest plant-based blocks and till dirt into farmland. Craft it using 2 gold ingots and 2 sticks on a crafting table.",
+            "score": 105,
+            "id": "golden_hoe"
+        },
+        {
+            "object_name": "rabbit_foot",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A rabbit's foot is a brewing item obtained from rabbits.",
+            "score": 1,
+            "id": "rabbit_foot"
+        },
+        {
+            "object_name": "stone_pickaxe",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "cobblestone": 3,
+                "stick": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A pickaxe is used to mine ores and various blocks quickly. Stone pickaxes are crafted with 3 cobblestone and 2 sticks on a crafting table.",
+            "score": 17,
+            "id": "stone_pickaxe"
+        },
+        {
+            "object_name": "water_bucket",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "bucket": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Obtain an empty bucket and use it to collect water from a water source.",
+            "score": 39,
+            "id": "water_bucket"
+        },
+        {
+            "object_name": "golden_sword",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "gold_ingot": 2,
+                "stick": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "A sword is a melee weapon. Golden swords are made with 2 gold ingots and 1 stick. Craft it on a crafting table.",
+            "score": 105,
+            "id": "golden_sword"
+        },
+        {
+            "object_name": "slime",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Slimes spawn deep underground in specific chunks or in swamp biomes. They are cube-shaped hostile mobs that attack by jumping. Larger slimes can split into smaller ones upon death.",
+            "score": 1,
+            "id": "slime"
+        },
+        {
+            "object_name": "fermented_spider_eye",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "spider_eye": 1,
+                "sugar": 1,
+                "brown_mushroom": 1
+            },
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A fermented spider eye is a brewing ingredient. Craft it by combining a spider eye, sugar, and a brown mushroom.",
+            "score": 5,
+            "id": "fermented_spider_eye"
+        },
+        {
+            "object_name": "light_weighted_pressure_plate",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "iron_ingot": 2
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft a light_weighted_pressure_plate using 2 iron ingots at a crafting table.",
+            "score": 38,
+            "id": "light_weighted_pressure_plate"
+        },
+        {
+            "object_name": "rabbit_stew",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "cooked_rabbit": 1,
+                "carrot": 1,
+                "baked_potato": 1,
+                "mushroom": 1,
+                "bowl": 1
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Rabbit stew is a food item. Combine cooked rabbit, carrot, baked potato, any type of mushroom, and a bowl in a crafting table.",
+            "score": 41,
+            "id": "rabbit_stew"
+        },
+        {
+            "object_name": "mushroom",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "Mushrooms are a type of fungus that spawns in dark areas. They come in red or brown colors and can be small or huge in size.",
+            "score": 1,
+            "id": "mushroom"
+        },
+        {
+            "object_name": "acacia_log",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A log is found in trees, primarily used as a building block and to create planks. Acacia_log is one of the ten types of logs.",
+            "score": 1,
+            "id": "acacia_log"
+        },
+        {
+            "object_name": "leather_pants",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "leather": 7
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Leather pants are a type of leggings. Craft them using 7 leather at a crafting table.",
+            "score": 5,
+            "id": "leather_pants"
+        },
+        {
+            "object_name": "birch_log",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A log is a naturally occurring block found in trees. Birch log is one of the ten types of logs and can be used as a building block or to create planks.",
+            "score": 1,
+            "id": "birch_log"
+        },
+        {
+            "object_name": "wooden_slab",
+            "minimum_count": 6,
+            "minimum_materials": {
+                "plank": 3
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft wooden slab by placing 3 planks in a horizontal row on a crafting table.",
+            "score": 6,
+            "id": "wooden_slab"
+        },
+        {
+            "object_name": "dark_oak_log",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A log found in trees, primarily used as a building block and to create planks. Dark oak is one of ten types of logs.",
+            "score": 1,
+            "id": "dark_oak_log"
+        },
+        {
+            "object_name": "jungle_log",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A jungle_log is a naturally occurring block found in jungle trees. It is used as a building block and to create planks, a versatile crafting ingredient.",
+            "score": 1,
+            "id": "jungle_log"
+        },
+        {
+            "object_name": "oak_log",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A log is a naturally occurring block found in trees, primarily used as a building block and to create planks. Oak log is one of the ten types of logs.",
+            "score": 1,
+            "id": "oak_log"
+        },
+        {
+            "object_name": "spruce_log",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "A log or stem is a naturally occurring block found in trees or huge fungi. It is primarily used as a building block and to create planks. Ten types of logs exist, including spruce.",
+            "score": 1,
+            "id": "spruce_log"
+        },
+        {
+            "object_name": "repeater",
+            "minimum_count": 1,
+            "minimum_materials": {},
+            "required_tool": "",
+            "required_modifier": "",
+            "info": "The information provided is not sufficient to create a goal for acquiring a repeater. Please provide more details about the materials, tools, or crafting process.",
+            "score": 1,
+            "id": "repeater"
+        },
+        {
+            "object_name": "smooth_stone",
+            "minimum_count": 1,
+            "minimum_materials": {
+                "stone": 1
+            },
+            "required_tool": "",
+            "required_modifier": "furnace",
+            "info": "Smooth stone is made by smelting regular stone in a furnace.",
+            "score": 25,
+            "id": "smooth_stone"
+        },
+        {
+            "object_name": "stone_slab",
+            "minimum_count": 6,
+            "minimum_materials": {
+                "stone": 3
+            },
+            "required_tool": "",
+            "required_modifier": "crafting_table",
+            "info": "Craft 6 stone slabs with 3 stones at a crafting table.",
+            "score": 14,
+            "id": "stone_slab"
+        }
+    ],
+    "links": [
+        {
+            "quantity": 6,
+            "source": "cobblestone",
+            "target": "stone_stairs"
+        },
+        {
+            "quantity": 2,
+            "source": "cobblestone",
+            "target": "stone_sword"
+        },
+        {
+            "quantity": 1,
+            "source": "cobblestone",
+            "target": "mossy_cobblestone"
+        },
+        {
+            "quantity": 6,
+            "source": "cobblestone",
+            "target": "cobblestone_wall"
+        },
+        {
+            "quantity": 7,
+            "source": "cobblestone",
+            "target": "dropper"
+        },
+        {
+            "quantity": 4,
+            "source": "cobblestone",
+            "target": "piston"
+        },
+        {
+            "quantity": 8,
+            "source": "cobblestone",
+            "target": "furnace"
+        },
+        {
+            "quantity": 1,
+            "source": "cobblestone",
+            "target": "lever"
+        },
+        {
+            "quantity": 7,
+            "source": "cobblestone",
+            "target": "dispenser"
+        },
+        {
+            "quantity": 3,
+            "source": "cobblestone",
+            "target": "stone_axe"
+        },
+        {
+            "quantity": 2,
+            "source": "cobblestone",
+            "target": "stone_hoe"
+        },
+        {
+            "quantity": 3,
+            "source": "cobblestone",
+            "target": "stone_pickaxe"
+        },
+        {
+            "source": "crafting_table",
+            "target": "stone_stairs"
+        },
+        {
+            "source": "crafting_table",
+            "target": "flint_and_steel"
+        },
+        {
+            "source": "crafting_table",
+            "target": "acacia_boat"
+        },
+        {
+            "source": "crafting_table",
+            "target": "stone_sword"
+        },
+        {
+            "source": "crafting_table",
+            "target": "acacia_door"
+        },
+        {
+            "source": "crafting_table",
+            "target": "iron_boots"
+        },
+        {
+            "source": "crafting_table",
+            "target": "diamond_boots"
+        },
+        {
+            "source": "crafting_table",
+            "target": "acacia_fence"
+        },
+        {
+            "source": "crafting_table",
+            "target": "iron_trapdoor"
+        },
+        {
+            "source": "crafting_table",
+            "target": "diamond_helmet"
+        },
+        {
+            "source": "crafting_table",
+            "target": "acacia_fence_gate"
+        },
+        {
+            "source": "crafting_table",
+            "target": "leather_tunic"
+        },
+        {
+            "source": "crafting_table",
+            "target": "golden_axe"
+        },
+        {
+            "source": "crafting_table",
+            "target": "acacia_stairs"
+        },
+        {
+            "source": "crafting_table",
+            "target": "trapdoor"
+        },
+        {
+            "source": "crafting_table",
+            "target": "golden_pickaxe"
+        },
+        {
+            "source": "crafting_table",
+            "target": "bone_block"
+        },
+        {
+            "source": "crafting_table",
+            "target": "bow"
+        },
+        {
+            "source": "crafting_table",
+            "target": "birch_door"
+        },
+        {
+            "source": "crafting_table",
+            "target": "wooden_axe"
+        },
+        {
+            "source": "crafting_table",
+            "target": "diamond_leggings"
+        },
+        {
+            "source": "crafting_table",
+            "target": "birch_fence"
+        },
+        {
+            "source": "crafting_table",
+            "target": "wooden_button"
+        },
+        {
+            "source": "crafting_table",
+            "target": "furnace_minecart"
+        },
+        {
+            "source": "crafting_table",
+            "target": "golden_boots"
+        },
+        {
+            "source": "crafting_table",
+            "target": "birch_fence_gate"
+        },
+        {
+            "source": "crafting_table",
+            "target": "wooden_door"
+        },
+        {
+            "source": "crafting_table",
+            "target": "birch_stairs"
+        },
+        {
+            "source": "crafting_table",
+            "target": "wooden_hoe"
+        },
+        {
+            "source": "crafting_table",
+            "target": "iron_helmet"
+        },
+        {
+            "source": "crafting_table",
+            "target": "sticky_piston"
+        },
+        {
+            "source": "crafting_table",
+            "target": "wooden_pickaxe"
+        },
+        {
+            "source": "crafting_table",
+            "target": "minecart"
+        },
+        {
+            "source": "crafting_table",
+            "target": "beetroot_soup"
+        },
+        {
+            "source": "crafting_table",
+            "target": "wooden_pressure_plate"
+        },
+        {
+            "source": "crafting_table",
+            "target": "mossy_cobblestone"
+        },
+        {
+            "source": "crafting_table",
+            "target": "golden_helmet"
+        },
+        {
+            "source": "crafting_table",
+            "target": "wooden_shovel"
+        },
+        {
+            "source": "crafting_table",
+            "target": "lead"
+        },
+        {
+            "source": "crafting_table",
+            "target": "map"
+        },
+        {
+            "source": "crafting_table",
+            "target": "wooden_sword"
+        },
+        {
+            "source": "crafting_table",
+            "target": "banner"
+        },
+        {
+            "source": "crafting_table",
+            "target": "brick_stairs"
+        },
+        {
+            "source": "crafting_table",
+            "target": "armor_stand"
+        },
+        {
+            "source": "crafting_table",
+            "target": "cobblestone_wall"
+        },
+        {
+            "source": "crafting_table",
+            "target": "book"
+        },
+        {
+            "source": "crafting_table",
+            "target": "bread"
+        },
+        {
+            "source": "crafting_table",
+            "target": "diamond_shovel"
+        },
+        {
+            "source": "crafting_table",
+            "target": "clock"
+        },
+        {
+            "source": "crafting_table",
+            "target": "dropper"
+        },
+        {
+            "source": "crafting_table",
+            "target": "firework_rocket"
+        },
+        {
+            "source": "crafting_table",
+            "target": "diamond_chestplate"
+        },
+        {
+            "source": "crafting_table",
+            "target": "iron_bars"
+        },
+        {
+            "source": "crafting_table",
+            "target": "iron_door"
+        },
+        {
+            "source": "crafting_table",
+            "target": "dark_oak_boat"
+        },
+        {
+            "source": "crafting_table",
+            "target": "jukebox"
+        },
+        {
+            "source": "crafting_table",
+            "target": "dark_oak_door"
+        },
+        {
+            "source": "crafting_table",
+            "target": "dark_oak_fence"
+        },
+        {
+            "source": "crafting_table",
+            "target": "iron_shovel"
+        },
+        {
+            "source": "crafting_table",
+            "target": "noteblock"
+        },
+        {
+            "source": "crafting_table",
+            "target": "golden_leggings"
+        },
+        {
+            "source": "crafting_table",
+            "target": "dark_oak_fence_gate"
+        },
+        {
+            "source": "crafting_table",
+            "target": "item_frame"
+        },
+        {
+            "source": "crafting_table",
+            "target": "piston"
+        },
+        {
+            "source": "crafting_table",
+            "target": "golden_rail"
+        },
+        {
+            "source": "crafting_table",
+            "target": "dark_oak_stairs"
+        },
+        {
+            "source": "crafting_table",
+            "target": "rail"
+        },
+        {
+            "source": "crafting_table",
+            "target": "lapis_block"
+        },
+        {
+            "source": "crafting_table",
+            "target": "shield"
+        },
+        {
+            "source": "crafting_table",
+            "target": "redstone_torch"
+        },
+        {
+            "source": "crafting_table",
+            "target": "fence"
+        },
+        {
+            "source": "crafting_table",
+            "target": "cauldron"
+        },
+        {
+            "source": "crafting_table",
+            "target": "fence_gate"
+        },
+        {
+            "source": "crafting_table",
+            "target": "diamond_hoe"
+        },
+        {
+            "source": "crafting_table",
+            "target": "diamond_block"
+        },
+        {
+            "source": "crafting_table",
+            "target": "furnace"
+        },
+        {
+            "source": "crafting_table",
+            "target": "diamond_sword"
+        },
+        {
+            "source": "crafting_table",
+            "target": "emerald_block"
+        },
+        {
+            "source": "crafting_table",
+            "target": "trapped_chest"
+        },
+        {
+            "source": "crafting_table",
+            "target": "golden_chestplate"
+        },
+        {
+            "source": "crafting_table",
+            "target": "glass_bottle"
+        },
+        {
+            "source": "crafting_table",
+            "target": "tripwire_hook"
+        },
+        {
+            "source": "crafting_table",
+            "target": "iron_leggings"
+        },
+        {
+            "source": "crafting_table",
+            "target": "glass_pane"
+        },
+        {
+            "source": "crafting_table",
+            "target": "tnt"
+        },
+        {
+            "source": "crafting_table",
+            "target": "ladder"
+        },
+        {
+            "source": "crafting_table",
+            "target": "coal_block"
+        },
+        {
+            "source": "crafting_table",
+            "target": "arrow"
+        },
+        {
+            "source": "crafting_table",
+            "target": "lever"
+        },
+        {
+            "source": "crafting_table",
+            "target": "compass"
+        },
+        {
+            "source": "crafting_table",
+            "target": "carrot_on_a_stick"
+        },
+        {
+            "source": "crafting_table",
+            "target": "flower_pot"
+        },
+        {
+            "source": "crafting_table",
+            "target": "iron_hoe"
+        },
+        {
+            "source": "crafting_table",
+            "target": "iron_chestplate"
+        },
+        {
+            "source": "crafting_table",
+            "target": "jungle_door"
+        },
+        {
+            "source": "crafting_table",
+            "target": "oak_stairs"
+        },
+        {
+            "source": "crafting_table",
+            "target": "iron_sword"
+        },
+        {
+            "source": "crafting_table",
+            "target": "brick_block"
+        },
+        {
+            "source": "crafting_table",
+            "target": "jungle_fence"
+        },
+        {
+            "source": "crafting_table",
+            "target": "leather_boots"
+        },
+        {
+            "source": "crafting_table",
+            "target": "jungle_fence_gate"
+        },
+        {
+            "source": "crafting_table",
+            "target": "leather_cap"
+        },
+        {
+            "source": "crafting_table",
+            "target": "dispenser"
+        },
+        {
+            "source": "crafting_table",
+            "target": "jungle_stairs"
+        },
+        {
+            "source": "crafting_table",
+            "target": "jack_o'lantern"
+        },
+        {
+            "source": "crafting_table",
+            "target": "painting"
+        },
+        {
+            "source": "crafting_table",
+            "target": "shears"
+        },
+        {
+            "source": "crafting_table",
+            "target": "golden_shovel"
+        },
+        {
+            "source": "crafting_table",
+            "target": "gold_block"
+        },
+        {
+            "source": "crafting_table",
+            "target": "hopper_minecart"
+        },
+        {
+            "source": "crafting_table",
+            "target": "golden_carrot"
+        },
+        {
+            "source": "crafting_table",
+            "target": "sign"
+        },
+        {
+            "source": "crafting_table",
+            "target": "iron_block"
+        },
+        {
+            "source": "crafting_table",
+            "target": "pumpkin_pie"
+        },
+        {
+            "source": "crafting_table",
+            "target": "spruce_boat"
+        },
+        {
+            "source": "crafting_table",
+            "target": "spruce_door"
+        },
+        {
+            "source": "crafting_table",
+            "target": "bed"
+        },
+        {
+            "source": "crafting_table",
+            "target": "activator_rail"
+        },
+        {
+            "source": "crafting_table",
+            "target": "red_sandstone_stairs"
+        },
+        {
+            "source": "crafting_table",
+            "target": "spruce_fence"
+        },
+        {
+            "source": "crafting_table",
+            "target": "detector_rail"
+        },
+        {
+            "source": "crafting_table",
+            "target": "glistering_melon_slice"
+        },
+        {
+            "source": "crafting_table",
+            "target": "spruce_fence_gate"
+        },
+        {
+            "source": "crafting_table",
+            "target": "diamond_axe"
+        },
+        {
+            "source": "crafting_table",
+            "target": "spruce_stairs"
+        },
+        {
+            "source": "crafting_table",
+            "target": "bucket"
+        },
+        {
+            "source": "crafting_table",
+            "target": "diamond_pickaxe"
+        },
+        {
+            "source": "crafting_table",
+            "target": "anvil"
+        },
+        {
+            "source": "crafting_table",
+            "target": "enchanting_table"
+        },
+        {
+            "source": "crafting_table",
+            "target": "stone_axe"
+        },
+        {
+            "source": "crafting_table",
+            "target": "iron_axe"
+        },
+        {
+            "source": "crafting_table",
+            "target": "stone_brick_stairs"
+        },
+        {
+            "source": "crafting_table",
+            "target": "iron_pickaxe"
+        },
+        {
+            "source": "crafting_table",
+            "target": "minecart_with_tnt"
+        },
+        {
+            "source": "crafting_table",
+            "target": "stone_button"
+        },
+        {
+            "source": "crafting_table",
+            "target": "bookshelf"
+        },
+        {
+            "source": "crafting_table",
+            "target": "golden_apple"
+        },
+        {
+            "source": "crafting_table",
+            "target": "stone_hoe"
+        },
+        {
+            "source": "crafting_table",
+            "target": "sandstone_stairs"
+        },
+        {
+            "source": "crafting_table",
+            "target": "golden_hoe"
+        },
+        {
+            "source": "crafting_table",
+            "target": "stone_pickaxe"
+        },
+        {
+            "source": "crafting_table",
+            "target": "golden_sword"
+        },
+        {
+            "source": "crafting_table",
+            "target": "stone_pressure_plate"
+        },
+        {
+            "source": "crafting_table",
+            "target": "light_weighted_pressure_plate"
+        },
+        {
+            "source": "crafting_table",
+            "target": "rabbit_stew"
+        },
+        {
+            "source": "crafting_table",
+            "target": "leather_pants"
+        },
+        {
+            "source": "crafting_table",
+            "target": "hopper"
+        },
+        {
+            "source": "crafting_table",
+            "target": "wooden_slab"
+        },
+        {
+            "source": "crafting_table",
+            "target": "iron_tool_or_weapon_or_armor"
+        },
+        {
+            "source": "crafting_table",
+            "target": "fishing_rod"
+        },
+        {
+            "source": "crafting_table",
+            "target": "shovel"
+        },
+        {
+            "source": "crafting_table",
+            "target": "smooth_stone_slab"
+        },
+        {
+            "source": "crafting_table",
+            "target": "stone_slab"
+        },
+        {
+            "quantity": 1,
+            "source": "flint",
+            "target": "flint_and_steel"
+        },
+        {
+            "quantity": 1,
+            "source": "flint",
+            "target": "arrow"
+        },
+        {
+            "quantity": 1,
+            "source": "iron_ingot",
+            "target": "flint_and_steel"
+        },
+        {
+            "quantity": 4,
+            "source": "iron_ingot",
+            "target": "iron_boots"
+        },
+        {
+            "quantity": 4,
+            "source": "iron_ingot",
+            "target": "iron_trapdoor"
+        },
+        {
+            "quantity": 5,
+            "source": "iron_ingot",
+            "target": "iron_helmet"
+        },
+        {
+            "quantity": 5,
+            "source": "iron_ingot",
+            "target": "minecart"
+        },
+        {
+            "quantity": 6,
+            "source": "iron_ingot",
+            "target": "iron_bars"
+        },
+        {
+            "quantity": 6,
+            "source": "iron_ingot",
+            "target": "iron_door"
+        },
+        {
+            "quantity": 1,
+            "source": "iron_ingot",
+            "target": "iron_shovel"
+        },
+        {
+            "quantity": 1,
+            "source": "iron_ingot",
+            "target": "piston"
+        },
+        {
+            "quantity": 6,
+            "source": "iron_ingot",
+            "target": "rail"
+        },
+        {
+            "quantity": 1,
+            "source": "iron_ingot",
+            "target": "shield"
+        },
+        {
+            "quantity": 7,
+            "source": "iron_ingot",
+            "target": "cauldron"
+        },
+        {
+            "quantity": 1,
+            "source": "iron_ingot",
+            "target": "tripwire_hook"
+        },
+        {
+            "quantity": 7,
+            "source": "iron_ingot",
+            "target": "iron_leggings"
+        },
+        {
+            "quantity": 4,
+            "source": "iron_ingot",
+            "target": "compass"
+        },
+        {
+            "quantity": 2,
+            "source": "iron_ingot",
+            "target": "heavy_weighted_pressure_plate"
+        },
+        {
+            "quantity": 2,
+            "source": "iron_ingot",
+            "target": "iron_hoe"
+        },
+        {
+            "quantity": 8,
+            "source": "iron_ingot",
+            "target": "iron_chestplate"
+        },
+        {
+            "quantity": 2,
+            "source": "iron_ingot",
+            "target": "iron_sword"
+        },
+        {
+            "quantity": 2,
+            "source": "iron_ingot",
+            "target": "shears"
+        },
+        {
+            "quantity": 9,
+            "source": "iron_ingot",
+            "target": "iron_block"
+        },
+        {
+            "quantity": 6,
+            "source": "iron_ingot",
+            "target": "activator_rail"
+        },
+        {
+            "quantity": 6,
+            "source": "iron_ingot",
+            "target": "detector_rail"
+        },
+        {
+            "quantity": 3,
+            "source": "iron_ingot",
+            "target": "bucket"
+        },
+        {
+            "quantity": 4,
+            "source": "iron_ingot",
+            "target": "anvil"
+        },
+        {
+            "quantity": 3,
+            "source": "iron_ingot",
+            "target": "iron_axe"
+        },
+        {
+            "quantity": 3,
+            "source": "iron_ingot",
+            "target": "iron_pickaxe"
+        },
+        {
+            "quantity": 2,
+            "source": "iron_ingot",
+            "target": "light_weighted_pressure_plate"
+        },
+        {
+            "quantity": 5,
+            "source": "iron_ingot",
+            "target": "hopper"
+        },
+        {
+            "quantity": "varies",
+            "source": "iron_ingot",
+            "target": "iron_tool_or_weapon_or_armor"
+        },
+        {
+            "quantity": 6,
+            "source": "beetroot",
+            "target": "beetroot_soup"
+        },
+        {
+            "quantity": 5,
+            "source": "acacia_planks",
+            "target": "acacia_boat"
+        },
+        {
+            "quantity": 6,
+            "source": "acacia_planks",
+            "target": "acacia_door"
+        },
+        {
+            "quantity": 4,
+            "source": "acacia_planks",
+            "target": "acacia_fence"
+        },
+        {
+            "quantity": 6,
+            "source": "acacia_planks",
+            "target": "acacia_stairs"
+        },
+        {
+            "quantity": 1,
+            "source": "stick",
+            "target": "stone_sword"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "acacia_fence"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "acacia_fence_gate"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "golden_axe"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "golden_pickaxe"
+        },
+        {
+            "quantity": 3,
+            "source": "stick",
+            "target": "bow"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "wooden_axe"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "birch_fence"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "birch_fence_gate"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "wooden_hoe"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "wooden_pickaxe"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "wooden_shovel"
+        },
+        {
+            "quantity": 1,
+            "source": "stick",
+            "target": "wooden_sword"
+        },
+        {
+            "quantity": 1,
+            "source": "stick",
+            "target": "banner"
+        },
+        {
+            "quantity": 6,
+            "source": "stick",
+            "target": "armor_stand"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "diamond_shovel"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "dark_oak_fence"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "iron_shovel"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "dark_oak_fence_gate"
+        },
+        {
+            "quantity": 8,
+            "source": "stick",
+            "target": "item_frame"
+        },
+        {
+            "quantity": 1,
+            "source": "stick",
+            "target": "golden_rail"
+        },
+        {
+            "quantity": 1,
+            "source": "stick",
+            "target": "rail"
+        },
+        {
+            "quantity": 1,
+            "source": "stick",
+            "target": "redstone_torch"
+        },
+        {
+            "quantity": 4,
+            "source": "stick",
+            "target": "fence"
+        },
+        {
+            "quantity": 4,
+            "source": "stick",
+            "target": "fence_gate"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "diamond_hoe"
+        },
+        {
+            "quantity": 1,
+            "source": "stick",
+            "target": "torch"
+        },
+        {
+            "quantity": 1,
+            "source": "stick",
+            "target": "diamond_sword"
+        },
+        {
+            "quantity": 1,
+            "source": "stick",
+            "target": "tripwire_hook"
+        },
+        {
+            "quantity": 7,
+            "source": "stick",
+            "target": "ladder"
+        },
+        {
+            "quantity": 1,
+            "source": "stick",
+            "target": "arrow"
+        },
+        {
+            "quantity": 1,
+            "source": "stick",
+            "target": "lever"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "iron_hoe"
+        },
+        {
+            "quantity": 1,
+            "source": "stick",
+            "target": "iron_sword"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "jungle_fence"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "jungle_fence_gate"
+        },
+        {
+            "quantity": 8,
+            "source": "stick",
+            "target": "painting"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "golden_shovel"
+        },
+        {
+            "quantity": 1,
+            "source": "stick",
+            "target": "sign"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "activator_rail"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "spruce_fence"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "spruce_fence_gate"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "diamond_axe"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "diamond_pickaxe"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "stone_axe"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "iron_axe"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "iron_pickaxe"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "stone_hoe"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "golden_hoe"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "stone_pickaxe"
+        },
+        {
+            "quantity": 1,
+            "source": "stick",
+            "target": "golden_sword"
+        },
+        {
+            "quantity": "varies for tools and weapons",
+            "source": "stick",
+            "target": "iron_tool_or_weapon_or_armor"
+        },
+        {
+            "quantity": 3,
+            "source": "stick",
+            "target": "fishing_rod"
+        },
+        {
+            "quantity": 2,
+            "source": "stick",
+            "target": "shovel"
+        },
+        {
+            "quantity": 1,
+            "source": "gravel",
+            "target": "flint"
+        },
+        {
+            "quantity": 1,
+            "source": "stone",
+            "target": "stonebrick"
+        },
+        {
+            "quantity": 1,
+            "source": "stone",
+            "target": "stone_button"
+        },
+        {
+            "quantity": 2,
+            "source": "stone",
+            "target": "stone_pressure_plate"
+        },
+        {
+            "quantity": 1,
+            "source": "stone",
+            "target": "smooth_stone"
+        },
+        {
+            "quantity": 3,
+            "source": "stone",
+            "target": "stone_slab"
+        },
+        {
+            "source": "furnace",
+            "target": "stonebrick"
+        },
+        {
+            "quantity": 1,
+            "source": "furnace",
+            "target": "furnace_minecart"
+        },
+        {
+            "source": "furnace",
+            "target": "brick"
+        },
+        {
+            "source": "furnace",
+            "target": "cooked_beef"
+        },
+        {
+            "source": "furnace",
+            "target": "cooked_chicken"
+        },
+        {
+            "source": "furnace",
+            "target": "cooked_rabbit"
+        },
+        {
+            "source": "furnace",
+            "target": "cooked_mutton"
+        },
+        {
+            "source": "furnace",
+            "target": "cooked_porkchop"
+        },
+        {
+            "source": "furnace",
+            "target": "iron_ingot"
+        },
+        {
+            "source": "furnace",
+            "target": "iron_nugget"
+        },
+        {
+            "source": "furnace",
+            "target": "baked_potato"
+        },
+        {
+            "source": "furnace",
+            "target": "glass"
+        },
+        {
+            "source": "furnace",
+            "target": "gold_ingot"
+        },
+        {
+            "source": "furnace",
+            "target": "hardened_clay"
+        },
+        {
+            "source": "furnace",
+            "target": "smooth_stone"
+        },
+        {
+            "quantity": 4,
+            "source": "diamond",
+            "target": "diamond_boots"
+        },
+        {
+            "quantity": 5,
+            "source": "diamond",
+            "target": "diamond_helmet"
+        },
+        {
+            "quantity": 7,
+            "source": "diamond",
+            "target": "diamond_leggings"
+        },
+        {
+            "quantity": 1,
+            "source": "diamond",
+            "target": "diamond_shovel"
+        },
+        {
+            "quantity": 8,
+            "source": "diamond",
+            "target": "diamond_chestplate"
+        },
+        {
+            "quantity": 1,
+            "source": "diamond",
+            "target": "jukebox"
+        },
+        {
+            "quantity": 2,
+            "source": "diamond",
+            "target": "diamond_hoe"
+        },
+        {
+            "quantity": 9,
+            "source": "diamond",
+            "target": "diamond_block"
+        },
+        {
+            "quantity": 2,
+            "source": "diamond",
+            "target": "diamond_sword"
+        },
+        {
+            "quantity": 3,
+            "source": "diamond",
+            "target": "diamond_axe"
+        },
+        {
+            "quantity": 3,
+            "source": "diamond",
+            "target": "diamond_pickaxe"
+        },
+        {
+            "quantity": 2,
+            "source": "diamond",
+            "target": "enchanting_table"
+        },
+        {
+            "quantity": 1,
+            "source": "sugar",
+            "target": "pumpkin_pie"
+        },
+        {
+            "quantity": 1,
+            "source": "sugar",
+            "target": "fermented_spider_eye"
+        },
+        {
+            "quantity": 1,
+            "source": "sugar_cane",
+            "target": "sugar"
+        },
+        {
+            "quantity": 3,
+            "source": "sugar_cane",
+            "target": "paper"
+        },
+        {
+            "quantity": 4,
+            "source": "acacia_plank",
+            "target": "acacia_fence_gate"
+        },
+        {
+            "quantity": 8,
+            "source": "leather",
+            "target": "leather_tunic"
+        },
+        {
+            "quantity": 1,
+            "source": "leather",
+            "target": "book"
+        },
+        {
+            "quantity": 1,
+            "source": "leather",
+            "target": "item_frame"
+        },
+        {
+            "quantity": 4,
+            "source": "leather",
+            "target": "leather_boots"
+        },
+        {
+            "quantity": 5,
+            "source": "leather",
+            "target": "leather_cap"
+        },
+        {
+            "quantity": 7,
+            "source": "leather",
+            "target": "leather_pants"
+        },
+        {
+            "quantity": 3,
+            "source": "gold_ingot",
+            "target": "golden_axe"
+        },
+        {
+            "quantity": 3,
+            "source": "gold_ingot",
+            "target": "golden_pickaxe"
+        },
+        {
+            "quantity": 4,
+            "source": "gold_ingot",
+            "target": "golden_boots"
+        },
+        {
+            "quantity": 5,
+            "source": "gold_ingot",
+            "target": "golden_helmet"
+        },
+        {
+            "quantity": 4,
+            "source": "gold_ingot",
+            "target": "clock"
+        },
+        {
+            "quantity": 7,
+            "source": "gold_ingot",
+            "target": "golden_leggings"
+        },
+        {
+            "quantity": 6,
+            "source": "gold_ingot",
+            "target": "golden_rail"
+        },
+        {
+            "quantity": 8,
+            "source": "gold_ingot",
+            "target": "golden_chestplate"
+        },
+        {
+            "quantity": 1,
+            "source": "gold_ingot",
+            "target": "gold_nugget"
+        },
+        {
+            "quantity": 1,
+            "source": "gold_ingot",
+            "target": "golden_shovel"
+        },
+        {
+            "quantity": 9,
+            "source": "gold_ingot",
+            "target": "gold_block"
+        },
+        {
+            "quantity": 8,
+            "source": "gold_ingot",
+            "target": "golden_apple"
+        },
+        {
+            "quantity": 2,
+            "source": "gold_ingot",
+            "target": "golden_hoe"
+        },
+        {
+            "quantity": 2,
+            "source": "gold_ingot",
+            "target": "golden_sword"
+        },
+        {
+            "quantity": 6,
+            "source": "plank",
+            "target": "trapdoor"
+        },
+        {
+            "quantity": 3,
+            "source": "plank",
+            "target": "wooden_axe"
+        },
+        {
+            "quantity": 1,
+            "source": "plank",
+            "target": "wooden_button"
+        },
+        {
+            "quantity": 6,
+            "source": "plank",
+            "target": "wooden_door"
+        },
+        {
+            "quantity": 2,
+            "source": "plank",
+            "target": "wooden_hoe"
+        },
+        {
+            "quantity": 3,
+            "source": "plank",
+            "target": "wooden_pickaxe"
+        },
+        {
+            "quantity": 2,
+            "source": "plank",
+            "target": "wooden_pressure_plate"
+        },
+        {
+            "quantity": 1,
+            "source": "plank",
+            "target": "wooden_shovel"
+        },
+        {
+            "quantity": 3,
+            "source": "plank",
+            "target": "bowl"
+        },
+        {
+            "quantity": 8,
+            "source": "plank",
+            "target": "chest"
+        },
+        {
+            "quantity": 2,
+            "source": "plank",
+            "target": "wooden_sword"
+        },
+        {
+            "quantity": 4,
+            "source": "plank",
+            "target": "crafting_table"
+        },
+        {
+            "quantity": 8,
+            "source": "plank",
+            "target": "jukebox"
+        },
+        {
+            "quantity": 8,
+            "source": "plank",
+            "target": "noteblock"
+        },
+        {
+            "quantity": 3,
+            "source": "plank",
+            "target": "piston"
+        },
+        {
+            "quantity": 6,
+            "source": "plank",
+            "target": "shield"
+        },
+        {
+            "quantity": 2,
+            "source": "plank",
+            "target": "fence"
+        },
+        {
+            "quantity": 2,
+            "source": "plank",
+            "target": "fence_gate"
+        },
+        {
+            "quantity": 6,
+            "source": "plank",
+            "target": "sign"
+        },
+        {
+            "quantity": 3,
+            "source": "plank",
+            "target": "bed"
+        },
+        {
+            "quantity": 2,
+            "source": "plank",
+            "target": "stick"
+        },
+        {
+            "quantity": 6,
+            "source": "plank",
+            "target": "bookshelf"
+        },
+        {
+            "quantity": 3,
+            "source": "plank",
+            "target": "wooden_slab"
+        },
+        {
+            "quantity": 3,
+            "source": "wheat",
+            "target": "bread"
+        },
+        {
+            "quantity": 9,
+            "source": "wheat",
+            "target": "hay_block"
+        },
+        {
+            "quantity": 9,
+            "source": "bone_meal",
+            "target": "bone_block"
+        },
+        {
+            "quantity": 1,
+            "source": "red_mushroom",
+            "target": "mushroom_stew"
+        },
+        {
+            "quantity": 1,
+            "source": "bow",
+            "target": "dispenser"
+        },
+        {
+            "quantity": 3,
+            "source": "string",
+            "target": "bow"
+        },
+        {
+            "quantity": 4,
+            "source": "string",
+            "target": "lead"
+        },
+        {
+            "quantity": 2,
+            "source": "string",
+            "target": "fishing_rod"
+        },
+        {
+            "quantity": 6,
+            "source": "birch_planks",
+            "target": "birch_door"
+        },
+        {
+            "quantity": 4,
+            "source": "birch_planks",
+            "target": "birch_fence"
+        },
+        {
+            "quantity": 6,
+            "source": "birch_planks",
+            "target": "birch_stairs"
+        },
+        {
+            "quantity": 1,
+            "source": "minecart",
+            "target": "chest_minecart"
+        },
+        {
+            "quantity": 1,
+            "source": "minecart",
+            "target": "furnace_minecart"
+        },
+        {
+            "quantity": 1,
+            "source": "minecart",
+            "target": "hopper_minecart"
+        },
+        {
+            "quantity": 1,
+            "source": "minecart",
+            "target": "minecart_with_tnt"
+        },
+        {
+            "quantity": 1,
+            "source": "chest",
+            "target": "chest_minecart"
+        },
+        {
+            "quantity": 1,
+            "source": "chest",
+            "target": "trapped_chest"
+        },
+        {
+            "quantity": 1,
+            "source": "chest",
+            "target": "hopper"
+        },
+        {
+            "quantity": 4,
+            "source": "birch_plank",
+            "target": "birch_fence_gate"
+        },
+        {
+            "quantity": 1,
+            "source": "ink_sac",
+            "target": "writable_book"
+        },
+        {
+            "quantity": 1,
+            "source": "piston",
+            "target": "sticky_piston"
+        },
+        {
+            "quantity": 1,
+            "source": "slime_ball",
+            "target": "sticky_piston"
+        },
+        {
+            "source": "wooden_pickaxe",
+            "target": "cobblestone"
+        },
+        {
+            "source": "wooden_pickaxe",
+            "target": "coal"
+        },
+        {
+            "source": "wooden_pickaxe",
+            "target": "iron_ingot"
+        },
+        {
+            "source": "wooden_pickaxe",
+            "target": "iron_ore"
+        },
+        {
+            "source": "wooden_pickaxe",
+            "target": "stone"
+        },
+        {
+            "quantity": 1,
+            "source": "bowl",
+            "target": "beetroot_soup"
+        },
+        {
+            "quantity": 1,
+            "source": "bowl",
+            "target": "mushroom_stew"
+        },
+        {
+            "quantity": 1,
+            "source": "bowl",
+            "target": "rabbit_stew"
+        },
+        {
+            "quantity": 1,
+            "source": "bone",
+            "target": "bone_meal"
+        },
+        {
+            "quantity": 1,
+            "source": "vine",
+            "target": "mossy_cobblestone"
+        },
+        {
+            "source": "shears",
+            "target": "vine"
+        },
+        {
+            "quantity": 1,
+            "source": "slimeball",
+            "target": "lead"
+        },
+        {
+            "quantity": 8,
+            "source": "paper",
+            "target": "map"
+        },
+        {
+            "quantity": 3,
+            "source": "paper",
+            "target": "book"
+        },
+        {
+            "quantity": 1,
+            "source": "paper",
+            "target": "firework_rocket"
+        },
+        {
+            "quantity": 1,
+            "source": "compass",
+            "target": "map"
+        },
+        {
+            "quantity": 6,
+            "source": "wool",
+            "target": "banner"
+        },
+        {
+            "quantity": 2,
+            "source": "wool",
+            "target": "carpet"
+        },
+        {
+            "quantity": 1,
+            "source": "wool",
+            "target": "painting"
+        },
+        {
+            "quantity": 3,
+            "source": "wool",
+            "target": "bed"
+        },
+        {
+            "quantity": 1,
+            "source": "brown_mushroom",
+            "target": "mushroom_stew"
+        },
+        {
+            "quantity": 1,
+            "source": "brown_mushroom",
+            "target": "fermented_spider_eye"
+        },
+        {
+            "quantity": 6,
+            "source": "brick",
+            "target": "brick_stairs"
+        },
+        {
+            "quantity": 3,
+            "source": "brick",
+            "target": "flower_pot"
+        },
+        {
+            "quantity": 4,
+            "source": "brick",
+            "target": "brick_block"
+        },
+        {
+            "quantity": 1,
+            "source": "clay_ball",
+            "target": "brick"
+        },
+        {
+            "quantity": 1,
+            "source": "smooth_stone_slab",
+            "target": "armor_stand"
+        },
+        {
+            "quantity": 1,
+            "source": "clay",
+            "target": "clay_ball"
+        },
+        {
+            "quantity": 1,
+            "source": "clay",
+            "target": "hardened_clay"
+        },
+        {
+            "quantity": 1,
+            "source": "book",
+            "target": "writable_book"
+        },
+        {
+            "quantity": 1,
+            "source": "book",
+            "target": "enchanting_table"
+        },
+        {
+            "quantity": 3,
+            "source": "book",
+            "target": "bookshelf"
+        },
+        {
+            "source": "iron_pickaxe",
+            "target": "diamond"
+        },
+        {
+            "source": "iron_pickaxe",
+            "target": "redstone"
+        },
+        {
+            "source": "iron_pickaxe",
+            "target": "emerald"
+        },
+        {
+            "source": "iron_pickaxe",
+            "target": "gold_ingot"
+        },
+        {
+            "source": "iron_pickaxe",
+            "target": "gold_ore"
+        },
+        {
+            "source": "iron_pickaxe",
+            "target": "redstone_dust"
+        },
+        {
+            "quantity": 1,
+            "source": "raw_beef",
+            "target": "cooked_beef"
+        },
+        {
+            "quantity": 1,
+            "source": "redstone",
+            "target": "clock"
+        },
+        {
+            "quantity": 1,
+            "source": "redstone",
+            "target": "dropper"
+        },
+        {
+            "quantity": 1,
+            "source": "redstone",
+            "target": "noteblock"
+        },
+        {
+            "quantity": 1,
+            "source": "redstone",
+            "target": "golden_rail"
+        },
+        {
+            "quantity": 1,
+            "source": "redstone",
+            "target": "redstone_torch"
+        },
+        {
+            "quantity": 1,
+            "source": "redstone",
+            "target": "compass"
+        },
+        {
+            "quantity": 1,
+            "source": "redstone",
+            "target": "dispenser"
+        },
+        {
+            "quantity": 1,
+            "source": "redstone",
+            "target": "detector_rail"
+        },
+        {
+            "quantity": 1,
+            "source": "raw_chicken",
+            "target": "cooked_chicken"
+        },
+        {
+            "quantity": 1,
+            "source": "coal",
+            "target": "torch"
+        },
+        {
+            "quantity": 9,
+            "source": "coal",
+            "target": "coal_block"
+        },
+        {
+            "quantity": 1,
+            "source": "cooked_rabbit",
+            "target": "rabbit_stew"
+        },
+        {
+            "quantity": 1,
+            "source": "raw_rabbit",
+            "target": "cooked_rabbit"
+        },
+        {
+            "quantity": 1,
+            "source": "raw_mutton",
+            "target": "cooked_mutton"
+        },
+        {
+            "quantity": 1,
+            "source": "gunpowder",
+            "target": "firework_rocket"
+        },
+        {
+            "quantity": 5,
+            "source": "gunpowder",
+            "target": "tnt"
+        },
+        {
+            "quantity": 1,
+            "source": "feather",
+            "target": "writable_book"
+        },
+        {
+            "quantity": 1,
+            "source": "feather",
+            "target": "arrow"
+        },
+        {
+            "quantity": 1,
+            "source": "raw_porkchop",
+            "target": "cooked_porkchop"
+        },
+        {
+            "quantity": 4,
+            "source": "obsidian",
+            "target": "enchanting_table"
+        },
+        {
+            "source": "diamond_pickaxe",
+            "target": "obsidian"
+        },
+        {
+            "quantity": 1,
+            "source": "iron_ore",
+            "target": "iron_ingot"
+        },
+        {
+            "quantity": 5,
+            "source": "dark_oak_plank",
+            "target": "dark_oak_boat"
+        },
+        {
+            "quantity": 4,
+            "source": "dark_oak_plank",
+            "target": "dark_oak_fence"
+        },
+        {
+            "quantity": 1,
+            "source": "iron_tool_or_weapon_or_armor",
+            "target": "iron_nugget"
+        },
+        {
+            "quantity": 6,
+            "source": "dark_oak_planks",
+            "target": "dark_oak_door"
+        },
+        {
+            "quantity": 4,
+            "source": "dark_oak_planks",
+            "target": "dark_oak_fence_gate"
+        },
+        {
+            "quantity": 6,
+            "source": "dark_oak_planks",
+            "target": "dark_oak_stairs"
+        },
+        {
+            "quantity": 9,
+            "source": "lapis_lazuli",
+            "target": "lapis_block"
+        },
+        {
+            "quantity": 1,
+            "source": "redstone_dust",
+            "target": "piston"
+        },
+        {
+            "quantity": 1,
+            "source": "redstone_torch",
+            "target": "activator_rail"
+        },
+        {
+            "quantity": 1,
+            "source": "baked_potato",
+            "target": "rabbit_stew"
+        },
+        {
+            "quantity": 1,
+            "source": "potato",
+            "target": "baked_potato"
+        },
+        {
+            "quantity": 1,
+            "source": "spider_eye",
+            "target": "fermented_spider_eye"
+        },
+        {
+            "quantity": 1,
+            "source": "carrot",
+            "target": "carrot_on_a_stick"
+        },
+        {
+            "quantity": 1,
+            "source": "carrot",
+            "target": "golden_carrot"
+        },
+        {
+            "quantity": 1,
+            "source": "carrot",
+            "target": "rabbit_stew"
+        },
+        {
+            "quantity": 1,
+            "source": "torch",
+            "target": "jack_o'lantern"
+        },
+        {
+            "quantity": 9,
+            "source": "emerald",
+            "target": "emerald_block"
+        },
+        {
+            "quantity": 3,
+            "source": "glass",
+            "target": "glass_bottle"
+        },
+        {
+            "quantity": 6,
+            "source": "glass",
+            "target": "glass_pane"
+        },
+        {
+            "quantity": 1,
+            "source": "sand",
+            "target": "glass"
+        },
+        {
+            "quantity": 4,
+            "source": "sand",
+            "target": "tnt"
+        },
+        {
+            "quantity": 1,
+            "source": "tripwire_hook",
+            "target": "trapped_chest"
+        },
+        {
+            "quantity": 1,
+            "source": "wooden_plank",
+            "target": "tripwire_hook"
+        },
+        {
+            "quantity": 1,
+            "source": "tnt",
+            "target": "minecart_with_tnt"
+        },
+        {
+            "quantity": 1,
+            "source": "pumpkin",
+            "target": "pumpkin_seeds"
+        },
+        {
+            "quantity": 1,
+            "source": "pumpkin",
+            "target": "jack_o'lantern"
+        },
+        {
+            "quantity": 1,
+            "source": "pumpkin",
+            "target": "pumpkin_pie"
+        },
+        {
+            "quantity": 1,
+            "source": "fishing_rod",
+            "target": "carrot_on_a_stick"
+        },
+        {
+            "quantity": 1,
+            "source": "log",
+            "target": "planks"
+        },
+        {
+            "quantity": 1,
+            "source": "log",
+            "target": "plank"
+        },
+        {
+            "quantity": 1,
+            "source": "log",
+            "target": "wooden_plank"
+        },
+        {
+            "quantity": 5,
+            "source": "jungle_planks",
+            "target": "jungle_boat"
+        },
+        {
+            "quantity": 6,
+            "source": "jungle_planks",
+            "target": "jungle_door"
+        },
+        {
+            "quantity": 4,
+            "source": "jungle_planks",
+            "target": "jungle_fence"
+        },
+        {
+            "quantity": 4,
+            "source": "jungle_planks",
+            "target": "jungle_fence_gate"
+        },
+        {
+            "quantity": 6,
+            "source": "jungle_planks",
+            "target": "jungle_stairs"
+        },
+        {
+            "quantity": 6,
+            "source": "oak_planks",
+            "target": "oak_stairs"
+        },
+        {
+            "quantity": 1,
+            "source": "gold_ore",
+            "target": "gold_ingot"
+        },
+        {
+            "quantity": 8,
+            "source": "gold_nugget",
+            "target": "golden_carrot"
+        },
+        {
+            "quantity": 8,
+            "source": "gold_nugget",
+            "target": "glistering_melon_slice"
+        },
+        {
+            "quantity": 1,
+            "source": "melon_seeds",
+            "target": "melon"
+        },
+        {
+            "quantity": 1,
+            "source": "snow",
+            "target": "snowball"
+        },
+        {
+            "quantity": 1,
+            "source": "melon_slice",
+            "target": "melon_seeds"
+        },
+        {
+            "quantity": 1,
+            "source": "melon_slice",
+            "target": "glistering_melon_slice"
+        },
+        {
+            "quantity": 6,
+            "source": "sandstone",
+            "target": "sandstone_stairs"
+        },
+        {
+            "source": "shovel",
+            "target": "snow_layer"
+        },
+        {
+            "quantity": 1,
+            "source": "hopper",
+            "target": "hopper_minecart"
+        },
+        {
+            "quantity": 3,
+            "source": "iron_block",
+            "target": "anvil"
+        },
+        {
+            "quantity": 1,
+            "source": "egg",
+            "target": "pumpkin_pie"
+        },
+        {
+            "quantity": 5,
+            "source": "spruce_plank",
+            "target": "spruce_boat"
+        },
+        {
+            "quantity": 1,
+            "source": "sheep",
+            "target": "wool"
+        },
+        {
+            "quantity": 6,
+            "source": "red_sandstone",
+            "target": "red_sandstone_stairs"
+        },
+        {
+            "quantity": 6,
+            "source": "spruce_planks",
+            "target": "spruce_door"
+        },
+        {
+            "quantity": 4,
+            "source": "spruce_planks",
+            "target": "spruce_fence"
+        },
+        {
+            "quantity": 4,
+            "source": "spruce_planks",
+            "target": "spruce_fence_gate"
+        },
+        {
+            "quantity": 6,
+            "source": "spruce_planks",
+            "target": "spruce_stairs"
+        },
+        {
+            "quantity": 1,
+            "source": "stone_pressure_plate",
+            "target": "detector_rail"
+        },
+        {
+            "quantity": 1,
+            "source": "bucket",
+            "target": "lava_bucket"
+        },
+        {
+            "quantity": 1,
+            "source": "bucket",
+            "target": "milk_bucket"
+        },
+        {
+            "quantity": 1,
+            "source": "bucket",
+            "target": "water_bucket"
+        },
+        {
+            "source": "anvil",
+            "target": "enchanted_book"
+        },
+        {
+            "quantity": 1,
+            "source": "apple",
+            "target": "golden_apple"
+        },
+        {
+            "quantity": 6,
+            "source": "stone_bricks",
+            "target": "stone_brick_stairs"
+        },
+        {
+            "quantity": 1,
+            "source": "mushroom",
+            "target": "rabbit_stew"
+        },
+        {
+            "quantity": 1,
+            "source": "acacia_log",
+            "target": "acacia_planks"
+        },
+        {
+            "quantity": 1,
+            "source": "acacia_log",
+            "target": "acacia_plank"
+        },
+        {
+            "quantity": 1,
+            "source": "birch_log",
+            "target": "birch_planks"
+        },
+        {
+            "quantity": 1,
+            "source": "birch_log",
+            "target": "birch_plank"
+        },
+        {
+            "quantity": 1,
+            "source": "dark_oak_log",
+            "target": "dark_oak_plank"
+        },
+        {
+            "quantity": 1,
+            "source": "dark_oak_log",
+            "target": "dark_oak_planks"
+        },
+        {
+            "quantity": 1,
+            "source": "jungle_log",
+            "target": "jungle_planks"
+        },
+        {
+            "quantity": 1,
+            "source": "oak_log",
+            "target": "oak_planks"
+        },
+        {
+            "quantity": 1,
+            "source": "spruce_log",
+            "target": "spruce_plank"
+        },
+        {
+            "quantity": 1,
+            "source": "spruce_log",
+            "target": "spruce_planks"
+        },
+        {
+            "quantity": 1,
+            "source": "smooth_stone",
+            "target": "smooth_stone_slab"
+        }
+    ]
+}

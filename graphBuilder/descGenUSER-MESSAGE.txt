@@ -1,2 +1,2 @@
-Please generate a description for the following item:
+Please generate a description and crafting instructions for the following item:
 {item}
