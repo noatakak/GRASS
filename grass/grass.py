@@ -11,6 +11,7 @@ from .agents import ActionAgent
 from .agents import CriticAgent
 from .agents import CurriculumAgent
 from .agents import SkillManager
+#from graphBuilder import returnGraphAndQueue
 
 
 # TODO: remove event memory
@@ -48,6 +49,7 @@ class Grass:
         ckpt_dir: str = "ckpt",
         skill_library_dir: str = None,
         resume: bool = False,
+        graph_dir: str = "graphBuilder"
     ):
         """
         The main class for Grass.
@@ -161,6 +163,9 @@ class Grass:
         self.messages = None
         self.conversations = []
         self.last_events = None
+
+        # init graph and queue
+        #self.graph, self.queue = returnGraphAndQueue(graph_dir + "/graph.json")
 
     def reset(self, task, context="", reset_env=True):
         self.action_agent_rollout_num_iter = 0

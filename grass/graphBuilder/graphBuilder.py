@@ -192,9 +192,32 @@ def graphFromNames(itemFile, graphFile):
 
 def main():
     items = "items.txt"
-    graphJSON = "graphJSON.json"
+    graphJSON = "graph.json"
     graphFromNames(items, graphJSON)
     print("finished")
+
+
+def queueWithoutJS(graph):
+    # Returns priority queue of nodes by their score
+    print("creating skill queue organized by score")
+    q = PriorityQueue()
+    iter = graph.__iter__()
+    for node in iter:
+        try:
+            graph.nodes[node]["scriptPath"]
+        except KeyError as e:
+            q.put((graph.nodes._nodes[node]["score"], graph.nodes._nodes[node]['object_name']))
+
+    print("queue filled")
+    return q
+
+
+def returnGraphAndQueue(filePath):
+    with open(filePath) as f:
+        js_graph = json.load(f)
+    graph = json_graph.node_link_graph(js_graph)
+    queue = queueWithoutJS(graph)
+    return graph, queue
 
 
 if __name__ == "__main__":

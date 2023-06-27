@@ -1,5 +1,5 @@
 import os
-from graphBuilder import graphBuilder
+from grass.graphBuilder import graphBuilder
 
 # Remove key when pushing
 os.environ['OPENAI_API_KEY'] = ''
