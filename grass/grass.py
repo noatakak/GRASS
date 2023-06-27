@@ -13,6 +13,7 @@ from .agents import CurriculumAgent
 from .agents import SkillManager
 from .graphBuilder import returnGraphAndQueue
 
+from datetime import datetime
 
 # TODO: remove event memory
 class Grass:
@@ -46,7 +47,7 @@ class Grass:
         skill_manager_temperature: int = 0,
         skill_manager_retrieval_top_k: int = 5,
         openai_api_request_timeout: int = 240,
-        ckpt_dir: str = "ckpt",
+        ckpt_dir: str = datetime.now().strftime("Tests/Date_%m-%d_Time_%H-%M"),
         skill_library_dir: str = None,
         resume: bool = False,
         graph_dir: str = "graphBuilder"
