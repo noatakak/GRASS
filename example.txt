@@ -1,7 +1,0 @@
-getLog(int count): {}
-getPlanks(int count): {getLog(1)}
-getSticks(int count): {getPlanks(1)}
-getWoodPickAxe(int count): {getSticks(1), getPlanks(1)}
-...
-getIronPick(int count): {getIronIngot, getIronIngot, getIronIngot, getSticks}
-getDiamond(int count): {getIronPick}
