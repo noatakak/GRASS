@@ -4,6 +4,8 @@ import os
 import time
 from typing import Dict
 
+import networkx as nx
+
 import grass.utils as U
 from .env import GrassEnv
 
@@ -15,42 +17,42 @@ from .graphBuilder import returnGraphAndQueue
 
 from datetime import datetime
 
+
 # TODO: remove event memory
 class Grass:
     def __init__(
-        self,
-        mc_port: int = None,
-        azure_login: Dict[str, str] = None,
-        server_port: int = 3000,
-        openai_api_key: str = None,
-        env_wait_ticks: int = 20,
-        env_request_timeout: int = 600,
-        max_iterations: int = 160,
-        reset_placed_if_failed: bool = False,
-        action_agent_model_name: str = "gpt-4",
-        action_agent_temperature: int = 0,
-        action_agent_task_max_retries: int = 4,
-        action_agent_show_chat_log: bool = True,
-        action_agent_show_execution_error: bool = True,
-        curriculum_agent_model_name: str = "gpt-4",
-        curriculum_agent_temperature: int = 0,
-        curriculum_agent_qa_model_name: str = "gpt-3.5-turbo",
-        curriculum_agent_qa_temperature: int = 0,
-        curriculum_agent_warm_up: Dict[str, int] = None,
-        curriculum_agent_core_inventory_items: str = r".*_log|.*_planks|stick|crafting_table|furnace"
-        r"|cobblestone|dirt|coal|.*_pickaxe|.*_sword|.*_axe",
-        curriculum_agent_mode: str = "auto",
-        critic_agent_model_name: str = "gpt-4",
-        critic_agent_temperature: int = 0,
-        critic_agent_mode: str = "auto",
-        skill_manager_model_name: str = "gpt-3.5-turbo",
-        skill_manager_temperature: int = 0,
-        skill_manager_retrieval_top_k: int = 5,
-        openai_api_request_timeout: int = 240,
-        ckpt_dir: str = datetime.now().strftime("Tests/Date_%m-%d_Time_%H-%M"),
-        skill_library_dir: str = None,
-        resume: bool = False,
-        graph_dir: str = "graphBuilder"
+            self,
+            mc_port: int = None,
+            azure_login: Dict[str, str] = None,
+            server_port: int = 3000,
+            openai_api_key: str = None,
+            env_wait_ticks: int = 20,
+            env_request_timeout: int = 600,
+            max_iterations: int = 160,
+            reset_placed_if_failed: bool = False,
+            action_agent_model_name: str = "gpt-4",
+            action_agent_temperature: int = 0,
+            action_agent_task_max_retries: int = 4,
+            action_agent_show_chat_log: bool = True,
+            action_agent_show_execution_error: bool = True,
+            curriculum_agent_model_name: str = "gpt-4",
+            curriculum_agent_temperature: int = 0,
+            curriculum_agent_qa_model_name: str = "gpt-3.5-turbo",
+            curriculum_agent_qa_temperature: int = 0,
+            curriculum_agent_warm_up: Dict[str, int] = None,
+            curriculum_agent_core_inventory_items: str = r".*_log|.*_planks|stick|crafting_table|furnace"
+                                                         r"|cobblestone|dirt|coal|.*_pickaxe|.*_sword|.*_axe",
+            curriculum_agent_mode: str = "auto",
+            critic_agent_model_name: str = "gpt-4",
+            critic_agent_temperature: int = 0,
+            critic_agent_mode: str = "auto",
+            skill_manager_model_name: str = "gpt-3.5-turbo",
+            skill_manager_temperature: int = 0,
+            skill_manager_retrieval_top_k: int = 5,
+            openai_api_request_timeout: int = 240,
+            ckpt_dir: str = datetime.now().strftime("Tests/Date_%m-%d_Time_%H-%M"),
+            skill_library_dir: str = None,
+            resume: bool = False,
     ):
         """
         The main class for Grass.
@@ -166,9 +168,10 @@ class Grass:
         self.last_events = None
 
         # init graph and queue
-        self.graph, self.queue = returnGraphAndQueue(graph_dir + "/graph.json")
+        self.graph, self.queue = returnGraphAndQueue(
+            (ckpt_dir + "/graph.json") if resume else "grass/graphBuilder/graph.json")
 
-    def reset(self, task, context="", reset_env=True):
+    def reset(self, task, item_name, context="", reset_env=True):
         self.action_agent_rollout_num_iter = 0
         self.task = task
         self.context = context
@@ -187,7 +190,14 @@ class Grass:
             "bot.chat(`/time set ${getNextTime()}`);\n"
             + f"bot.chat('/difficulty {difficulty}');"
         )
-        skills = self.skill_manager.retrieve_skills(query=self.context)
+        skills = []
+        preds = self.graph.predecessors(item_name)
+        for p in preds:
+            prev_node = self.graph.nodes[p]
+            with open(self.ckpt_dir + '/skill_code/' + prev_node['script_path'], 'r') as file:
+                contents = file.read()
+                skills.append(contents)
+        # skills = self.skill_manager.retrieve_skills(query=self.context)
         print(
             f"\033[33mRender Action Agent system message with {len(skills)} control_primitives\033[0m"
         )
@@ -250,8 +260,8 @@ class Grass:
                 events[-1][1]["voxels"] = new_events[-1][1]["voxels"]
             new_skills = self.skill_manager.retrieve_skills(
                 query=self.context
-                + "\n\n"
-                + self.action_agent.summarize_chatlog(events)
+                      + "\n\n"
+                      + self.action_agent.summarize_chatlog(events)
             )
             system_message = self.action_agent.render_system_message(skills=new_skills)
             human_message = self.action_agent.render_human_message(
@@ -270,8 +280,8 @@ class Grass:
         assert len(self.messages) == 2
         self.action_agent_rollout_num_iter += 1
         done = (
-            self.action_agent_rollout_num_iter >= self.action_agent_task_max_retries
-            or success
+                self.action_agent_rollout_num_iter >= self.action_agent_task_max_retries
+                or success
         )
         info = {
             "task": self.task,
@@ -280,7 +290,7 @@ class Grass:
         }
         if success:
             assert (
-                "program_code" in parsed_result and "program_name" in parsed_result
+                    "program_code" in parsed_result and "program_name" in parsed_result
             ), "program and program_name must be returned when success"
             info["program_code"] = parsed_result["program_code"]
             info["program_name"] = parsed_result["program_name"]
@@ -290,8 +300,8 @@ class Grass:
             )
         return self.messages, 0, done, info
 
-    def rollout(self, *, task, context, reset_env=True):
-        self.reset(task=task, context=context, reset_env=reset_env)
+    def rollout(self, *, task, context, reset_env=True, item_name):
+        self.reset(task=task, context=context, reset_env=reset_env, item_name=item_name)
         while True:
             messages, reward, done, info = self.step()
             if done:
@@ -322,16 +332,21 @@ class Grass:
             if self.recorder.iteration > self.max_iterations:
                 print("Iteration limit reached")
                 break
-            task, context = self.curriculum_agent.propose_next_task(
-                events=self.last_events,
-                chest_observation=self.action_agent.render_chest_observation(),
-                max_retries=5,
-            )
+            task = self.queue.pop()
+            context = self.graph.nodes[task][info]
+            node_name = task
+            task = "Obtain " + self.graph.nodes[task]["minimum_count"] + task
+            # task, context = self.curriculum_agent.propose_next_task(
+            #     events=self.last_events,
+            #     chest_observation=self.action_agent.render_chest_observation(),
+            #     max_retries=5,
+            # )
             print(
                 f"\033[35mStarting task {task} for at most {self.action_agent_task_max_retries} times\033[0m"
             )
             try:
                 messages, reward, done, info = self.rollout(
+                    item_name=node_name,
                     task=task,
                     context=context,
                     reset_env=reset_env,
@@ -357,7 +372,8 @@ class Grass:
                 print(f"\033[41m{e}\033[0m")
 
             if info["success"]:
-                self.skill_manager.add_new_skill(info)
+                info["node_name"] = node_name
+                self.skill_manager.add_new_skill(info=info, graph=self.graph)
 
             self.curriculum_agent.update_exploration_progress(info)
             print(

@@ -204,7 +204,7 @@ def queueWithoutJS(graph):
     iter = graph.__iter__()
     for node in iter:
         try:
-            graph.nodes[node]["scriptPath"]
+            graph.nodes[node]["script_path"]
         except KeyError as e:
             q.put((graph.nodes._nodes[node]["score"], graph.nodes._nodes[node]['object_name']))
 

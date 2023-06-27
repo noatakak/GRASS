@@ -40,5 +40,3 @@ Code:
 You should only respond in the format as described below:
 RESPONSE FORMAT:
 {response_format}
-
-Here is a couple of example functions
