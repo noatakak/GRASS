@@ -132,4 +132,4 @@ plot_iter.py
 
 runGraphBuilder-withKEY.py
 main-withKEY.py
-.Tests*
+Tests/
