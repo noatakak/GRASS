@@ -1,4 +1,7 @@
+import json
 import os
+import networkx as nx
+from networkx.readwrite import json_graph
 
 import grass.utils as U
 from langchain.chat_models import ChatOpenAI
@@ -25,29 +28,29 @@ class SkillManager:
             temperature=temperature,
             request_timeout=request_timout,
         )
-        U.f_mkdir(f"{ckpt_dir}/skill/code")
-        U.f_mkdir(f"{ckpt_dir}/skill/description")
-        U.f_mkdir(f"{ckpt_dir}/skill/vectordb")
+        U.f_mkdir(f"{ckpt_dir}/skill_code")
+        # U.f_mkdir(f"{ckpt_dir}/skill/description")
+        # U.f_mkdir(f"{ckpt_dir}/skill/vectordb")
         # programs for env execution
         self.control_primitives = load_control_primitives()
-        if resume:
-            print(f"\033[33mLoading Skill Manager from {ckpt_dir}/skill\033[0m")
-            self.skills = U.load_json(f"{ckpt_dir}/skill/skills.json")
-        else:
-            self.skills = {}
-        self.retrieval_top_k = retrieval_top_k
+        # if resume:
+        #     print(f"\033[33mLoading Skill Manager from {ckpt_dir}/skill\033[0m")
+        #     self.skills = U.load_json(f"{ckpt_dir}/skill/skills.json")
+        # else:
+        #     self.skills = {}
+        # self.retrieval_top_k = retrieval_top_k
         self.ckpt_dir = ckpt_dir
-        self.vectordb = Chroma(
-            collection_name="skill_vectordb",
-            embedding_function=OpenAIEmbeddings(),
-            persist_directory=f"{ckpt_dir}/skill/vectordb",
-        )
-        assert self.vectordb._collection.count() == len(self.skills), (
-            f"Skill Manager's vectordb is not synced with skills.json.\n"
-            f"There are {self.vectordb._collection.count()} skills in vectordb but {len(self.skills)} skills in skills.json.\n"
-            f"Did you set resume=False when initializing the manager?\n"
-            f"You may need to manually delete the vectordb directory for running from scratch."
-        )
+        # self.vectordb = Chroma(
+        #     collection_name="skill_vectordb",
+        #     embedding_function=OpenAIEmbeddings(),
+        #     persist_directory=f"{ckpt_dir}/skill/vectordb",
+        # )
+        # assert self.vectordb._collection.count() == len(self.skills), (
+        #     f"Skill Manager's vectordb is not synced with skills.json.\n"
+        #     f"There are {self.vectordb._collection.count()} skills in vectordb but {len(self.skills)} skills in skills.json.\n"
+        #     f"Did you set resume=False when initializing the manager?\n"
+        #     f"You may need to manually delete the vectordb directory for running from scratch."
+        # )
 
     @property
     def programs(self):
@@ -57,6 +60,17 @@ class SkillManager:
         for primitives in self.control_primitives:
             programs += f"{primitives}\n\n"
         return programs
+
+    def add_graph_skill(self, graph,  info):
+        program_name = info["program_name"]
+        program_code = info["program_code"]
+        U.dump_text(
+            program_code, f"{self.ckpt_dir}/skill_code/{program_name}.js"
+        )
+        task_name = info['node_name']
+        graph.nodes[task_name]['script'] = program_name
+        with open(f"Tests/{self.ckpt_dir}/graph.json", 'w') as file:
+            json.dump(json_graph.node_link_data(graph), file, indent=4)
 
     def add_new_skill(self, info):
         if info["task"].startswith("Deposit useless items into the chest at"):
@@ -90,11 +104,11 @@ class SkillManager:
             self.skills
         ), "vectordb is not synced with skills.json"
         U.dump_text(
-            program_code, f"{self.ckpt_dir}/skill/code/{dumped_program_name}.js"
-        )
-        U.dump_text(
             skill_description,
             f"{self.ckpt_dir}/skill/description/{dumped_program_name}.txt",
+        )
+        U.dump_text(
+            program_code, f"{self.ckpt_dir}/skill/code/{program_name}.js"
         )
         U.dump_json(self.skills, f"{self.ckpt_dir}/skill/skills.json")
         self.vectordb.persist()
