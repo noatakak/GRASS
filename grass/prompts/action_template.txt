@@ -31,11 +31,12 @@ Code:
     6) Anything defined outside a function will be ignored, define all your variables inside your functions.
     7) Call `bot.chat` to show the intermediate progress.
     8) Use `exploreUntil(bot, direction, maxDistance, callback)` when you cannot find something. You should frequently call this before mining blocks or killing mobs. You should select a direction at random every time instead of constantly using (1, 0, 1).
-    9) `maxDistance` should always be 32 for `bot.findBlocks` and `bot.findBlock`. Do not cheat.
-    10) Do not write infinite loops or recursive functions.
-    11) Do not use `bot.on` or `bot.once` to register event listeners. You definitely do not need them.
-    12) Name your function in a meaningful way (can infer the task from the name).
-    13) If the purpose of your function is to acquire an item, it should first check the inventory to see if that item is already held, then check the surrounding area to see if that item/block is nearby, and only after both checks, should the function begin the process of collecting materials and crafting the item.
+    9) If you are rewriting a function that previously failed due to not finding a specific item, the primary change you should make to the code is doubling the maxTime that is passed to the exploreUntil() method.
+    10) `maxDistance` should always be 32 for `bot.findBlocks` and `bot.findBlock`. Do not cheat.
+    11) Do not write infinite loops or recursive functions.
+    12) Do not use `bot.on` or `bot.once` to register event listeners. You definitely do not need them.
+    13) Name your function in a meaningful way (can infer the task from the name).
+    14) If the purpose of your function is to acquire an item, it should first check the inventory to see if that item is already held, then check the surrounding area to see if that item/block is nearby, and only after both checks, should the function begin the process of collecting materials and crafting the item.
 
 You should only respond in the format as described below:
 RESPONSE FORMAT:

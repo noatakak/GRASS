@@ -11,9 +11,9 @@ from langchain.prompts import SystemMessagePromptTemplate, HumanMessagePromptTem
 
 import openai
 import pkg_resources
-
-import fandom
-from fandom.error import PageError
+#
+# import fandom
+# from fandom.error import PageError
 
 
 def loadText(textFile):

@@ -33,11 +33,11 @@ class SkillManager:
         # U.f_mkdir(f"{ckpt_dir}/skill/vectordb")
         # programs for env execution
         self.control_primitives = load_control_primitives()
-        # if resume:
-        #     print(f"\033[33mLoading Skill Manager from {ckpt_dir}/skill\033[0m")
-        #     self.skills = U.load_json(f"{ckpt_dir}/skill/skills.json")
-        # else:
-        #     self.skills = {}
+        if resume:
+            print(f"\033[33mLoading Skill Manager from {ckpt_dir}/skill\033[0m")
+            self.skills = U.load_json(f"{ckpt_dir}/skill/skills.json")
+        else:
+            self.skills = {}
         # self.retrieval_top_k = retrieval_top_k
         self.ckpt_dir = ckpt_dir
         # self.vectordb = Chroma(
@@ -69,7 +69,8 @@ class SkillManager:
         )
         task_name = info['node_name']
         graph.nodes[task_name]['script'] = program_name
-        with open(f"Tests/{self.ckpt_dir}/graph.json", 'w') as file:
+        # os.mkdir(f"{self.ckpt_dir}")
+        with open(f"{self.ckpt_dir}/graph.json", 'w') as file:
             json.dump(json_graph.node_link_data(graph), file, indent=4)
 
     def add_new_skill(self, info):
