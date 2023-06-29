@@ -15,4 +15,4 @@ def load_control_primitives(primitive_names=None):
         U.load_text(f"{package_path}/control_primitives/{primitive_name}.js")
         for primitive_name in primitive_names
     ]
-    return primitives
+    return primitives, primitive_names
