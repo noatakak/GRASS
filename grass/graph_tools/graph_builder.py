@@ -19,16 +19,13 @@ def save_graph(graph, filepath):
 def create_primitive_graph():
     graph = nx.DiGraph()
     context, context_names = load_control_primitives_context()
-    knowledge_files = load_primitive_knowledge()
+    knowledge_files, primitive_paths = load_primitive_knowledge()
 
     for name in context_names:
-        weight = {}
-        weight['depth'] = 0
-        weight['successors'] = 0
-        weight['failures'] = 0
+        weight = {'depth': 0, 'successors': 0, 'failures': 0}
         knowledge = knowledge_files[name]
-        requirements = ""
-        file_path = ""
+        requirements = {}
+        file_path = primitive_paths[name]
         graph.add_node(name, name=name, weight=weight,
                        knowledge=knowledge, requirements=requirements,
                        file_path=file_path)
