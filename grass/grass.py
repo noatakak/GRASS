@@ -1,10 +1,7 @@
 import copy
-import json
 import os
 import time
 from typing import Dict
-
-import networkx as nx
 
 import grass.utils as U
 from .env import GrassEnv
@@ -13,7 +10,7 @@ from .agents import ActionAgent
 from .agents import CriticAgent
 from .agents import CurriculumAgent
 from .agents import SkillManager
-from .graphBuilder import returnGraphAndQueue
+from grass.Outdated.graphBuilder import returnGraphAndQueue
 
 from datetime import datetime
 
