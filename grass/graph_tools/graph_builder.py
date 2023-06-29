@@ -2,7 +2,7 @@ import json
 import networkx as nx
 from networkx.readwrite import json_graph
 from grass.control_primitives_context import load_control_primitives_context
-import Weight
+from weight import Weight
 
 
 # def load_graph_json(filepath):
