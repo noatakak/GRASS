@@ -10,8 +10,7 @@ from .agents import ActionAgent
 from .agents import CriticAgent
 from .agents import CurriculumAgent
 from .agents import SkillManager
-from grass.Outdated.graphBuilder import returnGraphAndQueue
-
+from .graph_tools.graph_builder import GraphBuilder
 from datetime import datetime
 
 
@@ -164,9 +163,10 @@ class Grass:
         self.conversations = []
         self.last_events = None
 
-        # init graph and queue
-        self.graph, self.queue = returnGraphAndQueue(
-            (ckpt_dir + "/graph.json") if resume else "grass/graphBuilder/graph.json")
+        # init graph_agent and graph
+        self.graph_agent = GraphBuilder()
+        self.graph = self.graph_agent.load_graph_json(
+            (ckpt_dir + "/graph.json") if resume else "grass/graph_tools/primitive_graph.json")
 
     def reset(self, task, item_name, context="", reset_env=True):
         self.action_agent_rollout_num_iter = 0
@@ -331,74 +331,71 @@ class Grass:
             )
             self.resume = True
         self.last_events = self.env.step("")
-        while self.queue.not_empty:
-            sub_q = []
-            temp = self.queue.get(0)
-            score = temp[0]
-            while temp[0] == score:
-                sub_q.append(temp)
-                temp = self.queue.get(0)
-            self.queue.put(temp)
-            while True:
-                if len(sub_q) == 0:
-                    print("sub queue is empty")
-                    break
-                parent_task = sub_q.pop()
-                task = parent_task[1]
-                context = self.graph.nodes[task]['info']
-                node_name = task
-                self.item_name = node_name
-                task = "Obtain " + str(self.graph.nodes[task]["minimum_count"]) + " "+ task
-                # task, context = self.curriculum_agent.propose_next_task(
-                #     events=self.last_events,
-                #     chest_observation=self.action_agent.render_chest_observation(),
-                #     max_retries=5,
-                # )
-                print(
-                    f"\033[35mStarting task {task} for at most {self.action_agent_task_max_retries} times\033[0m"
+
+
+        while True:
+            # if len(sub_q) == 0:
+            #     print("sub queue is empty")
+            #     break
+            # parent_task = sub_q.pop()
+            # task = parent_task[1]
+            # context = self.graph.nodes[task]['info']
+            # node_name = task
+            # self.item_name = node_name
+            # task = "Obtain " + str(self.graph.nodes[task]["minimum_count"]) + " "+ task
+            # task, context = self.curriculum_agent.propose_next_task(
+            #     events=self.last_events,
+            #     chest_observation=self.action_agent.render_chest_observation(),
+            #     max_retries=5,
+            # )
+
+            current_node = self.graph_builder.get_new_node()
+
+            print(
+                f"\033[35mStarting task {task} for at most {self.action_agent_task_max_retries} times\033[0m"
+            )
+            try:
+                messages, reward, done, info = self.rollout(
+                    item_name=node_name,
+                    task=task,
+                    context=context,
+                    reset_env=reset_env,
                 )
-                try:
-                    messages, reward, done, info = self.rollout(
-                        item_name=node_name,
-                        task=task,
-                        context=context,
-                        reset_env=reset_env,
-                    )
-                except Exception as e:
-                    time.sleep(3)  # wait for mineflayer to exit
-                    info = {
-                        "task": task,
-                        "success": False,
+            except Exception as e:
+                time.sleep(3)  # wait for mineflayer to exit
+                info = {
+                    "task": task,
+                    "success": False,
+                }
+                # reset bot status here
+                self.last_events = self.env.reset(
+                    options={
+                        "mode": "hard",
+                        "wait_ticks": self.env_wait_ticks,
+                        "inventory": self.last_events[-1][1]["inventory"],
+                        "equipment": self.last_events[-1][1]["status"]["equipment"],
+                        "position": self.last_events[-1][1]["status"]["position"],
                     }
-                    # reset bot status here
-                    self.last_events = self.env.reset(
-                        options={
-                            "mode": "hard",
-                            "wait_ticks": self.env_wait_ticks,
-                            "inventory": self.last_events[-1][1]["inventory"],
-                            "equipment": self.last_events[-1][1]["status"]["equipment"],
-                            "position": self.last_events[-1][1]["status"]["position"],
-                        }
-                    )
-                    # use red color background to print the error
-                    print("Your last round rollout terminated due to error:")
-                    print(f"\033[41m{e}\033[0m")
-
-                if info["success"]:
-                    info["node_name"] = node_name
-                    self.skill_manager.add_graph_skill(info=info, graph=self.graph)
-                else:
-                    if 0 != sum(1 for x in self.graph.successors(parent_task[1])):
-                        sub_q.append(parent_task)
-                        print("------\nreturning: " + parent_task[1] + " to the queue \n-------")
-
-                self.curriculum_agent.update_exploration_progress(info)
-                print(
-                    f"\033[35mCompleted tasks: {', '.join(self.curriculum_agent.completed_tasks)}\033[0m"
                 )
-                print(
-                    f"\033[35mFailed tasks: {', '.join(self.curriculum_agent.failed_tasks)}\033[0m"
-                )
+                # use red color background to print the error
+                print("Your last round rollout terminated due to error:")
+                print(f"\033[41m{e}\033[0m")
+
+            if info["success"]:
+                info["node_name"] = node_name
+                self.skill_manager.add_graph_skill(info=info, graph=self.graph)
+            else:
+                if 0 != sum(1 for x in self.graph.successors(parent_task[1])):
+                    sub_q.append(parent_task)
+                    print("------\nreturning: " + parent_task[1] + " to the queue \n-------")
+
+            self.curriculum_agent.update_exploration_progress(info)
+            print(
+                f"\033[35mCompleted tasks: {', '.join(self.curriculum_agent.completed_tasks)}\033[0m"
+            )
+            print(
+                f"\033[35mFailed tasks: {', '.join(self.curriculum_agent.failed_tasks)}\033[0m"
+            )
 
         return {
             "completed_tasks": self.curriculum_agent.completed_tasks,
