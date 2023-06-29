@@ -1,0 +1,18 @@
+import pkg_resources
+import os
+import grass.utils as U
+
+
+def load_primitive_knowledge(primitive_names=None):
+    package_path = pkg_resources.resource_filename("grass", "")
+    if primitive_names is None:
+        primitive_names = [
+            primitive[:-3]
+            for primitive in os.listdir(f"{package_path}/control_primitives_context")
+            if primitive.endswith(".txt")
+        ]
+    primitives = [
+        U.load_text(f"{package_path}/control_primitives_context/{primitive_name}.js")
+        for primitive_name in primitive_names
+    ]
+    return primitives

@@ -1,0 +1,64 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "name": "craftItem",
+            "knowledge": "",
+            "requirements": "",
+            "file_path": "",
+            "id": "craftItem"
+        },
+        {
+            "name": "exploreUntil",
+            "knowledge": "",
+            "requirements": "",
+            "file_path": "",
+            "id": "exploreUntil"
+        },
+        {
+            "name": "killMob",
+            "knowledge": "",
+            "requirements": "",
+            "file_path": "",
+            "id": "killMob"
+        },
+        {
+            "name": "mineBlock",
+            "knowledge": "",
+            "requirements": "",
+            "file_path": "",
+            "id": "mineBlock"
+        },
+        {
+            "name": "mineflayer",
+            "knowledge": "",
+            "requirements": "",
+            "file_path": "",
+            "id": "mineflayer"
+        },
+        {
+            "name": "placeItem",
+            "knowledge": "",
+            "requirements": "",
+            "file_path": "",
+            "id": "placeItem"
+        },
+        {
+            "name": "smeltItem",
+            "knowledge": "",
+            "requirements": "",
+            "file_path": "",
+            "id": "smeltItem"
+        },
+        {
+            "name": "useChest",
+            "knowledge": "",
+            "requirements": "",
+            "file_path": "",
+            "id": "useChest"
+        }
+    ],
+    "links": []
+}
