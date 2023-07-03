@@ -69,9 +69,9 @@ class SkillManager:
         )
         task_name = info['node_name']
         graph.nodes[task_name]['script'] = program_name
-        # os.mkdir(f"{self.ckpt_dir}")
         with open(f"{self.ckpt_dir}/graph.json", 'w') as file:
             json.dump(json_graph.node_link_data(graph), file, indent=4)
+        return f"{self.ckpt_dir}/skill_code/{program_name}.js"
 
     def add_new_skill(self, info):
         if info["task"].startswith("Deposit useless items into the chest at"):

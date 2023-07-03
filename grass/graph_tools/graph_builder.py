@@ -6,6 +6,7 @@ from langchain.prompts import SystemMessagePromptTemplate
 from langchain.schema import AIMessage, HumanMessage, SystemMessage
 from grass.control_primitives_context import load_control_primitives_context
 from grass.graph_tools.primitive_knowledge import load_primitive_knowledge
+from grass.agents.skill import  SkillManager
 
 
 class GraphBuilder:
@@ -36,6 +37,23 @@ class GraphBuilder:
         print("saving graph to file: " + filepath)
         with open(filepath, 'w') as file:
             json.dump(json_graph.node_link_data(graph), file, indent=4)
+
+    def success_node(self, graph, info):
+        file_name = SkillManager.add_graph_skill(graph, info)
+        graph[info["node_name"]]["filepath"] = file_name
+        successor_list = graph.successors(graph[info["node_name"]])
+        for x in successor_list:
+            graph[info[x]]["weight"]["successors"] = graph[info[x]]["weight"]["successors"] + 1
+
+    def fail_node(self, graph, info):
+        # four was chosen here because it has to be larger than two because of the increase in successors and trials
+        # every iteration,we chose 4 over three because of the rapid increase in trials means that fails should make
+        # more of a landmark
+        graph[info["node_name"]]["weight"]["failures"] = graph[info["node_name"]]["weight"]["failures"] + 4
+        successor_list = graph.successors(graph[info["node_name"]])
+        for x in successor_list:
+            graph[info[x]]["weight"]["failures"] = graph[info[x]]["weight"]["failures"] + 4
+            graph[info[x]]["weight"]["successors"] = graph[info[x]]["weight"]["failures"] + 1
 
     def create_primitive_graph(self):
         graph = nx.DiGraph()
