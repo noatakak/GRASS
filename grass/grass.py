@@ -156,6 +156,7 @@ class Grass:
         self.resume = resume
 
         # init variables for rollout
+        self.trial_count = 0
         self.action_agent_rollout_num_iter = -1
         self.task = None
         self.context = ""
@@ -306,6 +307,7 @@ class Grass:
 
     def rollout(self, *, task, context, reset_env=True, item_name):
         self.reset(task=task, context=context, reset_env=reset_env, item_name=item_name)
+        self.trial_count = self.trial_count + 1
         while True:
             messages, reward, done, info = self.step()
             if done:
@@ -382,12 +384,17 @@ class Grass:
                 print(f"\033[41m{e}\033[0m")
 
             if info["success"]:
-                info["node_name"] = node_name
-                self.skill_manager.add_graph_skill(info=info, graph=self.graph)
+                GraphBuilder.success_node(self.graph, info)
             else:
-                if 0 != sum(1 for x in self.graph.successors(parent_task[1])):
-                    sub_q.append(parent_task)
-                    print("------\nreturning: " + parent_task[1] + " to the queue \n-------")
+                GraphBuilder.fail_node(self.graph, info)
+
+            # if info["success"]:
+            #     info["node_name"] = node_name
+            #     self.skill_manager.add_graph_skill(info=info, graph=self.graph)
+            # else:
+            #     if 0 != sum(1 for x in self.graph.successors(parent_task[1])):
+            #         sub_q.append(parent_task)
+            #         print("------\nreturning: " + parent_task[1] + " to the queue \n-------")
 
             self.curriculum_agent.update_exploration_progress(info)
             print(
