@@ -176,10 +176,10 @@ class Grass:
         self.graph = self.graph_agent.load_graph_json(
             (ckpt_dir + "/graph.json") if resume else "grass/graph_tools/primitive_graph.json")
 
-    def reset(self, new_node_info, reset_env=True):
+    def reset(self, new_node, reset_env=True):
         self.action_agent_rollout_num_iter = 0
-        self.task = task
-        self.context = context
+        # self.task = task
+        # self.context = context
         if reset_env:
             self.env.reset(
                 options={
@@ -203,12 +203,12 @@ class Grass:
         #         contents = file.read()
         #         skills.append(contents)
         # skills = self.skill_manager.retrieve_skills(query=self.context)
-        print(
-            f"\033[33mRender Action Agent system message with {len(skills)} control_primitives\033[0m"
-        )
-        system_message = self.action_agent.render_system_message(skills=skills)
+        # print(
+        #     f"\033[33mRender Action Agent system message with {len(skills)} control_primitives\033[0m"
+        # )
+        system_message = self.action_agent.render_system_message(self.graph, new_node)
         human_message = self.action_agent.render_human_message(
-            events=events, code="", task=self.task, context=context, critique=""
+            events=events, code="", task=self.task, critique=""#, context=context
         )
         self.messages = [system_message, human_message]
         print(
@@ -360,7 +360,7 @@ class Grass:
             #     max_retries=5,
             # )
 
-            new_node = self.graph_builder.get_new_node(graph=self.graph, trials=self.trial_count)
+            new_node = self.graph_agent.get_new_node(graph=self.graph, trials=self.trial_count)
             task = new_node['name']
 
             print(
@@ -392,9 +392,9 @@ class Grass:
                 print(f"\033[41m{e}\033[0m")
 
             if info["success"]:
-                GraphBuilder.success_node(self.graph, info)
+                self.graph_agent.success_node(self.graph, info)
             else:
-                GraphBuilder.fail_node(self.graph, info)
+                self.graph_agent.fail_node(self.graph, info)
 
             self.curriculum_agent.update_exploration_progress(info)
             print(

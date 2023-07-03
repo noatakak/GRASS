@@ -84,7 +84,7 @@ class GraphBuilder:
 
     def loadText(textFile):
         # Loads text file
-        with open('grass/graph_tools/' + textFile, 'r') as file:
+        with open('grass/' + textFile, 'r') as file:
             content = file.read()
         return content
 
@@ -99,28 +99,27 @@ class GraphBuilder:
                 if len(best_nodes) < 5:
                     best_nodes.append(n)
                 else:
-                    for i in range(len(best_nodes)):
-                        if self.calc_weight(n, trials) > self.calc_weight(best_nodes[i], trials):
-                            best_nodes[i] = n
+                    for count, element in best_nodes:
+                        if self.calc_weight(graph(n), trials) > self.calc_weight(graph(best_nodes[count]), trials):
+                            best_nodes[count] = n
 
-        for i in range(len(best_nodes)):
-            if best_nodes[i]['filepath'] == "":
+        for count, element in enumerate(best_nodes):
+            if graph(element)['file_path'] == "":
                 revisit_node = True
-                new_node = best_nodes[i]
-            best_nodes[i] = str(best_nodes[i])
+                new_node = graph(element)
+            best_nodes[count] = str(graph(element))
 
         if not revisit_node:
-            system_message = SystemMessage(content=self.loadText(".txt"))
-            human_prompt = HumanMessagePromptTemplate.from_template(self.loadText(".txt"))
+            system_message = SystemMessage(content=self.loadText("prompts/genTask-System-Message.txt"))
+            human_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/genTask-Human-Message.txt"))
             human_message = human_prompt.format(
-                best_nodes=best_nodes,
+                top_five=best_nodes,
             )
             assert isinstance(human_message, HumanMessage)
             GRAPH_message = [system_message, human_message]
             ai_message = self.llm(GRAPH_message)
             stringContent = ai_message.content
             jTextNode = json.loads(stringContent)
-            new_node = jTextNode
             name = jTextNode['name']
             knowledge = jTextNode['knowledge']
             successors = {}
@@ -128,8 +127,8 @@ class GraphBuilder:
             filepath = ""
             weight_depth = -1
             for p in predecessors:
-                if graph.nodes._nodes[p]['weight']['depth'] > weight_depth:
-                    weight_depth = graph.nodes._nodes[p]['weight']['depth']
+                if graph(p)['weight']['depth'] > weight_depth:
+                    weight_depth = graph(p)['weight']['depth']
             weight_depth = weight_depth + 1
             weight = {'depth': weight_depth, 'successors': 0, 'failures': 0}
             graph.add_node(name, name=name, weight=weight,
@@ -137,6 +136,8 @@ class GraphBuilder:
                            successors=successors, file_path=filepath)
 
             for p in predecessors:
-                graph.nodes._nodes[p]['weight']['successors'] = graph.nodes._nodes[p]['weight']['successors'] + 1
+                graph(p)['weight']['successors'] = graph(p)['weight']['successors'] + 1
+
+            new_node = graph(name)
 
         return new_node

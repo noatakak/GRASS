@@ -72,8 +72,13 @@ class ActionAgent:
         else:
             return f"Chests: None\n\n"
 
-    def render_system_message(self, skills=[]):
-        system_template = load_prompt("action_template")
+    def load_code_text(self, file_path):
+        with open(file_path, 'r') as file:
+            content = file.read()
+        return content
+
+    def render_system_message(self, graph, new_node):
+        system_template = load_prompt("genCode-SystemMessage")
         # FIXME: Hardcoded control_primitives
         base_skills = [
             "exploreUntil",
@@ -82,19 +87,18 @@ class ActionAgent:
             "placeItem",
             "smeltItem",
             "killMob",
+            "useChest",
+            "mineflayer",
         ]
-        if not self.llm.model_name == "gpt-3.5-turbo":
-            base_skills += [
-                "useChest",
-                "mineflayer",
-            ]
-        programs = "\n\n".join(load_control_primitives_context(base_skills) + skills)
+        pred_nodes = new_node['predecessors']
+        predecessors = [{"name": x, "knowledge": graph(x)['knowledge'], 'code': self.load_code_text(graph(x)['file_path'])} for x in pred_nodes]
+        primitives = load_control_primitives_context(base_skills)
         response_format = load_prompt("action_response_format")
         system_message_prompt = SystemMessagePromptTemplate.from_template(
             system_template
         )
         system_message = system_message_prompt.format(
-            programs=programs, response_format=response_format
+            task=new_node['name'], predecessors=predecessors, primitives=primitives, response_format=response_format
         )
         assert isinstance(system_message, SystemMessage)
         return system_message
