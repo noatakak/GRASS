@@ -18,11 +18,11 @@ class GraphBuilder:
         self.model_name = model_name
         self.temperature = temperature
         self.request_timeout = request_timout
-        self.llm = ChatOpenAI(
-            model_name=model_name,
-            temperature=temperature,
-            request_timeout=request_timout,
-        )
+        # self.llm = ChatOpenAI(
+        #     model_name=model_name,
+        #     temperature=temperature,
+        #     request_timeout=request_timout,
+        # )
 
     def load_graph_json(self, filepath):
         with open(filepath) as f:
@@ -63,11 +63,12 @@ class GraphBuilder:
         for name in context_names:
             weight = {'depth': 0, 'successors': 0, 'failures': 0}
             knowledge = knowledge_files[name]
-            requirements = {}
+            predecessors = {}
+            successors = {}
             file_path = primitive_paths[name]
             graph.add_node(name, name=name, weight=weight,
-                           knowledge=knowledge, requirements=requirements,
-                           file_path=file_path)
+                           knowledge=knowledge, predecessors=predecessors,
+                           successors=successors, file_path=file_path)
 
         self.save_graph(graph, "grass/graph_tools/primitive_graph.json")
 
@@ -81,12 +82,14 @@ class GraphBuilder:
         weight = (successors + trials) / (depth + failures)
         return weight
 
-    def get_new_node(self):
+    #def get_new_node(self, graph):
         # Get top 5 skills
+            # If any is primitive, include all primitive
+            # If any is a failed node, then instead of generating new node, try to redo failed node
 
         # Get new node from GPT
-
-        # Add node to graph
+        # Ask GPT if node exists in list of nodes already or not
+        # Add new node to graph
 
         # Update successor count of predecessors to new node
 

@@ -11,7 +11,8 @@
                 "failures": 0
             },
             "knowledge": "The craftItem function takes in bot, along with the name of the item we are looking to craft, along with the count\nreferring to the quantity of the specified item you would like to craft.\nA crafting table must be placed before calling this function.\nThe method will find the crafting table, get the recipe for the item\nand craft that quantity. For Example: Craft 8 oak_planks from 2 oak_log (do the recipe 2 times):\n craftItem(bot, \"oak_planks\", 2);\n",
-            "requirements": {},
+            "predecessors": {},
+            "successors": {},
             "file_path": "grass\\control_primitives\\craftItem.js",
             "id": "craftItem"
         },
@@ -23,7 +24,8 @@
                 "failures": 0
             },
             "knowledge": "Params:\n    Implementation of this function is omitted.\n    direction: Vec3, can only contain value of -1, 0 or 1\n    maxTime: number, the max time for exploration\n    callback: function, early stop condition, will be called each second, exploration will stop if return value is not null\nReturn: null if explore timeout, otherwise return the return value of callback\n",
-            "requirements": {},
+            "predecessors": {},
+            "successors": {},
             "file_path": "grass\\control_primitives\\exploreUntil.js",
             "id": "exploreUntil"
         },
@@ -35,7 +37,8 @@
                 "failures": 0
             },
             "knowledge": "The kill mob method takes in bot, the name of the mob that the agent will be attacking,\nand the timeout which is initially set to 300 and represents the period of time the\nagent will attempt the task. This skill can used for both hostile mobs and animals\nwithin the game. Example: Kill a pig and collect the dropped item: killMob(bot, \"pig\", 300);",
-            "requirements": {},
+            "predecessors": {},
+            "successors": {},
             "file_path": "grass\\control_primitives\\killMob.js",
             "id": "killMob"
         },
@@ -47,7 +50,8 @@
                 "failures": 0
             },
             "knowledge": "The mineblock method takes in bot, along with the name of the block to be\nmined, and the number of the specified block that need to be obtained.\nThis method will search teh immediate area for the block,\nfind target blocks in the vicinity adn add them to a list, then mine them.\nExample: Mine 3 cobblestone: mineBlock(bot, \"stone\", 3);",
-            "requirements": {},
+            "predecessors": {},
+            "successors": {},
             "file_path": "grass\\control_primitives\\mineBlock.js",
             "id": "mineBlock"
         },
@@ -59,7 +63,8 @@
                 "failures": 0
             },
             "knowledge": "await bot.pathfinder.goto(goal); // A very useful function. This function may change your main-hand equipment.\n// Following are some Goals you can use:\nnew GoalNear(x, y, z, range); // Move the bot to a block within the specified range of the specified block. `x`, `y`, `z`, and `range` are `number`\nnew GoalXZ(x, z); // Useful for long-range goals that don't have a specific Y level. `x` and `z` are `number`\nnew GoalGetToBlock(x, y, z); // Not get into the block, but get directly adjacent to it. Useful for fishing, farming, filling bucket, and beds. `x`, `y`, and `z` are `number`\nnew GoalFollow(entity, range); // Follow the specified entity within the specified range. `entity` is `Entity`, `range` is `number`\nnew GoalPlaceBlock(position, bot.world, {}); // Position the bot in order to place a block. `position` is `Vec3`\nnew GoalLookAtBlock(position, bot.world, {}); // Path into a position where a blockface of the block at position is visible. `position` is `Vec3`\n\n// These are other Mineflayer functions you can use:\nbot.isABed(bedBlock); // Return true if `bedBlock` is a bed\nbot.blockAt(position); // Return the block at `position`. `position` is `Vec3`\n\n// These are other Mineflayer async functions you can use:\nawait bot.equip(item, destination); // Equip the item in the specified destination. `item` is `Item`, `destination` can only be \"hand\", \"head\", \"torso\", \"legs\", \"feet\", \"off-hand\"\nawait bot.consume(); // Consume the item in the bot's hand. You must equip the item to consume first. Useful for eating food, drinking potions, etc.\nawait bot.fish(); // Let bot fish. Before calling this function, you must first get to a water block and then equip a fishing rod. The bot will automatically stop fishing when it catches a fish\nawait bot.sleep(bedBlock); // Sleep until sunrise. You must get to a bed block first\nawait bot.activateBlock(block); // This is the same as right-clicking a block in the game. Useful for buttons, doors, etc. You must get to the block first\nawait bot.lookAt(position); // Look at the specified position. You must go near the position before you look at it. To fill bucket with water, you must lookAt first. `position` is `Vec3`\nawait bot.activateItem(); // This is the same as right-clicking to use the item in the bot's hand. Useful for using buckets, etc. You must equip the item to activate first\nawait bot.useOn(entity); // This is the same as right-clicking an entity in the game. Useful for shearing sheep, equipping harnesses, etc. You must get to the entity first\n",
-            "requirements": {},
+            "predecessors": {},
+            "successors": {},
             "file_path": "grass\\control_primitives_context\\mineflayer.js",
             "id": "mineflayer"
         },
@@ -71,7 +76,8 @@
                 "failures": 0
             },
             "knowledge": "The placeItem method takes in bot, the name of the block that is\ngoing to be  placed, and the position in the form of vec3.\nThe code will find a place to put the block, equip it and then set\nit down.\nExample: Place a crafting_table near the player, Vec3(1, 0, 0) is\njust an example, you shouldn't always use that: placeItem(bot, \"crafting_table\", bot.entity.position.offset(1, 0, 0));\n",
-            "requirements": {},
+            "predecessors": {},
+            "successors": {},
             "file_path": "grass\\control_primitives\\placeItem.js",
             "id": "placeItem"
         },
@@ -83,7 +89,8 @@
                 "failures": 0
             },
             "knowledge": "The smeltItem function takes in bot, the itemName of what\nyou will be smelting, the fuelName, and the number of that\nitem that will be smelted. You must place a furnace before\ncalling this function. Example:  Smelt 1 raw_iron into\n1 iron_ingot using 1 oak_planks as fuel:\nsmeltItem(bot, \"raw_iron\", \"oak_planks\");\n",
-            "requirements": {},
+            "predecessors": {},
+            "successors": {},
             "file_path": "grass\\control_primitives\\smeltItem.js",
             "id": "smeltItem"
         },
@@ -95,7 +102,8 @@
                 "failures": 0
             },
             "knowledge": "The getItemFromChest method takes in the bot, the position of the\nchest, and the itemsToGet. This function will work no matter the distance\nfrom a chest. It will find a chest, open it, iterate through the list of\nitems to get each from the chest, then close the chest.\nExample:  Get a torch from chest at (30, 65, 100):\ngetItemFromChest(bot, new Vec3(30, 65, 100), {\"torch\": 1});\n\n\nThe depositItemIntoChest takes in bot, the chestPosition, and the\nitemsToDeposit. The method will work no matter how far it is from a chest.\nThe method will begin by finding the chest the iterating through the\nitemsToDeposit list and placing them in the chest.\nExample: Deposit a torch into chest at (30, 65, 100):\ndepositItemIntoChest(bot, new Vec3(30, 65, 100), {\"torch\": 1});\n\nThe checkItemInsideChest takes in the bot and the position of the chest\nto be searched. The method will find the chest, open it, adn then return\nthe contents of the chest, finally closing the chest.\nExample: Check the items inside the chest at (30, 65, 100):\ncheckItemInsideChest(bot, new Vec3(30, 65, 100));\n\n",
-            "requirements": {},
+            "predecessors": {},
+            "successors": {},
             "file_path": "grass\\control_primitives\\useChest.js",
             "id": "useChest"
         }
