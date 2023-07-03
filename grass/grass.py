@@ -360,7 +360,7 @@ class Grass:
             #     max_retries=5,
             # )
 
-            new_node = self.graph_builder.get_new_node(self.graph)
+            new_node = self.graph_builder.get_new_node(graph=self.graph, trials=self.trial_count)
             task = new_node['name']
 
             print(

@@ -2,7 +2,7 @@ import json
 import networkx as nx
 from networkx.readwrite import json_graph
 from langchain.chat_models import ChatOpenAI
-from langchain.prompts import SystemMessagePromptTemplate
+from langchain.prompts import SystemMessagePromptTemplate, HumanMessagePromptTemplate
 from langchain.schema import AIMessage, HumanMessage, SystemMessage
 from grass.control_primitives_context import load_control_primitives_context
 from grass.graph_tools.primitive_knowledge import load_primitive_knowledge
@@ -18,11 +18,11 @@ class GraphBuilder:
         self.model_name = model_name
         self.temperature = temperature
         self.request_timeout = request_timout
-        # self.llm = ChatOpenAI(
-        #     model_name=model_name,
-        #     temperature=temperature,
-        #     request_timeout=request_timout,
-        # )
+        self.llm = ChatOpenAI(
+            model_name=model_name,
+            temperature=temperature,
+            request_timeout=request_timout,
+        )
 
     def load_graph_json(self, filepath):
         with open(filepath) as f:
@@ -82,15 +82,61 @@ class GraphBuilder:
         weight = (successors + trials) / (depth + failures)
         return weight
 
-    #def get_new_node(self, graph):
-        # Get top 5 skills
-            # If any is primitive, include all primitive
-            # If any is a failed node, then instead of generating new node, try to redo failed node
+    def loadText(textFile):
+        # Loads text file
+        with open('grass/graph_tools/' + textFile, 'r') as file:
+            content = file.read()
+        return content
 
-        # Get new node from GPT
-        # Ask GPT if node exists in list of nodes already or not
-        # Add new node to graph
+    def get_new_node(self, graph, trials):
+        revisit_node = False
+        best_nodes = []
+        if len(graph.nodes) < 13:
+            for n in graph.nodes:
+                best_nodes.append(n)
+        else:
+            for n in graph.nodes:
+                if len(best_nodes) < 5:
+                    best_nodes.append(n)
+                else:
+                    for i in range(len(best_nodes)):
+                        if self.calc_weight(n, trials) > self.calc_weight(best_nodes[i], trials):
+                            best_nodes[i] = n
 
-        # Update successor count of predecessors to new node
+        for i in range(len(best_nodes)):
+            if best_nodes[i]['filepath'] == "":
+                revisit_node = True
+                new_node = best_nodes[i]
+            best_nodes[i] = str(best_nodes[i])
 
-        # return new_node
+        if not revisit_node:
+            system_message = SystemMessage(content=self.loadText(".txt"))
+            human_prompt = HumanMessagePromptTemplate.from_template(self.loadText(".txt"))
+            human_message = human_prompt.format(
+                best_nodes=best_nodes,
+            )
+            assert isinstance(human_message, HumanMessage)
+            GRAPH_message = [system_message, human_message]
+            ai_message = self.llm(GRAPH_message)
+            stringContent = ai_message.content
+            jTextNode = json.loads(stringContent)
+            new_node = jTextNode
+            name = jTextNode['name']
+            knowledge = jTextNode['knowledge']
+            successors = {}
+            predecessors = jTextNode['predecessors']
+            filepath = ""
+            weight_depth = -1
+            for p in predecessors:
+                if graph.nodes._nodes[p]['weight']['depth'] > weight_depth:
+                    weight_depth = graph.nodes._nodes[p]['weight']['depth']
+            weight_depth = weight_depth + 1
+            weight = {'depth': weight_depth, 'successors': 0, 'failures': 0}
+            graph.add_node(name, name=name, weight=weight,
+                           knowledge=knowledge, predecessors=predecessors,
+                           successors=successors, file_path=filepath)
+
+            for p in predecessors:
+                graph.nodes._nodes[p]['weight']['successors'] = graph.nodes._nodes[p]['weight']['successors'] + 1
+
+        return new_node
