@@ -396,14 +396,6 @@ class Grass:
             else:
                 GraphBuilder.fail_node(self.graph, info)
 
-            # if info["success"]:
-            #     info["node_name"] = node_name
-            #     self.skill_manager.add_graph_skill(info=info, graph=self.graph)
-            # else:
-            #     if 0 != sum(1 for x in self.graph.successors(parent_task[1])):
-            #         sub_q.append(parent_task)
-            #         print("------\nreturning: " + parent_task[1] + " to the queue \n-------")
-
             self.curriculum_agent.update_exploration_progress(info)
             print(
                 f"\033[35mCompleted tasks: {', '.join(self.curriculum_agent.completed_tasks)}\033[0m"
