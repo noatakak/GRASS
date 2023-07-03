@@ -10,7 +10,7 @@
                 "successors": 0,
                 "failures": 0
             },
-            "knowledge": "// Craft 8 oak_planks from 2 oak_log (do the recipe 2 times): craftItem(bot, \"oak_planks\", 2);\n// You must place a crafting table before calling this function\nasync function craftItem(bot, name, count = 1) {\n    const item = mcData.itemsByName[name];\n    const craftingTable = bot.findBlock({\n        matching: mcData.blocksByName.crafting_table.id,\n        maxDistance: 32,\n    });\n    await bot.pathfinder.goto(\n        new GoalLookAtBlock(craftingTable.position, bot.world)\n    );\n    const recipe = bot.recipesFor(item.id, null, 1, craftingTable)[0];\n    await bot.craft(recipe, count, craftingTable);\n}\n",
+            "knowledge": "The craftItem function takes in bot, along with the name of the item we are looking to craft, along with the count\nreferring to the quantity of the specified item you would like to craft.\nA crafting table must be placed before calling this function.\nThe method will find the crafting table, get the recipe for the item\nand craft that quantity. For Example: Craft 8 oak_planks from 2 oak_log (do the recipe 2 times):\n craftItem(bot, \"oak_planks\", 2);\n",
             "requirements": {},
             "file_path": "grass\\control_primitives\\craftItem.js",
             "id": "craftItem"
@@ -22,7 +22,7 @@
                 "successors": 0,
                 "failures": 0
             },
-            "knowledge": "/*\nExplore until find an iron_ore, use Vec3(0, -1, 0) because iron ores are usually underground\nawait exploreUntil(bot, new Vec3(0, -1, 0), 60, () => {\n    const iron_ore = bot.findBlock({\n        matching: mcData.blocksByName[\"iron_ore\"].id,\n        maxDistance: 32,\n    });\n    return iron_ore;\n});\n\nExplore until find a pig, use Vec3(1, 0, 1) because pigs are usually on the surface\nlet pig = await exploreUntil(bot, new Vec3(1, 0, 1), 60, () => {\n    const pig = bot.nearestEntity((entity) => {\n        return (\n            entity.name === \"pig\" &&\n            entity.position.distanceTo(bot.entity.position) < 32\n        );\n    });\n    return pig;\n});\n*/\nasync function exploreUntil(bot, direction, maxTime = 60, callback) {\n    /*\n    Implementation of this function is omitted.\n    direction: Vec3, can only contain value of -1, 0 or 1\n    maxTime: number, the max time for exploration\n    callback: function, early stop condition, will be called each second, exploration will stop if return value is not null\n\n    Return: null if explore timeout, otherwise return the return value of callback\n    */\n}\n",
+            "knowledge": "Params:\n    Implementation of this function is omitted.\n    direction: Vec3, can only contain value of -1, 0 or 1\n    maxTime: number, the max time for exploration\n    callback: function, early stop condition, will be called each second, exploration will stop if return value is not null\nReturn: null if explore timeout, otherwise return the return value of callback\n",
             "requirements": {},
             "file_path": "grass\\control_primitives\\exploreUntil.js",
             "id": "exploreUntil"
@@ -34,7 +34,7 @@
                 "successors": 0,
                 "failures": 0
             },
-            "knowledge": "// Kill a pig and collect the dropped item: killMob(bot, \"pig\", 300);\nasync function killMob(bot, mobName, timeout = 300) {\n    const entity = bot.nearestEntity(\n        (entity) =>\n            entity.name === mobName &&\n            entity.position.distanceTo(bot.entity.position) < 32\n    );\n    await bot.pvp.attack(entity);\n    await bot.pathfinder.goto(\n        new GoalBlock(entity.position.x, entity.position.y, entity.position.z)\n    );\n}\n",
+            "knowledge": "The kill mob method takes in bot, the name of the mob that the agent will be attacking,\nand the timeout which is initially set to 300 and represents the period of time the\nagent will attempt the task. This skill can used for both hostile mobs and animals\nwithin the game. Example: Kill a pig and collect the dropped item: killMob(bot, \"pig\", 300);",
             "requirements": {},
             "file_path": "grass\\control_primitives\\killMob.js",
             "id": "killMob"
@@ -46,7 +46,7 @@
                 "successors": 0,
                 "failures": 0
             },
-            "knowledge": "// Mine 3 cobblestone: mineBlock(bot, \"stone\", 3);\nasync function mineBlock(bot, name, count = 1) {\n    const blocks = bot.findBlocks({\n        matching: (block) => {\n            return block.name === name;\n        },\n        maxDistance: 32,\n        count: count,\n    });\n    const targets = [];\n    for (let i = 0; i < Math.min(blocks.length, count); i++) {\n        targets.push(bot.blockAt(blocks[i]));\n    }\n    await bot.collectBlock.collect(targets, { ignoreNoPath: true });\n}\n",
+            "knowledge": "The mineblock method takes in bot, along with the name of the block to be\nmined, and the number of the specified block that need to be obtained.\nThis method will search teh immediate area for the block,\nfind target blocks in the vicinity adn add them to a list, then mine them.\nExample: Mine 3 cobblestone: mineBlock(bot, \"stone\", 3);",
             "requirements": {},
             "file_path": "grass\\control_primitives\\mineBlock.js",
             "id": "mineBlock"
@@ -70,7 +70,7 @@
                 "successors": 0,
                 "failures": 0
             },
-            "knowledge": "// Place a crafting_table near the player, Vec3(1, 0, 0) is just an example, you shouldn't always use that: placeItem(bot, \"crafting_table\", bot.entity.position.offset(1, 0, 0));\nasync function placeItem(bot, name, position) {\n    const item = bot.inventory.findInventoryItem(mcData.itemsByName[name].id);\n    // find a reference block\n    const faceVectors = [\n        new Vec3(0, 1, 0),\n        new Vec3(0, -1, 0),\n        new Vec3(1, 0, 0),\n        new Vec3(-1, 0, 0),\n        new Vec3(0, 0, 1),\n        new Vec3(0, 0, -1),\n    ];\n    let referenceBlock = null;\n    let faceVector = null;\n    for (const vector of faceVectors) {\n        const block = bot.blockAt(position.minus(vector));\n        if (block?.name !== \"air\") {\n            referenceBlock = block;\n            faceVector = vector;\n            break;\n        }\n    }\n    // You must first go to the block position you want to place\n    await bot.pathfinder.goto(new GoalPlaceBlock(position, bot.world, {}));\n    // You must equip the item right before calling placeBlock\n    await bot.equip(item, \"hand\");\n    await bot.placeBlock(referenceBlock, faceVector);\n}\n",
+            "knowledge": "The placeItem method takes in bot, the name of the block that is\ngoing to be  placed, and the position in the form of vec3.\nThe code will find a place to put the block, equip it and then set\nit down.\nExample: Place a crafting_table near the player, Vec3(1, 0, 0) is\njust an example, you shouldn't always use that: placeItem(bot, \"crafting_table\", bot.entity.position.offset(1, 0, 0));\n",
             "requirements": {},
             "file_path": "grass\\control_primitives\\placeItem.js",
             "id": "placeItem"
@@ -82,7 +82,7 @@
                 "successors": 0,
                 "failures": 0
             },
-            "knowledge": "// Smelt 1 raw_iron into 1 iron_ingot using 1 oak_planks as fuel: smeltItem(bot, \"raw_iron\", \"oak_planks\");\n// You must place a furnace before calling this function\nasync function smeltItem(bot, itemName, fuelName, count = 1) {\n    const item = mcData.itemsByName[itemName];\n    const fuel = mcData.itemsByName[fuelName];\n    const furnaceBlock = bot.findBlock({\n        matching: mcData.blocksByName.furnace.id,\n        maxDistance: 32,\n    });\n    await bot.pathfinder.goto(\n        new GoalLookAtBlock(furnaceBlock.position, bot.world)\n    );\n    const furnace = await bot.openFurnace(furnaceBlock);\n    for (let i = 0; i < count; i++) {\n        await furnace.putFuel(fuel.id, null, 1);\n        await furnace.putInput(item.id, null, 1);\n        // Wait 12 seconds for the furnace to smelt the item\n        await bot.waitForTicks(12 * 20);\n        await furnace.takeOutput();\n    }\n    await furnace.close();\n}\n",
+            "knowledge": "The smeltItem function takes in bot, the itemName of what\nyou will be smelting, the fuelName, and the number of that\nitem that will be smelted. You must place a furnace before\ncalling this function. Example:  Smelt 1 raw_iron into\n1 iron_ingot using 1 oak_planks as fuel:\nsmeltItem(bot, \"raw_iron\", \"oak_planks\");\n",
             "requirements": {},
             "file_path": "grass\\control_primitives\\smeltItem.js",
             "id": "smeltItem"
@@ -94,7 +94,7 @@
                 "successors": 0,
                 "failures": 0
             },
-            "knowledge": "// Get a torch from chest at (30, 65, 100): getItemFromChest(bot, new Vec3(30, 65, 100), {\"torch\": 1});\n// This function will work no matter how far the bot is from the chest.\nasync function getItemFromChest(bot, chestPosition, itemsToGet) {\n    await moveToChest(bot, chestPosition);\n    const chestBlock = bot.blockAt(chestPosition);\n    const chest = await bot.openContainer(chestBlock);\n    for (const name in itemsToGet) {\n        const itemByName = mcData.itemsByName[name];\n        const item = chest.findContainerItem(itemByName.id);\n        await chest.withdraw(item.type, null, itemsToGet[name]);\n    }\n    await closeChest(bot, chestBlock);\n}\n// Deposit a torch into chest at (30, 65, 100): depositItemIntoChest(bot, new Vec3(30, 65, 100), {\"torch\": 1});\n// This function will work no matter how far the bot is from the chest.\nasync function depositItemIntoChest(bot, chestPosition, itemsToDeposit) {\n    await moveToChest(bot, chestPosition);\n    const chestBlock = bot.blockAt(chestPosition);\n    const chest = await bot.openContainer(chestBlock);\n    for (const name in itemsToDeposit) {\n        const itemByName = mcData.itemsByName[name];\n        const item = bot.inventory.findInventoryItem(itemByName.id);\n        await chest.deposit(item.type, null, itemsToDeposit[name]);\n    }\n    await closeChest(bot, chestBlock);\n}\n// Check the items inside the chest at (30, 65, 100): checkItemInsideChest(bot, new Vec3(30, 65, 100));\n// You only need to call this function once without any action to finish task of checking items inside the chest.\nasync function checkItemInsideChest(bot, chestPosition) {\n    await moveToChest(bot, chestPosition);\n    const chestBlock = bot.blockAt(chestPosition);\n    await bot.openContainer(chestBlock);\n    // You must close the chest after opening it if you are asked to open a chest\n    await closeChest(bot, chestBlock);\n}\n",
+            "knowledge": "The getItemFromChest method takes in the bot, the position of the\nchest, and the itemsToGet. This function will work no matter the distance\nfrom a chest. It will find a chest, open it, iterate through the list of\nitems to get each from the chest, then close the chest.\nExample:  Get a torch from chest at (30, 65, 100):\ngetItemFromChest(bot, new Vec3(30, 65, 100), {\"torch\": 1});\n\n\nThe depositItemIntoChest takes in bot, the chestPosition, and the\nitemsToDeposit. The method will work no matter how far it is from a chest.\nThe method will begin by finding the chest the iterating through the\nitemsToDeposit list and placing them in the chest.\nExample: Deposit a torch into chest at (30, 65, 100):\ndepositItemIntoChest(bot, new Vec3(30, 65, 100), {\"torch\": 1});\n\nThe checkItemInsideChest takes in the bot and the position of the chest\nto be searched. The method will find the chest, open it, adn then return\nthe contents of the chest, finally closing the chest.\nExample: Check the items inside the chest at (30, 65, 100):\ncheckItemInsideChest(bot, new Vec3(30, 65, 100));\n\n",
             "requirements": {},
             "file_path": "grass\\control_primitives\\useChest.js",
             "id": "useChest"
