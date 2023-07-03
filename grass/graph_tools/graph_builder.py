@@ -17,11 +17,11 @@ class GraphBuilder:
         self.model_name = model_name
         self.temperature = temperature
         self.request_timeout = request_timout
-        # self.llm = ChatOpenAI(
-        #     model_name=model_name,
-        #     temperature=temperature,
-        #     request_timeout=request_timout,
-        # )
+        self.llm = ChatOpenAI(
+            model_name=model_name,
+            temperature=temperature,
+            request_timeout=request_timout,
+        )
 
     def load_graph_json(self, filepath):
         with open(filepath) as f:
@@ -62,3 +62,14 @@ class GraphBuilder:
         failures = weight_vals['failures']
         weight = (successors + trials) / (depth + failures)
         return weight
+
+    def get_new_node(self):
+        # Get top 5 skills
+
+        # Get new node from GPT
+
+        # Add node to graph
+
+        # Update successor count of predecessors to new node
+
+        # return new_node

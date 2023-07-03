@@ -49,6 +49,9 @@ class Grass:
             ckpt_dir: str = datetime.now().strftime("Tests/Date_%m-%d_Time_%H-%M"),
             skill_library_dir: str = None,
             resume: bool = False,
+            graph_agent_model_name: str = "gpt-3.5-turbo",
+            graph_agent_temperature: int= 0,
+            graph_agent_request_timeout: int = 120
     ):
         """
         The main class for Grass.
@@ -164,11 +167,15 @@ class Grass:
         self.last_events = None
 
         # init graph_agent and graph
-        self.graph_agent = GraphBuilder()
+        self.graph_agent = GraphBuilder(
+            model_name=graph_agent_model_name,
+            temperature=graph_agent_temperature,
+            request_timout=graph_agent_request_timeout
+        )
         self.graph = self.graph_agent.load_graph_json(
             (ckpt_dir + "/graph.json") if resume else "grass/graph_tools/primitive_graph.json")
 
-    def reset(self, task, item_name, context="", reset_env=True):
+    def reset(self, new_node_info, reset_env=True):
         self.action_agent_rollout_num_iter = 0
         self.task = task
         self.context = context
@@ -187,13 +194,13 @@ class Grass:
             "bot.chat(`/time set ${getNextTime()}`);\n"
             + f"bot.chat('/difficulty {difficulty}');"
         )
-        skills = []
-        preds = self.graph.predecessors(item_name)
-        for p in preds:
-            prev_node = self.graph.nodes[p]
-            with open(self.ckpt_dir + '/skill_code/' + prev_node['script_path'], 'r') as file:
-                contents = file.read()
-                skills.append(contents)
+        # skills = []
+        # preds = self.graph.predecessors(item_name)
+        # for p in preds:
+        #     prev_node = self.graph.nodes[p]
+        #     with open(self.ckpt_dir + '/skill_code/' + prev_node['script_path'], 'r') as file:
+        #         contents = file.read()
+        #         skills.append(contents)
         # skills = self.skill_manager.retrieve_skills(query=self.context)
         print(
             f"\033[33mRender Action Agent system message with {len(skills)} control_primitives\033[0m"
@@ -304,8 +311,8 @@ class Grass:
             )
         return self.messages, 0, done, info
 
-    def rollout(self, *, task, context, reset_env=True, item_name):
-        self.reset(task=task, context=context, reset_env=reset_env, item_name=item_name)
+    def rollout(self, *, new_node_info, reset_env=True):
+        self.reset(new_node_info=new_node_info, reset_env=reset_env)
         while True:
             messages, reward, done, info = self.step()
             if done:
@@ -349,16 +356,15 @@ class Grass:
             #     max_retries=5,
             # )
 
-            current_node = self.graph_builder.get_new_node()
+            new_node = self.graph_builder.get_new_node()
+            task = new_node['name']
 
             print(
                 f"\033[35mStarting task {task} for at most {self.action_agent_task_max_retries} times\033[0m"
             )
             try:
                 messages, reward, done, info = self.rollout(
-                    item_name=node_name,
-                    task=task,
-                    context=context,
+                    new_node_info=new_node_info,
                     reset_env=reset_env,
                 )
             except Exception as e:
