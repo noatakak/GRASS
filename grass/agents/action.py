@@ -215,8 +215,8 @@ class ActionAgent:
                 code_pattern = re.compile(r"```(?:javascript|js)(.*?)```", re.DOTALL)
 
                 basics_pattern = re.compile(r"(~~~Basics:)(.*?)~~~", re.DOTALL)
-                basic_str = "\n".join(basics_pattern.findall(message.content))
-                basic_list = basic_str.strip("{}").split(", ")
+                basic_str = basics_pattern.findall(message.content)[0][1]
+                basic_list = basic_str.replace("\n{", "").replace("}\n", "").split(", ")
 
                 code = "\n".join(code_pattern.findall(message.content))
                 parsed = babel.parse(code)
