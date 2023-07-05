@@ -44,6 +44,11 @@ class GraphBuilder:
         successor_list = graph.successors(graph[info["node_name"]])
         for x in successor_list:
             graph[info[x]]["weight"]["successors"] = graph[info[x]]["weight"]["successors"] + 1
+        for basic in info["basic_list"]:
+            graph[info["node_name"]]["predecessors"].append(basic)
+            graph[basic]["successors"].append(info["node_name"])
+            graph.add_edge(basic, info["node_name"])
+
 
     def fail_node(self, graph, info):
         # four was chosen here because it has to be larger than two because of the increase in successors and trials

@@ -229,7 +229,7 @@ class Grass:
         self.conversations.append(
             (self.messages[0].content, self.messages[1].content, ai_message.content)
         )
-        parsed_result = self.action_agent.process_ai_message(message=ai_message)
+        parsed_result = self.action_agent.process_new_ai_message(message=ai_message)
         success = False
         if isinstance(parsed_result, dict):
             code = parsed_result["program_code"] + "\n" + parsed_result["exec_code"]
@@ -299,6 +299,7 @@ class Grass:
             "task": self.task,
             "success": success,
             "conversations": self.conversations,
+            "basic_list": parsed_result["basic_list"]
         }
         if success:
             assert (
