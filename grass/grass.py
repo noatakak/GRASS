@@ -357,6 +357,9 @@ class Grass:
             #     chest_observation=self.action_agent.render_chest_observation(),
             #     max_retries=5,
             # )
+            if self.recorder.iteration > self.max_iterations:
+                print("Iteration limit reached")
+                break
 
             new_node = self.graph_agent.get_new_node(graph=self.graph, trials=self.trial_count)
             task = new_node['name']

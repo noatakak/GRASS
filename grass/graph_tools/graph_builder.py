@@ -137,6 +137,7 @@ class GraphBuilder:
 
             for p in predecessors:
                 graph.nodes[p]['weight']['successors'] = graph.nodes[p]['weight']['successors'] + 1
+                graph.adda_edge(p, name)
 
             new_node = graph.nodes[name]
 
