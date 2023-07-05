@@ -91,14 +91,14 @@ class ActionAgent:
             "mineflayer",
         ]
         pred_nodes = new_node['predecessors']
-        predecessors = [{"name": x, "knowledge": graph(x)['knowledge'], 'code': self.load_code_text(graph(x)['file_path'])} for x in pred_nodes]
+        predecessors = [{"node_name": x, "knowledge": graph.nodes[x]['knowledge'], 'code': self.load_code_text(graph.nodes[x]['file_path'])} for x in pred_nodes]
         primitives = load_control_primitives_context(base_skills)
         response_format = load_prompt("action_response_format")
         system_message_prompt = SystemMessagePromptTemplate.from_template(
             system_template
         )
         system_message = system_message_prompt.format(
-            task=new_node['name'], predecessors=predecessors, primitives=primitives, response_format=response_format
+            task=new_node['node_name'], predecessors=predecessors, primitives=primitives, response_format=response_format
         )
         assert isinstance(system_message, SystemMessage)
         return system_message
@@ -214,7 +214,7 @@ class ActionAgent:
 
                 code_pattern = re.compile(r"```(?:javascript|js)(.*?)```", re.DOTALL)
 
-                basics_pattern = re.compile(r"(\+\+\+List of Basic Skills:)(.*?)\+\+\+", re.DOTALL)
+                basics_pattern = re.compile(r"(\+\+\+Basics:)(.*?)\+\+\+", re.DOTALL)
                 basic_str = "\n".join(basics_pattern.findall(message.content))
                 basic_list = basic_str.strip("{}").split(", ")
 

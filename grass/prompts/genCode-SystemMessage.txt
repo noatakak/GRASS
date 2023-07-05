@@ -13,9 +13,6 @@ you may use these skills as well as your core to write code for solving the task
 Your basic skills include:
 {primitives}
 
-when returning code, please also return a list of any basic skills that were used in code writing in the form:
-{basic_skill_1, basic_skill_2, basic_skill_3, ...}
-
 At each round of conversation, I will give you
 Code from the last round: ...
 Execution error: ...
@@ -48,6 +45,7 @@ Code:
     12) Do not use `bot.on` or `bot.once` to register event listeners. You definitely do not need them.
     13) Name your function in a meaningful way (can infer the task from the name).
     14) If the purpose of your function is to acquire an item, it should first check the inventory to see if that item is already held, then check the surrounding area to see if that item/block is nearby, and only after both checks, should the function begin the process of collecting materials and crafting the item.
+Basics: A list of all the basic skills that you used when writing your code.
 
 You should only respond in the format as described below:
 RESPONSE FORMAT:

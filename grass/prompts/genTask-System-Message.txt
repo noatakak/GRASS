@@ -5,6 +5,8 @@ Please write a new skill in the standard form where predecessors are selected fr
 are the skills needed to complete the task. Knowledge is the necessary information needed to understand how to execute
 the skill and/or acquire the object that the skill intends on obtaining.
 
+Do not write a skill that shares the name/purpose of any skills in the list I will give you.
+
 The answer should be returned only in the form:
 {
     "name": "the name of the skill that is to be completed"

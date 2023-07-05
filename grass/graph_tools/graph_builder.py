@@ -40,13 +40,13 @@ class GraphBuilder:
 
     def success_node(self, graph, info):
         file_name = SkillManager.add_graph_skill(graph, info)
-        graph[info["node_name"]]["filepath"] = file_name
-        successor_list = graph.successors(graph[info["node_name"]])
+        graph.nodes[info["node_name"]]["filepath"] = file_name
+        successor_list = graph.successors(graph.nodes[info["node_name"]])
         for x in successor_list:
-            graph[info[x]]["weight"]["successors"] = graph[info[x]]["weight"]["successors"] + 1
+            graph.nodes[x["node_name"]]["weight"]["successors"] = graph.nodes[x["node_name"]]["weight"]["successors"] + 1
         for basic in info["basic_list"]:
-            graph[info["node_name"]]["predecessors"].append(basic)
-            graph[basic]["successors"].append(info["node_name"])
+            graph.nodes[info["node_name"]]["predecessors"].append(basic)
+            graph.nodes[basic]["successors"].append(info["node_name"])
             graph.add_edge(basic, info["node_name"])
 
 
@@ -54,11 +54,11 @@ class GraphBuilder:
         # four was chosen here because it has to be larger than two because of the increase in successors and trials
         # every iteration,we chose 4 over three because of the rapid increase in trials means that fails should make
         # more of a landmark
-        graph[info["node_name"]]["weight"]["failures"] = graph[info["node_name"]]["weight"]["failures"] + 4
-        successor_list = graph.successors(graph[info["node_name"]])
+        graph.nodes[info["node_name"]]["weight"]["failures"] = graph.nodes[info["node_name"]]["weight"]["failures"] + 4
+        successor_list = graph.successors(graph.nodes[info["node_name"]])
         for x in successor_list:
-            graph[info[x]]["weight"]["failures"] = graph[info[x]]["weight"]["failures"] + 4
-            graph[info[x]]["weight"]["successors"] = graph[info[x]]["weight"]["failures"] + 1
+            graph.nodes[x["node_name"]]["weight"]["failures"] = graph.nodes[x["node_name"]]["weight"]["failures"] + 4
+            graph.nodes[x["node_name"]]["weight"]["successors"] = graph.nodes[x["node_name"]]["weight"]["failures"] + 1
 
     def create_primitive_graph(self):
         graph = nx.DiGraph()
@@ -109,7 +109,7 @@ class GraphBuilder:
                             best_nodes[count] = n
 
         for count, element in enumerate(best_nodes):
-            if graph.nodes[element]['file_path'] == "" and graph.nodes[element]['weight']['depth'] == 0:
+            if graph.nodes[element]['file_path'] == "" and graph.nodes[element]['weight']['depth'] != 0:
                 revisit_node = True
                 new_node = graph.nodes[element]
             best_nodes[count] = str(graph.nodes[element])
@@ -136,13 +136,13 @@ class GraphBuilder:
                     weight_depth = graph.nodes[p]['weight']['depth']
             weight_depth = weight_depth + 1
             weight = {'depth': weight_depth, 'successors': 0, 'failures': 0}
-            graph.add_node(name, name=name, weight=weight,
+            graph.add_node(name, node_name=name, weight=weight,
                            knowledge=knowledge, predecessors=predecessors,
                            successors=successors, file_path=filepath)
 
             for p in predecessors:
                 graph.nodes[p]['weight']['successors'] = graph.nodes[p]['weight']['successors'] + 1
-                graph.adda_edge(p, name)
+                graph.add_edge(p, name)
 
             new_node = graph.nodes[name]
 

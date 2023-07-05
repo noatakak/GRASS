@@ -1,2 +1,2 @@
-Your five available skills are:
+Your available skills are:
 {top_five}

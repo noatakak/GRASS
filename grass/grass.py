@@ -313,8 +313,8 @@ class Grass:
             )
         return self.messages, 0, done, info
 
-    def rollout(self, *, new_node_info, reset_env=True):
-        self.reset(new_node_info=new_node_info, reset_env=reset_env)
+    def rollout(self, *, new_node, reset_env=True):
+        self.reset(new_node=new_node, reset_env=reset_env)
         self.trial_count = self.trial_count + 1
         while True:
             messages, reward, done, info = self.step()
@@ -363,8 +363,8 @@ class Grass:
                 break
 
             new_node = self.graph_agent.get_new_node(graph=self.graph, trials=self.trial_count)
-            task = new_node['name']
-
+            self.task = new_node['node_name']
+            task = self.task
             print(
                 f"\033[35mStarting task {task} for at most {self.action_agent_task_max_retries} times\033[0m"
             )
