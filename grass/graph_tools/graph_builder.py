@@ -82,7 +82,7 @@ class GraphBuilder:
         weight = (successors + trials) / (depth + failures)
         return weight
 
-    def loadText(textFile):
+    def loadText(self, textFile):
         # Loads text file
         with open('grass/' + textFile, 'r') as file:
             content = file.read()
@@ -100,14 +100,14 @@ class GraphBuilder:
                     best_nodes.append(n)
                 else:
                     for count, element in best_nodes:
-                        if self.calc_weight(graph(n), trials) > self.calc_weight(graph(best_nodes[count]), trials):
+                        if self.calc_weight(graph.nodes[n], trials) > self.calc_weight(graph.nodes[best_nodes[count]], trials):
                             best_nodes[count] = n
 
         for count, element in enumerate(best_nodes):
-            if graph(element)['file_path'] == "":
+            if graph.nodes[element]['file_path'] == "" and graph.nodes[element]['weight']['depth'] == 0:
                 revisit_node = True
-                new_node = graph(element)
-            best_nodes[count] = str(graph(element))
+                new_node = graph.nodes[element]
+            best_nodes[count] = str(graph.nodes[element])
 
         if not revisit_node:
             system_message = SystemMessage(content=self.loadText("prompts/genTask-System-Message.txt"))
@@ -127,8 +127,8 @@ class GraphBuilder:
             filepath = ""
             weight_depth = -1
             for p in predecessors:
-                if graph(p)['weight']['depth'] > weight_depth:
-                    weight_depth = graph(p)['weight']['depth']
+                if graph.nodes[p]['weight']['depth'] > weight_depth:
+                    weight_depth = graph.nodes[p]['weight']['depth']
             weight_depth = weight_depth + 1
             weight = {'depth': weight_depth, 'successors': 0, 'failures': 0}
             graph.add_node(name, name=name, weight=weight,
@@ -136,8 +136,8 @@ class GraphBuilder:
                            successors=successors, file_path=filepath)
 
             for p in predecessors:
-                graph(p)['weight']['successors'] = graph(p)['weight']['successors'] + 1
+                graph.nodes[p]['weight']['successors'] = graph.nodes[p]['weight']['successors'] + 1
 
-            new_node = graph(name)
+            new_node = graph.nodes[name]
 
         return new_node

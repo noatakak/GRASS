@@ -13,3 +13,5 @@ async function yourMainFunctionName(bot) {
   // ...
 }
 ```
+List of Basic Skills:
+{...}

@@ -314,8 +314,6 @@ class Grass:
 
     def rollout(self, *, new_node_info, reset_env=True):
         self.reset(new_node_info=new_node_info, reset_env=reset_env)
-    def rollout(self, *, task, context, reset_env=True, item_name):
-        self.reset(task=task, context=context, reset_env=reset_env, item_name=item_name)
         self.trial_count = self.trial_count + 1
         while True:
             messages, reward, done, info = self.step()
@@ -368,7 +366,7 @@ class Grass:
             )
             try:
                 messages, reward, done, info = self.rollout(
-                    new_node_info=new_node,
+                    new_node=new_node,
                     reset_env=reset_env,
                 )
             except Exception as e:
