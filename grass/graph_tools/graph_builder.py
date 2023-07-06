@@ -6,8 +6,7 @@ from langchain.prompts import SystemMessagePromptTemplate, HumanMessagePromptTem
 from langchain.schema import AIMessage, HumanMessage, SystemMessage
 from grass.control_primitives_context import load_control_primitives_context
 from grass.graph_tools.primitive_knowledge import load_primitive_knowledge
-from grass.agents.skill import  SkillManager
-
+import grass.utils as U
 
 class GraphBuilder:
     def __init__(self,
@@ -38,9 +37,7 @@ class GraphBuilder:
         with open(filepath, 'w') as file:
             json.dump(json_graph.node_link_data(graph), file, indent=4)
 
-    def success_node(self, graph, info):
-        file_name = SkillManager.add_graph_skill(graph, info)
-        graph.nodes[info["task"]]["filepath"] = file_name
+    def success_node(self, graph, info, ckpt_dir):
         successor_list = graph.successors(info["task"])
         for x in successor_list:
             graph.nodes[x["node_name"]]["weight"]["successors"] = graph.nodes[x["node_name"]]["weight"]["successors"] + 1
@@ -48,9 +45,28 @@ class GraphBuilder:
             graph.nodes[info["task"]]["predecessors"].append(basic)
             graph.nodes[basic]["successors"].append(info["task"])
             graph.add_edge(basic, info["task"])
+        max = -1
+        for pred in graph.predecessors(info["task"]):
+            if graph.nodes[pred]["weight"]["depth"] > max:
+                max = graph.nodes[pred]["weight"]["depth"]
+        max = max + 1
+        graph.nodes[info["task"]]["weight"]["depth"] = max
+        file_name = self.add_graph_skill(graph, info, ckpt_dir)
+        graph.nodes[info["task"]]["file_path"] = file_name
 
+    def add_graph_skill(self, graph,  info, ckpt_dir):
+        program_name = info["program_name"]
+        program_code = info["program_code"]
+        U.dump_text(
+            program_code, f"{ckpt_dir}/skill_code/{program_name}.js"
+        )
+        task_name = info['task']
+        graph.nodes[task_name]['file_path'] = program_name
+        with open(f"{ckpt_dir}/graph.json", 'w') as file:
+            json.dump(json_graph.node_link_data(graph), file, indent=4)
+        return f"{ckpt_dir}/skill_code/{program_name}.js"
 
-    def fail_node(self, graph, info):
+    def fail_node(self, graph, info, ckpt_dir):
         # four was chosen here because it has to be larger than two because of the increase in successors and trials
         # every iteration,we chose 4 over three because of the rapid increase in trials means that fails should make
         # more of a landmark
@@ -59,6 +75,14 @@ class GraphBuilder:
         for x in successor_list:
             graph.nodes[x["node_name"]]["weight"]["failures"] = graph.nodes[x["node_name"]]["weight"]["failures"] + 4
             graph.nodes[x["node_name"]]["weight"]["successors"] = graph.nodes[x["node_name"]]["weight"]["failures"] + 1
+        max = -1
+        for pred in graph.predecessors(info["task"]):
+            if graph.nodes[pred]["weight"]["depth"] > max:
+                max = graph.nodes[pred]["weight"]["depth"]
+        max = max + 1
+        graph.nodes[info["task"]]["weight"]["depth"] = max
+        with open(f"{ckpt_dir}/graph.json", 'w') as file:
+            json.dump(json_graph.node_link_data(graph), file, indent=4)
 
     def create_primitive_graph(self):
         graph = nx.DiGraph()
@@ -68,8 +92,8 @@ class GraphBuilder:
         for name in context_names:
             weight = {'depth': 0, 'successors': 0, 'failures': 0}
             knowledge = knowledge_files[name]
-            predecessors = {}
-            successors = {}
+            predecessors = []
+            successors = []
             file_path = primitive_paths[name]
             graph.add_node(name, name=name, weight=weight,
                            knowledge=knowledge, predecessors=predecessors,
@@ -124,7 +148,7 @@ class GraphBuilder:
             jTextNode = json.loads(stringContent)
             name = jTextNode['name']
             knowledge = jTextNode['knowledge']
-            successors = {}
+            successors = []
             predecessors = jTextNode['predecessors']
             filepath = ""
             weight_depth = -1

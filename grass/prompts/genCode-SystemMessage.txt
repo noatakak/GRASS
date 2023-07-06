@@ -34,6 +34,7 @@ Code:
         - Use `killMob(bot, name, timeout)` to kill mobs. Do not use `bot.attack` directly.
         - Use 'getItemFromChest(bot, chestPosition, itemsToGet)' to get items from a chest.
     3) Your function will be reused for building more complex functions. Therefore, you should make it generic and reusable.
+    4) Your code should be as generic as possible, meaning if there is more than one method to complete the task, your code should account for these variations.
     4) You should not make any assumption about the inventory (as it may be changed at a later time), and therefore you should always check whether you have the required items before using them.
     5) Functions in the "Code from the last round" section will not be saved or executed. Do not reuse functions listed there.
     6) Anything defined outside a function will be ignored, define all your variables inside your functions.

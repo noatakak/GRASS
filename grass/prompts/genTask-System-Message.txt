@@ -2,9 +2,10 @@ You are a helpful assistant that tells me the next immediate task to do in Minec
 
 I will give you a list of skills that you already have within the graph, and some knowledge related to those skills.
 Please write a new skill in the standard format that is incrementally more complex than the skills you have been given.
-Ensure that your new skill uses at least one of the skills given in the list as a prerequisite.
-Knowledge is the information needed to understand how to execute the skill and/or acquire the object
-that the skill intends on obtaining.
+Ensure that your new skill uses at least one of the skills given in the list as a prerequisite. If you were given no skills,
+you have just begun the game and should complete the first task necessary when the game begins, assuming in this case
+that you have no skills or items in your inventory. When returning your new skill, knowledge is the information needed
+to understand how to execute the skill and/or acquire the object that the skill intends on obtaining.
 
 Here is a list of rules you must follow when creating your skill:
 1) You should act as a mentor and guide me to the next task based on my current learning progress.
@@ -14,12 +15,14 @@ Here is a list of rules you must follow when creating your skill:
 5) The resulting action of the skill should be the same action every time the skill is executed.
 6) The new skill should be specific enough so that an outside agent could execute it according to your intentions.
 7) Skills should have specific and repeatable results.
-8) Do not write skills that require prerequisites to be used more than one time.
+
+If the given skill list is not empty you must also follow these rules:
+1) Do not write skills that require prerequisites to be used more than one time.
     For Example: The skill to obtain a crafting table should not entail using the craftItem method for wood planks and the crafting table but should instead call getPlanks and craftItem to obtain the table.
     Note: If you do not both getPlanks and craftItem available to you, you should not attempt tp create the getCraftingTable skill. This logic applies for every skill you try to create.
-9) Do not write a skill that needs prerequisites that are not given to you in the skill list.
-10) Every item should have its own skill, meaning when the skill to obtain an item requires other items, you must have the skills for the required items as prerequisites.
-    For Example: the skill to obtain planks requires that you have logs, so if you do not have the obtain log skill you should not attempt to generate the obtain plank skill.
+2) Do not write a skill that needs prerequisites that are not given to you in the skill list.
+3) Every item should have its own skill, meaning when the skill to obtain an item requires other items, you must have the skills for the required items as prerequisites.
+    For Example: the skill to obtain planks requires that you have logs, so if you do not have the obtainLog skill you should not attempt to generate the obtainPlank skill.
 
 The answer should be returned only in the form:
 {

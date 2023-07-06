@@ -174,6 +174,7 @@ class Grass:
             temperature=graph_agent_temperature,
             request_timout=graph_agent_request_timeout
         )
+        self.ckpt_dir = ckpt_dir
         self.graph = self.graph_agent.load_graph_json(
             (ckpt_dir + "/graph.json") if resume else "grass/graph_tools/primitive_graph.json")
 
@@ -296,7 +297,7 @@ class Grass:
             "task": self.task,
             "success": success,
             "conversations": self.conversations,
-            "basic_list": parsed_result["basic_list"]
+            "basic_list": parsed_result["basic_list"],
         }
         if success:
             assert (
@@ -393,9 +394,9 @@ class Grass:
                 print(f"\033[41m{e}\033[0m")
 
             if info["success"]:
-                self.graph_agent.success_node(self.graph, info)
+                self.graph_agent.success_node(self.graph, info, self.ckpt_dir)
             else:
-                self.graph_agent.fail_node(self.graph, info)
+                self.graph_agent.fail_node(self.graph, info, self.ckpt_dir)
 
             self.curriculum_agent.update_exploration_progress(info)
             print(

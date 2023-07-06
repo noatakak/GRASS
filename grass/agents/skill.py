@@ -57,21 +57,9 @@ class SkillManager:
         programs = ""
         for skill_name, entry in self.skills.items():
             programs += f"{entry['code']}\n\n"
-        for primitives in self.control_primitives:
+        for primitives in self.control_primitives[0]:
             programs += f"{primitives}\n\n"
         return programs
-
-    def add_graph_skill(self, graph,  info):
-        program_name = info["program_name"]
-        program_code = info["program_code"]
-        U.dump_text(
-            program_code, f"{self.ckpt_dir}/skill_code/{program_name}.js"
-        )
-        task_name = info['task']
-        graph.nodes[task_name]['script'] = program_name
-        with open(f"{self.ckpt_dir}/graph.json", 'w') as file:
-            json.dump(json_graph.node_link_data(graph), file, indent=4)
-        return f"{self.ckpt_dir}/skill_code/{program_name}.js"
 
     def add_new_skill(self, info):
         if info["task"].startswith("Deposit useless items into the chest at"):
