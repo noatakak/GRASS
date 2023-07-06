@@ -13,6 +13,7 @@ async function yourMainFunctionName(bot) {
   // ...
 }
 ```
-~~~Basics:
+Basics:
+```list
 {basic_skill1, basic_skill2, ...}
-~~~
+```

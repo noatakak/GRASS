@@ -214,8 +214,8 @@ class ActionAgent:
 
                 code_pattern = re.compile(r"```(?:javascript|js)(.*?)```", re.DOTALL)
 
-                basics_pattern = re.compile(r"(~~~Basics:)(.*?)~~~", re.DOTALL)
-                basic_str = basics_pattern.findall(message.content)[0][1]
+                basics_pattern = re.compile(r"```(?:list|)(.*?)```", re.DOTALL)
+                basic_str = basics_pattern.findall(message.content)[0]
                 basic_list = basic_str.replace("\n{", "").replace("}\n", "").split(", ")
 
                 code = "\n".join(code_pattern.findall(message.content))

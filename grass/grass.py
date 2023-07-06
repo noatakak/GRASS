@@ -179,7 +179,7 @@ class Grass:
 
     def reset(self, new_node, reset_env=True):
         self.action_agent_rollout_num_iter = 0
-        # self.task = task
+        self.task = new_node["node_name"]
         # self.context = context
         if reset_env:
             self.env.reset(
@@ -278,7 +278,7 @@ class Grass:
             #         skills.append(contents)
             system_message = self.action_agent.render_system_message(self.graph, self.new_node)
             human_message = self.action_agent.render_human_message(
-                events=events, code="", task=self.task, critique=""
+                events=events, code=parsed_result["program_code"], task=self.task, critique=""
             )
             self.last_events = copy.deepcopy(events)
             self.messages = [system_message, human_message]

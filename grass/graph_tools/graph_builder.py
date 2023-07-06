@@ -40,22 +40,22 @@ class GraphBuilder:
 
     def success_node(self, graph, info):
         file_name = SkillManager.add_graph_skill(graph, info)
-        graph.nodes[info["node_name"]]["filepath"] = file_name
-        successor_list = graph.successors(graph.nodes[info["node_name"]])
+        graph.nodes[info["task"]]["filepath"] = file_name
+        successor_list = graph.successors(info["task"])
         for x in successor_list:
             graph.nodes[x["node_name"]]["weight"]["successors"] = graph.nodes[x["node_name"]]["weight"]["successors"] + 1
         for basic in info["basic_list"]:
-            graph.nodes[info["node_name"]]["predecessors"].append(basic)
-            graph.nodes[basic]["successors"].append(info["node_name"])
-            graph.add_edge(basic, info["node_name"])
+            graph.nodes[info["task"]]["predecessors"].append(basic)
+            graph.nodes[basic]["successors"].append(info["task"])
+            graph.add_edge(basic, info["task"])
 
 
     def fail_node(self, graph, info):
         # four was chosen here because it has to be larger than two because of the increase in successors and trials
         # every iteration,we chose 4 over three because of the rapid increase in trials means that fails should make
         # more of a landmark
-        graph.nodes[info["node_name"]]["weight"]["failures"] = graph.nodes[info["node_name"]]["weight"]["failures"] + 4
-        successor_list = graph.successors(graph.nodes[info["node_name"]])
+        graph.nodes[info["task"]]["weight"]["failures"] = graph.nodes[info["task"]]["weight"]["failures"] + 4
+        successor_list = graph.successors(info["task"])
         for x in successor_list:
             graph.nodes[x["node_name"]]["weight"]["failures"] = graph.nodes[x["node_name"]]["weight"]["failures"] + 4
             graph.nodes[x["node_name"]]["weight"]["successors"] = graph.nodes[x["node_name"]]["weight"]["failures"] + 1

@@ -67,7 +67,7 @@ class SkillManager:
         U.dump_text(
             program_code, f"{self.ckpt_dir}/skill_code/{program_name}.js"
         )
-        task_name = info['node_name']
+        task_name = info['task']
         graph.nodes[task_name]['script'] = program_name
         with open(f"{self.ckpt_dir}/graph.json", 'w') as file:
             json.dump(json_graph.node_link_data(graph), file, indent=4)
