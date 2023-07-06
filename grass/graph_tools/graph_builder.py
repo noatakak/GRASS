@@ -96,17 +96,14 @@ class GraphBuilder:
     def get_new_node(self, graph, trials):
         revisit_node = False
         best_nodes = []
-        if len(graph.nodes) < 13:
-            for n in graph.nodes:
+
+        for n in graph.nodes:
+            if len(best_nodes) < 5 and graph.nodes[n]['weight']['depth'] != 0:
                 best_nodes.append(n)
-        else:
-            for n in graph.nodes:
-                if len(best_nodes) < 5:
-                    best_nodes.append(n)
-                else:
-                    for count, element in best_nodes:
-                        if self.calc_weight(graph.nodes[n], trials) > self.calc_weight(graph.nodes[best_nodes[count]], trials):
-                            best_nodes[count] = n
+            else:
+                for count, element in best_nodes:
+                    if self.calc_weight(graph.nodes[n], trials) > self.calc_weight(graph.nodes[best_nodes[count]], trials) and graph.nodes[n]['weight']['depth'] != 0:
+                        best_nodes[count] = n
 
         for count, element in enumerate(best_nodes):
             if graph.nodes[element]['file_path'] == "" and graph.nodes[element]['weight']['depth'] != 0:
