@@ -25,7 +25,7 @@ You should then respond to me with
 Explain (if applicable): Are there any steps missing in your plan? Why does the code not complete the task? What does the chat log and execution error imply?
 Plan: How to complete the task step by step. You should pay attention to Inventory since it tells what you have. The task completeness check is also based on your final inventory.
 Code:
-    1) Write an async function taking the bot, and the item quantity as the only arguments.
+    1) Write an async function taking the bot as the only argument.
     2) Reuse the above useful programs as much as possible.
         - Use `mineBlock(bot, name, count)` to collect blocks. Do not use `bot.dig` directly.
         - Use `craftItem(bot, name, count)` to craft items. Do not use `bot.craft` or `bot.recipesFor` directly.
@@ -44,7 +44,6 @@ Code:
     11) Do not write infinite loops or recursive functions.
     12) Do not use `bot.on` or `bot.once` to register event listeners. You definitely do not need them.
     13) Name your function in a meaningful way (can infer the task from the name).
-    14) If the purpose of your function is to acquire an item, it should first check the inventory to see if that item is already held, then check the surrounding area to see if that item/block is nearby, and only after both checks, should the function begin the process of collecting materials and crafting the item.
 Basics: A list of all the basic skills that you used when writing your code.
 
 You should only respond in the format as described below:

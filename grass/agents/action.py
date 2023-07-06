@@ -250,7 +250,7 @@ class ActionAgent:
                 assert (
                         len(main_function["params"]) == 1
                         and main_function["params"][0].name == "bot"
-                ), f"Main function {main_function['name']} must take a single argument named 'bot'"
+                ), f"Main function {main_function['name']} must take an argument named 'bot'"
                 program_code = "\n\n".join(function["body"] for function in functions)
                 exec_code = f"await {main_function['name']}(bot);"
                 return {

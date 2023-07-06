@@ -12,6 +12,7 @@ from .agents import CurriculumAgent
 from .agents import SkillManager
 from .graph_tools.graph_builder import GraphBuilder
 from datetime import datetime
+import traceback
 
 
 # TODO: remove event memory
@@ -268,20 +269,16 @@ class Grass:
             #           + "\n\n"
             #           + self.action_agent.summarize_chatlog(events)
             # )
-            skills = []
-            preds = self.graph.predecessors(self.item_name)
-            for p in preds:
-                prev_node = self.graph.nodes[p]
-                with open(self.ckpt_dir + '/skill_code/' + prev_node['script_path'], 'r') as file:
-                    contents = file.read()
-                    skills.append(contents)
-            system_message = self.action_agent.render_system_message(skills=skills)
+            # skills = []
+            # preds = self.graph.predecessors(self.task)
+            # for p in preds:
+            #     prev_node = self.graph.nodes[p]
+            #     with open(self.ckpt_dir + '/skill_code/' + prev_node['script_path'], 'r') as file:
+            #         contents = file.read()
+            #         skills.append(contents)
+            system_message = self.action_agent.render_system_message(self.graph, self.new_node)
             human_message = self.action_agent.render_human_message(
-                events=events,
-                code=parsed_result["program_code"],
-                task=self.task,
-                context=self.context,
-                critique=critique,
+                events=events, code="", task=self.task, critique=""
             )
             self.last_events = copy.deepcopy(events)
             self.messages = [system_message, human_message]
@@ -362,7 +359,8 @@ class Grass:
                 print("Iteration limit reached")
                 break
 
-            new_node = self.graph_agent.get_new_node(graph=self.graph, trials=self.trial_count)
+            self.new_node = self.graph_agent.get_new_node(graph=self.graph, trials=self.trial_count)
+            new_node = self.new_node
             self.task = new_node['node_name']
             task = self.task
             print(
@@ -390,6 +388,7 @@ class Grass:
                     }
                 )
                 # use red color background to print the error
+                traceback.print_exc()
                 print("Your last round rollout terminated due to error:")
                 print(f"\033[41m{e}\033[0m")
 
