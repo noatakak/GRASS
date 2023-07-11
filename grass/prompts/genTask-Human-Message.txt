@@ -1,2 +1,6 @@
 Your available skills are:
 {top_five}
+
+You have attempted and failed to create the following skills before.
+Please do not attempt to create these again or use them in the creation of a new skill:
+{failures}

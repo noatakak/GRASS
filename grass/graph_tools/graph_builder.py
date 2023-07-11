@@ -43,16 +43,27 @@ class GraphBuilder:
             graph.nodes[x["node_name"]]["weight"]["successors"] = graph.nodes[x["node_name"]]["weight"]["successors"] + 1
         for basic in info["basic_list"]:
             graph.nodes[info["task"]]["predecessors"].append(basic)
-            graph.nodes[basic]["successors"].append(info["task"])
+            graph.nodes[basic]["successors"].append(info["program_name"])
             graph.add_edge(basic, info["task"])
         max = -1
         for pred in graph.predecessors(info["task"]):
             if graph.nodes[pred]["weight"]["depth"] > max:
                 max = graph.nodes[pred]["weight"]["depth"]
         max = max + 1
-        graph.nodes[info["task"]]["weight"]["depth"] = max
         file_name = self.add_graph_skill(graph, info, ckpt_dir)
-        graph.nodes[info["task"]]["file_path"] = file_name
+        nx.relabel_nodes(graph, {info["task"]: info["program_name"]}, False)
+        graph.nodes[info["program_name"]]["node_name"] = info["program_name"]
+        graph.nodes[info["program_name"]]["weight"]["depth"] = max
+        graph.nodes[info["program_name"]]["file_path"] = file_name
+        for pred in graph.predecessors(info["program_name"]):
+            graph.nodes[pred]["successors"].append(info["program_name"])
+        # graph.add_node(info["program_name"], node_name=info["program_name"],
+        #                weight=graph.nodes[info["task"]]["weight"],
+        #                knowledge=graph.nodes[info["task"]]["knowledge"],
+        #                predecessors=graph.nodes[info["task"]]["predecessors"],
+        #                successors=graph.nodes[info["task"]]["successors"],
+        #                file_path=graph.nodes[info["task"]]["file_path"])
+        # graph.remove_node(info["task"])
 
     def add_graph_skill(self, graph,  info, ckpt_dir):
         program_name = info["program_name"]
@@ -81,6 +92,8 @@ class GraphBuilder:
                 max = graph.nodes[pred]["weight"]["depth"]
         max = max + 1
         graph.nodes[info["task"]]["weight"]["depth"] = max
+        for pred in graph.predecessors(info["task"]):
+            graph.nodes[pred]["successors"].append(info["task"])
         with open(f"{ckpt_dir}/graph.json", 'w') as file:
             json.dump(json_graph.node_link_data(graph), file, indent=4)
 
@@ -101,8 +114,8 @@ class GraphBuilder:
 
         self.save_graph(graph, "grass/graph_tools/primitive_graph.json")
 
-    def calc_weight(self, node, trials):
-        weight_vals = node['weight']
+    def calc_weight(self, node, trials, graph):
+        weight_vals = graph.nodes[node]['weight']
         depth = weight_vals['depth']
         if depth == 0:
             return 0
@@ -117,17 +130,27 @@ class GraphBuilder:
             content = file.read()
         return content
 
-    def get_new_node(self, graph, trials):
+    def get_new_node(self, graph, trials, failures):
         revisit_node = False
         best_nodes = []
-
+        count = 0
+        for n in graph.nodes:
+            if graph.nodes[n]["file_path"] != "":
+                count = count +1
+                if count >= 13:
+                    break
         for n in graph.nodes:
             if len(best_nodes) < 5 and graph.nodes[n]['weight']['depth'] != 0:
-                best_nodes.append(n)
+                if count < 13 and graph.nodes[n]["file_path"] != "":
+                    best_nodes.append(n)
+                elif count >= 13:
+                    best_nodes.append(n)
             else:
-                for count, element in best_nodes:
-                    if self.calc_weight(graph.nodes[n], trials) > self.calc_weight(graph.nodes[best_nodes[count]], trials) and graph.nodes[n]['weight']['depth'] != 0:
-                        best_nodes[count] = n
+                for count, element in enumerate(best_nodes):
+                    if self.calc_weight(n, trials, graph) > self.calc_weight(best_nodes[count], trials, graph) and graph.nodes[n]['weight']['depth'] != 0:
+                        best_nodes[4] = n
+                        break
+                sorted(best_nodes, key = lambda x: self.calc_weight(x, trials, graph))
 
         for count, element in enumerate(best_nodes):
             if graph.nodes[element]['file_path'] == "" and graph.nodes[element]['weight']['depth'] != 0:
@@ -140,6 +163,7 @@ class GraphBuilder:
             human_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/genTask-Human-Message.txt"))
             human_message = human_prompt.format(
                 top_five=best_nodes,
+                failures=failures
             )
             assert isinstance(human_message, HumanMessage)
             GRAPH_message = [system_message, human_message]
@@ -149,7 +173,7 @@ class GraphBuilder:
             name = jTextNode['name']
             knowledge = jTextNode['knowledge']
             successors = []
-            predecessors = jTextNode['predecessors']
+            predecessors = []
             filepath = ""
             weight_depth = -1
             for p in predecessors:

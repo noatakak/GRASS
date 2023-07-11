@@ -35,9 +35,9 @@ class SkillManager:
         self.control_primitives = load_control_primitives()
         if resume:
             print(f"\033[33mLoading Skill Manager from {ckpt_dir}/skill\033[0m")
-            self.skills = U.load_json(f"{ckpt_dir}/skill/skills.json")
+            self.coded_skills = U.load_json(f"{ckpt_dir}/skill/skills.json")
         else:
-            self.skills = {}
+            self.coded_skills = {}
         # self.retrieval_top_k = retrieval_top_k
         self.ckpt_dir = ckpt_dir
         # self.vectordb = Chroma(
@@ -45,7 +45,7 @@ class SkillManager:
         #     embedding_function=OpenAIEmbeddings(),
         #     persist_directory=f"{ckpt_dir}/skill/vectordb",
         # )
-        # assert self.vectordb._collection.count() == len(self.skills), (
+        # assert self.vectordb._collection.count() == len(self.coded_skills), (
         #     f"Skill Manager's vectordb is not synced with skills.json.\n"
         #     f"There are {self.vectordb._collection.count()} skills in vectordb but {len(self.skills)} skills in skills.json.\n"
         #     f"Did you set resume=False when initializing the manager?\n"
@@ -55,12 +55,19 @@ class SkillManager:
     @property
     def programs(self):
         programs = ""
-        for skill_name, entry in self.skills.items():
+        for skill_name, entry in self.coded_skills.items():
             programs += f"{entry['code']}\n\n"
         for primitives in self.control_primitives[0]:
             programs += f"{primitives}\n\n"
         return programs
 
+    def add_to_skills(self, info, graph):
+        program_name = info["program_name"]
+        program_code = info["program_code"]
+        self.coded_skills[program_name] = {
+            "code": program_code,
+            "description": graph.nodes[info["program_name"]]["knowledge"],
+        }
     def add_new_skill(self, info):
         if info["task"].startswith("Deposit useless items into the chest at"):
             # No need to reuse the deposit skill
@@ -71,7 +78,7 @@ class SkillManager:
         print(
             f"\033[33mSkill Manager generated description for {program_name}:\n{skill_description}\033[0m"
         )
-        if program_name in self.skills:
+        if program_name in self.coded_skills:
             print(f"\033[33mSkill {program_name} already exists. Rewriting!\033[0m")
             self.vectordb._collection.delete(ids=[program_name])
             i = 2
@@ -85,13 +92,13 @@ class SkillManager:
             ids=[program_name],
             metadatas=[{"name": program_name}],
         )
-        self.skills[program_name] = {
+        self.coded_skills[program_name] = {
             "code": program_code,
             "description": skill_description,
         }
         assert self.vectordb._collection.count() == len(
-            self.skills
-        ), "vectordb is not synced with skills.json"
+            self.coded_skills
+        ), "vectordb is not synced with coded_skills.json"
         U.dump_text(
             skill_description,
             f"{self.ckpt_dir}/skill/description/{dumped_program_name}.txt",
@@ -99,7 +106,7 @@ class SkillManager:
         U.dump_text(
             program_code, f"{self.ckpt_dir}/skill/code/{program_name}.js"
         )
-        U.dump_json(self.skills, f"{self.ckpt_dir}/skill/skills.json")
+        U.dump_json(self.coded_skills, f"{self.ckpt_dir}/skill/skills.json")
         self.vectordb.persist()
 
     def generate_skill_description(self, program_name, program_code):

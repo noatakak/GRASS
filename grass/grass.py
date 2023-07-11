@@ -283,10 +283,12 @@ class Grass:
             )
             self.last_events = copy.deepcopy(events)
             self.messages = [system_message, human_message]
+            basic_list = parsed_result["basic_list"]
         else:
             assert isinstance(parsed_result, str)
             self.recorder.record([], self.task)
             print(f"\033[34m{parsed_result} Trying again!\033[0m")
+            basic_list = []
         assert len(self.messages) == 2
         self.action_agent_rollout_num_iter += 1
         done = (
@@ -297,7 +299,7 @@ class Grass:
             "task": self.task,
             "success": success,
             "conversations": self.conversations,
-            "basic_list": parsed_result["basic_list"],
+            "basic_list": basic_list,
         }
         if success:
             assert (
@@ -360,7 +362,7 @@ class Grass:
                 print("Iteration limit reached")
                 break
 
-            self.new_node = self.graph_agent.get_new_node(graph=self.graph, trials=self.trial_count)
+            self.new_node = self.graph_agent.get_new_node(graph=self.graph, trials=self.trial_count, failures=self.curriculum_agent.failed_tasks)
             new_node = self.new_node
             self.task = new_node['node_name']
             task = self.task
@@ -395,6 +397,7 @@ class Grass:
 
             if info["success"]:
                 self.graph_agent.success_node(self.graph, info, self.ckpt_dir)
+                self.skill_manager.add_to_skills(info, self.graph)
             else:
                 self.graph_agent.fail_node(self.graph, info, self.ckpt_dir)
 

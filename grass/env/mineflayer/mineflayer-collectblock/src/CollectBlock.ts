@@ -105,6 +105,7 @@ async function collectAll(
                     }
                     throw err;
                 }
+
                 break;
             }
             case "Entity": {
@@ -162,8 +163,8 @@ async function collectAll(
             }
         }
         options.targets.removeTarget(closest);
+        bot.chat(`Collect finish ${closest} !`);
     }
-    bot.chat(`Collect finish!`);
 }
 
 const equipToolOptions = {
