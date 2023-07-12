@@ -1,6 +1,6 @@
 The craftItem function takes in bot, along with the name of the item we are looking to craft, along with the count
 referring to the quantity of the specified item you would like to craft.
-A crafting table must be placed before calling this function.
-The method will find the crafting table, get the recipe for the item
-and craft that quantity. For Example: Craft 8 oak_planks from 2 oak_log (do the recipe 2 times):
+If the item you want to craft can be done without a crafting table, this method can be called on its own.
+If the item you want to craft does require a crafting table, one must be placed, before this method can be called.
+For Example: Craft 8 oak_planks from 2 oak_log (do the recipe 2 times):
  craftItem(bot, "oak_planks", 2);

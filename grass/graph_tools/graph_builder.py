@@ -38,13 +38,13 @@ class GraphBuilder:
             json.dump(json_graph.node_link_data(graph), file, indent=4)
 
     def success_node(self, graph, info, ckpt_dir):
-        successor_list = graph.successors(info["task"])
-        for x in successor_list:
-            graph.nodes[x["node_name"]]["weight"]["successors"] = graph.nodes[x["node_name"]]["weight"]["successors"] + 1
+        #successor_list = graph.successors(info["task"])
         for basic in info["basic_list"]:
-            graph.nodes[info["task"]]["predecessors"].append(basic)
+            graph.nodes[basic]["weight"]["successors"] = graph.nodes[basic]["weight"]["successors"] + 1
+            if basic not in graph.nodes[info["task"]]["predecessors"]:
+                graph.nodes[info["task"]]["predecessors"].append(basic)
+                graph.add_edge(basic, info["task"])
             graph.nodes[basic]["successors"].append(info["program_name"])
-            graph.add_edge(basic, info["task"])
         max = -1
         for pred in graph.predecessors(info["task"]):
             if graph.nodes[pred]["weight"]["depth"] > max:
@@ -55,8 +55,6 @@ class GraphBuilder:
         graph.nodes[info["program_name"]]["node_name"] = info["program_name"]
         graph.nodes[info["program_name"]]["weight"]["depth"] = max
         graph.nodes[info["program_name"]]["file_path"] = file_name
-        for pred in graph.predecessors(info["program_name"]):
-            graph.nodes[pred]["successors"].append(info["program_name"])
         # graph.add_node(info["program_name"], node_name=info["program_name"],
         #                weight=graph.nodes[info["task"]]["weight"],
         #                knowledge=graph.nodes[info["task"]]["knowledge"],
@@ -82,18 +80,22 @@ class GraphBuilder:
         # every iteration,we chose 4 over three because of the rapid increase in trials means that fails should make
         # more of a landmark
         graph.nodes[info["task"]]["weight"]["failures"] = graph.nodes[info["task"]]["weight"]["failures"] + 4
-        successor_list = graph.successors(info["task"])
-        for x in successor_list:
-            graph.nodes[x["node_name"]]["weight"]["failures"] = graph.nodes[x["node_name"]]["weight"]["failures"] + 4
-            graph.nodes[x["node_name"]]["weight"]["successors"] = graph.nodes[x["node_name"]]["weight"]["failures"] + 1
+        #successor_list = graph.successors(info["task"])
+        # for x in successor_list:
+        #     graph.nodes[x["node_name"]]["weight"]["failures"] = graph.nodes[x["node_name"]]["weight"]["failures"] + 4
+        #     graph.nodes[x["node_name"]]["weight"]["successors"] = graph.nodes[x["node_name"]]["weight"]["failures"] + 1
         max = -1
+        for pred in graph.predecessors(info["task"]):
+            graph.nodes[pred]
+            if info["task"] not in graph.nodes[pred]["successors"]:
+                graph.nodes[pred]["successors"].append(info["task"])
+                graph.nodes[pred]["weight"]["successors"] = graph.nodes[pred]["weight"]["successors"] + 1
+            graph.nodes[pred]["weight"]["failures"] = graph.nodes[pred]["weight"]["failures"] + 3
         for pred in graph.predecessors(info["task"]):
             if graph.nodes[pred]["weight"]["depth"] > max:
                 max = graph.nodes[pred]["weight"]["depth"]
         max = max + 1
         graph.nodes[info["task"]]["weight"]["depth"] = max
-        for pred in graph.predecessors(info["task"]):
-            graph.nodes[pred]["successors"].append(info["task"])
         with open(f"{ckpt_dir}/graph.json", 'w') as file:
             json.dump(json_graph.node_link_data(graph), file, indent=4)
 
@@ -156,24 +158,35 @@ class GraphBuilder:
             if graph.nodes[element]['file_path'] == "" and graph.nodes[element]['weight']['depth'] != 0:
                 revisit_node = True
                 new_node = graph.nodes[element]
-            best_nodes[count] = str(graph.nodes[element])
+            best_nodes[count] = graph.nodes[element]
 
         if not revisit_node:
+            input_string = ""
+            for node in best_nodes:
+                input_string += "{\n\"name\": \""
+                input_string += node['node_name'] + "\",\n\"knowledge\": \""
+                input_string += node['knowledge'] + "\",\n\"prerequisites\": "
+                input_string += str(node['predecessors']) + ",\n\"successors\": "
+                input_string += str(node['successors']) + "\n}\n"
             system_message = SystemMessage(content=self.loadText("prompts/genTask-System-Message.txt"))
             human_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/genTask-Human-Message.txt"))
             human_message = human_prompt.format(
-                top_five=best_nodes,
+                top_five=input_string,
                 failures=failures
             )
             assert isinstance(human_message, HumanMessage)
             GRAPH_message = [system_message, human_message]
+            print(
+                f"\033[32m****Graph Agent human message****\n{human_message.content}\033[0m"
+            )
             ai_message = self.llm(GRAPH_message)
             stringContent = ai_message.content
+            print(f"\033[34m****Graph Agent ai message****\n{stringContent}\033[0m")
             jTextNode = json.loads(stringContent)
             name = jTextNode['name']
             knowledge = jTextNode['knowledge']
             successors = []
-            predecessors = []
+            predecessors = jTextNode['prerequisites']
             filepath = ""
             weight_depth = -1
             for p in predecessors:

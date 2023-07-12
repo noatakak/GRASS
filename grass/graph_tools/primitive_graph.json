@@ -10,7 +10,7 @@
                 "successors": 0,
                 "failures": 0
             },
-            "knowledge": "The craftItem function takes in bot, along with the name of the item we are looking to craft, along with the count\nreferring to the quantity of the specified item you would like to craft.\nA crafting table must be placed before calling this function.\nThe method will find the crafting table, get the recipe for the item\nand craft that quantity. For Example: Craft 8 oak_planks from 2 oak_log (do the recipe 2 times):\n craftItem(bot, \"oak_planks\", 2);\n",
+            "knowledge": "The craftItem function takes in bot, along with the name of the item we are looking to craft, along with the count\nreferring to the quantity of the specified item you would like to craft.\nIf the item you want to craft can be done without a crafting table, this method can be called on its own.\nFor Example: Craft 8 oak_planks from 2 oak_log (do the recipe 2 times):\n craftItem(bot, \"oak_planks\", 2);\n",
             "predecessors": [],
             "successors": [],
             "file_path": "grass\\control_primitives\\craftItem.js",

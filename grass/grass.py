@@ -25,7 +25,7 @@ class Grass:
             openai_api_key: str = None,
             env_wait_ticks: int = 20,
             env_request_timeout: int = 600,
-            max_iterations: int = 160,
+            max_iterations: int = 1000,
             reset_placed_if_failed: bool = False,
             action_agent_model_name: str = "gpt-4",
             action_agent_temperature: int = 0,
@@ -50,8 +50,8 @@ class Grass:
             ckpt_dir: str = datetime.now().strftime("Tests/Date_%m-%d_Time_%H-%M"),
             skill_library_dir: str = None,
             resume: bool = False,
-            graph_agent_model_name: str = "gpt-3.5-turbo",
-            graph_agent_temperature: int= 0,
+            graph_agent_model_name: str = "gpt-4",
+            graph_agent_temperature: int = 0,
             graph_agent_request_timeout: int = 120
     ):
         """
@@ -341,8 +341,6 @@ class Grass:
             )
             self.resume = True
         self.last_events = self.env.step("")
-
-
         while True:
             # if len(sub_q) == 0:
             #     print("sub queue is empty")

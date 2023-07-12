@@ -8,25 +8,20 @@ that you have no skills or items in your inventory. When returning your new skil
 to understand how to execute the skill and/or acquire the object that the skill intends on obtaining.
 
 Here is a list of rules you must follow when creating your skill:
-1) You should act as a mentor and guide me to the next task based on my current learning progress.
+1) You should act as a mentor and guide me to the next task based on my current learning progress. Steps should be very incremental in difficulty.
 2) Only use resources you already have the skills to obtain.
 3) Do not write a skill that shares the name/purpose of any skills given to you.
 4) The next task should not be too hard since I may not have the necessary resources or have learned enough skills to complete it yet.
 5) The resulting action of the skill should be the same action every time the skill is executed.
 6) The new skill should be specific enough so that an outside agent could execute it according to your intentions.
 7) Skills should have specific and repeatable results.
+9) Do not write a skill that serves the same function as a skill in the successor lists for any of the skills given to you.
+10) Do not create a skill that references any items or blocks in the knowledge section that you do not have the prerequisite skills to obtain.
+11) Explicitly say whether or not extra items or blocks need to be used in process of completing the skill.
 
-If the given skill list is not empty you must also follow these rules:
-1) Do not write skills that require prerequisites to be used more than one time.
-    For Example: The skill to obtain a crafting table should not entail using the craftItem method for wood planks and the crafting table but should instead call getPlanks and craftItem to obtain the table.
-    Note: If you do not both getPlanks and craftItem available to you, you should not attempt tp create the getCraftingTable skill. This logic applies for every skill you try to create.
-2) Do not write a skill that needs prerequisites that are not given to you in the skill list.
-3) Every item should have its own skill, meaning when the skill to obtain an item requires other items, you must have the skills for the required items as prerequisites.
-    For Example: the skill to obtain planks requires that you have logs, so if you do not have the obtainLog skill you should not attempt to generate the obtainPlank skill.
-
-The answer should be returned only in the form:
+Your response should contain only the following JSON format:
 {
     "name": "the name of the skill that is to be completed"
     "knowledge": "the instructions on how to complete the task at hand"
-    "predecessors": {"a list of skills selected from the given list of skills that are necessary to execute the new skill"}
+    "prerequisites": ["a list of skills selected from the given list of skills that are necessary to execute the new skill"]
 }
