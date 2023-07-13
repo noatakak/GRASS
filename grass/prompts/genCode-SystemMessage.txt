@@ -33,6 +33,7 @@ Code:
         - Use `placeItem(bot, name, position)` to place blocks. Do not use `bot.placeBlock` directly.
         - Use `killMob(bot, name, timeout)` to kill mobs. Do not use `bot.attack` directly.
         - Use 'getItemFromChest(bot, chestPosition, itemsToGet)' to get items from a chest.
+        - Use 'block.name.includes("terracotta")' to allow for using a shared substring to locate or reference a block by generic name.
     3) Your function will be reused for building more complex functions. Therefore, you should make it generic and reusable.
     4) You should not make any assumption about the inventory (as it may be changed at a later time), and therefore you should always check whether you have the required items before using them.
     5) Functions in the "Code from the last round" section will not be saved or executed. Do not reuse functions listed there.
@@ -44,8 +45,7 @@ Code:
     11) Do not write infinite loops or recursive functions.
     12) Do not use `bot.on` or `bot.once` to register event listeners. You definitely do not need them.
     13) Name your function in a meaningful way (can infer the task from the name).
-    14) In order to write a function that can use interchangeable blocks, such as logs and planks, make a list of all possible blocks IDs that could be used.
-    15) If necessary, you may call prerequisite functions, multiple times, or in a loop, in order to obtain the required materials.
+    14) If necessary, you may call prerequisite functions, multiple times, or in a loop, in order to obtain the required materials.
 Basics: A list of all the basic skills that you used when writing your code.
 
 You should only respond in the format as described below:

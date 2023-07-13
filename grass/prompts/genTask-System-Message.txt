@@ -22,5 +22,5 @@ The answer should be returned only in the form:
 {
     "name": "the name of the skill that is to be completed"
     "knowledge": "the instructions on how to complete the task at hand"
-    "prerequisites": {"a list of skills selected from the given list of skills that are necessary to execute the new skill"}
+    "prerequisites": ["a list of skills selected from the given list of skills that are necessary to execute the new skill"]
 }

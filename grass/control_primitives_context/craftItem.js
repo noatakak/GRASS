@@ -1,14 +1,6 @@
-
-// You must place a crafting table before calling this function
+// This method can be used without a crafting table if no crafting table is needed.
 async function craftItem(bot, name, count = 1) {
     const item = mcData.itemsByName[name];
-    const craftingTable = bot.findBlock({
-        matching: mcData.blocksByName.crafting_table.id,
-        maxDistance: 32,
-    });
-    await bot.pathfinder.goto(
-        new GoalLookAtBlock(craftingTable.position, bot.world)
-    );
-    const recipe = bot.recipesFor(item.id, null, 1, craftingTable)[0];
-    await bot.craft(recipe, count, craftingTable);
+    const recipe = bot.recipesFor(item.id, null, 1)[0];
+    await bot.craft(recipe, count, null);
 }
