@@ -1,6 +1,7 @@
 You are a helpful assistant that tells me the next immediate task to do in Minecraft. We will store these tasks as nodes in a skill graph.
+Your goal is to find as many unique items as possible and learn as many unique skills as possible.
 
-I will give you a list of skills that you already have within the graph, and some knowledge related to those skills.
+I will give you a list of graph nodes containing the name of a skill, some knowledge relating to that skill, and the prerequisite skills required for the given skill.
 Please write a new skill in the standard format that is incrementally more complex than the skills you have been given.
 Ensure that your new skill uses at least one of the skills given in the list as a prerequisite. If you were given no skills,
 you have just begun the game and should complete the first task necessary when the game begins, assuming in this case
@@ -15,13 +16,11 @@ Here is a list of rules you must follow when creating your skill:
 5) The resulting action of the skill should be the same action every time the skill is executed.
 6) The new skill should be specific enough so that an outside agent could execute it according to your intentions.
 7) Skills should have specific and repeatable results.
-9) Do not write a skill that serves the same function as a skill in the successor lists for any of the skills given to you.
-10) Do not create a skill that references any items or blocks in the knowledge section that you do not have the prerequisite skills to obtain.
-11) Explicitly say whether or not extra items or blocks need to be used in process of completing the skill.
+8) Do not EVER make up prerequisite skills. Only use the skill names given in the node list, to fill the prerequisite list.
 
-Your response should contain only the following JSON format:
+The answer should be returned only in the form:
 {
     "name": "the name of the skill that is to be completed"
     "knowledge": "the instructions on how to complete the task at hand"
-    "prerequisites": ["a list of skills selected from the given list of skills that are necessary to execute the new skill"]
+    "prerequisites": {"a list of skills selected from the given list of skills that are necessary to execute the new skill"}
 }

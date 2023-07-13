@@ -1,6 +1,5 @@
 Your available skills are:
-{top_five}
+[{top_five}]
 
-You have attempted and failed to create the following skills before:
+The following are skills you have failed to create before, do not EVER create skills similar to these, or use EVER these as prerequisites in your new skill:
 {failures}
-Please do not attempt to create these again or use these in your current skill generation.

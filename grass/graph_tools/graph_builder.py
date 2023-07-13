@@ -40,7 +40,8 @@ class GraphBuilder:
     def success_node(self, graph, info, ckpt_dir):
         #successor_list = graph.successors(info["task"])
         for basic in info["basic_list"]:
-            graph.nodes[basic]["weight"]["successors"] = graph.nodes[basic]["weight"]["successors"] + 1
+            if graph.has_node(basic):
+                graph.nodes[basic]["weight"]["successors"] = graph.nodes[basic]["weight"]["successors"] + 1
             if basic not in graph.nodes[info["task"]]["predecessors"]:
                 graph.nodes[info["task"]]["predecessors"].append(basic)
                 graph.add_edge(basic, info["task"])
@@ -132,7 +133,7 @@ class GraphBuilder:
             content = file.read()
         return content
 
-    def get_new_node(self, graph, trials, failures):
+    def get_new_node(self, graph, trials, past_nodes, iterations):
         revisit_node = False
         best_nodes = []
         count = 0
@@ -161,18 +162,24 @@ class GraphBuilder:
             best_nodes[count] = graph.nodes[element]
 
         if not revisit_node:
+            # if iterations > 2:
             input_string = ""
             for node in best_nodes:
                 input_string += "{\n\"name\": \""
                 input_string += node['node_name'] + "\",\n\"knowledge\": \""
                 input_string += node['knowledge'] + "\",\n\"prerequisites\": "
-                input_string += str(node['predecessors']) + ",\n\"successors\": "
-                input_string += str(node['successors']) + "\n}\n"
+                input_string += str(node['predecessors']) + "\n}"
+                for suc in node['successors']:
+                    if suc not in past_nodes:
+                        past_nodes.append(suc)
+            for node in best_nodes:
+                if node['node_name'] in past_nodes:
+                    past_nodes.remove(node['node_name'])
             system_message = SystemMessage(content=self.loadText("prompts/genTask-System-Message.txt"))
             human_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/genTask-Human-Message.txt"))
             human_message = human_prompt.format(
                 top_five=input_string,
-                failures=failures
+                failures=past_nodes
             )
             assert isinstance(human_message, HumanMessage)
             GRAPH_message = [system_message, human_message]
@@ -187,6 +194,21 @@ class GraphBuilder:
             knowledge = jTextNode['knowledge']
             successors = []
             predecessors = jTextNode['prerequisites']
+            # elif iterations == 0:
+            #     name = "gatherWood"
+            #     knowledge = "Look for a tree of any type. When found, mine the logs of the tree and collect dropped items."
+            #     successors = []
+            #     predecessors = []
+            # elif iterations == 1:
+            #     name = "craftPlanks"
+            #     knowledge = "Call gatherWood predecessor to acquire logs. Open inventory and craft planks without a crafting table for any type of log."
+            #     successors = []
+            #     predecessors = ["gatherWood"]
+            # elif iterations == 2:
+            #     name = "getCraftingTable"
+            #     knowledge = "Call craftPlanks predecessor, to acquire planks. Open inventory and craft crafting_table item without crafting table using planks."
+            #     successors = []
+            #     predecessors = ["craftPlanks"]
             filepath = ""
             weight_depth = -1
             for p in predecessors:

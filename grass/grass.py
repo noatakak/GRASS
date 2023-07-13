@@ -341,6 +341,7 @@ class Grass:
             )
             self.resume = True
         self.last_events = self.env.step("")
+        learn_count = 0
         while True:
             # if len(sub_q) == 0:
             #     print("sub queue is empty")
@@ -360,13 +361,14 @@ class Grass:
                 print("Iteration limit reached")
                 break
 
-            self.new_node = self.graph_agent.get_new_node(graph=self.graph, trials=self.trial_count, failures=self.curriculum_agent.failed_tasks)
+            self.new_node = self.graph_agent.get_new_node(graph=self.graph, trials=self.trial_count, past_nodes=self.curriculum_agent.failed_tasks, iterations=learn_count)
             new_node = self.new_node
             self.task = new_node['node_name']
             task = self.task
             print(
                 f"\033[35mStarting task {task} for at most {self.action_agent_task_max_retries} times\033[0m"
             )
+            learn_count = learn_count + 1
             try:
                 messages, reward, done, info = self.rollout(
                     new_node=new_node,
