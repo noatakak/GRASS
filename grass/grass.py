@@ -50,7 +50,7 @@ class Grass:
             ckpt_dir: str = datetime.now().strftime("Tests/Date_%m-%d_Time_%H-%M"),
             skill_library_dir: str = None,
             resume: bool = False,
-            graph_agent_model_name: str = "gpt-4",
+            graph_agent_model_name: str = "gpt-3.5-turbo",
             graph_agent_temperature: int = 0,
             graph_agent_request_timeout: int = 120
     ):

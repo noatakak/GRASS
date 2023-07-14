@@ -1,5 +1,6 @@
-Your available skills are:
-[{top_five}]
 
-The following are skills you have failed to create before, do not EVER create skills similar to these, or use EVER these as prerequisites in your new skill:
+Under no circumstances should the following tasks appear in your response:
 {failures}
+
+Usable tasks:
+[{top_five}]
