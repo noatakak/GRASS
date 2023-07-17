@@ -172,6 +172,9 @@ class GraphBuilder:
                 for suc in node['successors']:
                     if suc not in past_nodes:
                         past_nodes.append(suc)
+                for pred in node['predecessors']:
+                    if pred not in past_nodes and pred not in [x['node_name'] for x in best_nodes]:
+                        past_nodes.append(pred)
             for node in best_nodes:
                 if node['node_name'] in past_nodes:
                     past_nodes.remove(node['node_name'])
