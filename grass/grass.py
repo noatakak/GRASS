@@ -361,7 +361,7 @@ class Grass:
                 print("Iteration limit reached")
                 break
 
-            self.new_node = self.graph_agent.get_new_node(graph=self.graph, trials=self.trial_count, past_nodes=self.curriculum_agent.failed_tasks, iterations=learn_count)
+            self.new_node = self.graph_agent.get_new_node(graph=self.graph, trials=self.trial_count, fail_nodes=self.curriculum_agent.failed_tasks, iterations=learn_count)
             new_node = self.new_node
             self.task = new_node['node_name']
             task = self.task

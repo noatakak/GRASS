@@ -1,3 +1,4 @@
+import random
 import json
 import networkx as nx
 from networkx.readwrite import json_graph
@@ -124,7 +125,8 @@ class GraphBuilder:
             return 0
         successors = weight_vals['successors']
         failures = weight_vals['failures']
-        weight = (successors + trials) / (depth + failures)
+        appearances = weight_vals['appearances']
+        weight = (successors + trials + depth) / (appearances + failures + 1)
         return weight
 
     def loadText(self, textFile):
@@ -133,9 +135,10 @@ class GraphBuilder:
             content = file.read()
         return content
 
-    def get_new_node(self, graph, trials, past_nodes, iterations):
+    def get_new_node(self, graph, trials, fail_nodes, iterations):
         revisit_node = False
         best_nodes = []
+        dont_use = fail_nodes.copy()
         count = 0
         for n in graph.nodes:
             if graph.nodes[n]["file_path"] != "":
@@ -164,25 +167,27 @@ class GraphBuilder:
         if not revisit_node:
             # if iterations > 2:
             input_string = ""
+            random.shuffle(best_nodes)
             for node in best_nodes:
+                graph.nodes[node['node_name']]['weight']['appearances'] += 1
                 input_string += "{\n\"name\": \""
                 input_string += node['node_name'] + "\",\n\"knowledge\": \""
                 input_string += node['knowledge'] + "\",\n\"prerequisites\": "
                 input_string += str(node['predecessors']) + "\n}"
                 for suc in node['successors']:
-                    if suc not in past_nodes:
-                        past_nodes.append(suc)
+                    if suc not in dont_use:
+                        dont_use.append(suc)
                 for pred in node['predecessors']:
-                    if pred not in past_nodes and pred not in [x['node_name'] for x in best_nodes]:
-                        past_nodes.append(pred)
+                    if pred not in dont_use and pred not in [x['node_name'] for x in best_nodes]:
+                        dont_use.append(pred)
             for node in best_nodes:
-                if node['node_name'] in past_nodes:
-                    past_nodes.remove(node['node_name'])
+                if node['node_name'] in dont_use:
+                    dont_use.remove(node['node_name'])
             system_message = SystemMessage(content=self.loadText("prompts/genTask-System-Message.txt"))
             human_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/genTask-Human-Message.txt"))
             human_message = human_prompt.format(
                 top_five=input_string,
-                failures=past_nodes
+                failures=dont_use
             )
             assert isinstance(human_message, HumanMessage)
             GRAPH_message = [system_message, human_message]
@@ -218,7 +223,7 @@ class GraphBuilder:
                 if graph.nodes[p]['weight']['depth'] > weight_depth:
                     weight_depth = graph.nodes[p]['weight']['depth']
             weight_depth = weight_depth + 1
-            weight = {'depth': weight_depth, 'successors': 0, 'failures': 0}
+            weight = {'depth': weight_depth, 'successors': 0, 'failures': 0, "appearances": 0}
             graph.add_node(name, node_name=name, weight=weight,
                            knowledge=knowledge, predecessors=predecessors,
                            successors=successors, file_path=filepath)
