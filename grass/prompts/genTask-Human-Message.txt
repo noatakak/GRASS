@@ -1,5 +1,5 @@
 Usable skills:
 [{top_five}]
 
-Under no circumstances should the following skills appear in your response:
+The following skill are inaccessible to you and should not be replicated:
 {failures}

@@ -4,8 +4,8 @@ Your goal is to find as many unique items as possible and learn as many unique s
 Here is a list of rules you must follow when creating your skill:
 1) You should act as a mentor and guide me to the next task based on my current learning progress. Steps should be very incremental in difficulty.
 2) If you were given no skills, you have just begun the game, and should write the first skill needed when the game begins.
-3) Only use resources you already have the skills to obtain.
-4) Do not write a skill that shares the name or purpose of any skills given to you.
+3) Only write a skill when you have the prerequisite for every material and tool that you mentioned in the knowledge.
+4) Do not write a skill that shares the name/purpose of any skills given to you.
 5) The next task should not be too hard since I may not have the necessary resources or have learned enough skills to complete it yet.
 6) The resulting action of the skill should be the same action every time the skill is executed.
 7) The new skill should be specific enough so that an outside agent could execute it according to your intentions.
@@ -16,6 +16,6 @@ Here is a list of rules you must follow when creating your skill:
 The answer should be returned only in the form:
 {
     "name": "the name of the skill that is to be completed"
-    "knowledge": "the instructions on how to complete the task at hand"
+    "knowledge": "the specific instructions on how to complete the skill, including the quantities of all materials and tools used."
     "prerequisites": ["a list of skills needed to obtain all required materials, items, or tools, selected only from the list of usable skills"]
 }

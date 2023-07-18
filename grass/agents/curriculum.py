@@ -49,7 +49,8 @@ class CurriculumAgent:
                 f"{ckpt_dir}/curriculum/completed_tasks.json"
             )
             self.failed_tasks = U.load_json(f"{ckpt_dir}/curriculum/failed_tasks.json")
-            self.qa_cache = U.load_json(f"{ckpt_dir}/curriculum/qa_cache.json")
+            self.qa_cache = {}
+            # self.qa_cache = U.load_json(f"{ckpt_dir}/curriculum/qa_cache.json")
         else:
             self.completed_tasks = []
             self.failed_tasks = []
