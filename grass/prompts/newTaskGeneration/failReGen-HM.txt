@@ -1,0 +1,5 @@
+Ultimate goal:
+{skill_name}
+----------------------
+Mandatory skills:
+{mand_skills}
