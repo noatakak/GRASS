@@ -1,5 +1,5 @@
-Under no circumstances should the following tasks appear in your response:
-{failures}
-
-Usable tasks:
+Usable skills:
 [{top_five}]
+
+Under no circumstances should the following skills appear in your response:
+{failures}

@@ -46,7 +46,8 @@ class GraphBuilder:
             if basic not in graph.nodes[info["task"]]["predecessors"]:
                 graph.nodes[info["task"]]["predecessors"].append(basic)
                 graph.add_edge(basic, info["task"])
-            graph.nodes[basic]["successors"].append(info["program_name"])
+            if info['task'] not in graph.nodes[basic]["successors"]:
+                graph.nodes[basic]["successors"].append(info["program_name"])
         max = -1
         for pred in graph.predecessors(info["task"]):
             if graph.nodes[pred]["weight"]["depth"] > max:
@@ -57,6 +58,11 @@ class GraphBuilder:
         graph.nodes[info["program_name"]]["node_name"] = info["program_name"]
         graph.nodes[info["program_name"]]["weight"]["depth"] = max
         graph.nodes[info["program_name"]]["file_path"] = file_name
+        for pred in graph.predecessors(info["program_name"]):
+            if info["task"] in graph.nodes[pred]["successors"]:
+                graph.nodes[pred]["successors"].remove(info['task'])
+            if info["program_name"] not in graph.nodes[pred]["successors"]:
+                graph.nodes[pred]["successors"].append(info['program_name'])
         # graph.add_node(info["program_name"], node_name=info["program_name"],
         #                weight=graph.nodes[info["task"]]["weight"],
         #                knowledge=graph.nodes[info["task"]]["knowledge"],
@@ -172,14 +178,14 @@ class GraphBuilder:
                 graph.nodes[node['node_name']]['weight']['appearances'] += 1
                 input_string += "{\n\"name\": \""
                 input_string += node['node_name'] + "\",\n\"knowledge\": \""
-                input_string += node['knowledge'] + "\",\n\"prerequisites\": "
-                input_string += str(node['predecessors']) + "\n}"
+                input_string += node['knowledge'] + "\",\n}"
+                #   input_string += "\"prerequisites\":" +str(node['predecessors']) + "\n}"
                 for suc in node['successors']:
                     if suc not in dont_use:
                         dont_use.append(suc)
-                for pred in node['predecessors']:
-                    if pred not in dont_use and pred not in [x['node_name'] for x in best_nodes]:
-                        dont_use.append(pred)
+                # for pred in node['predecessors']:
+                #     if pred not in dont_use and pred not in [x['node_name'] for x in best_nodes]:
+                #         dont_use.append(pred)
             for node in best_nodes:
                 if node['node_name'] in dont_use:
                     dont_use.remove(node['node_name'])
@@ -229,6 +235,7 @@ class GraphBuilder:
                            successors=successors, file_path=filepath)
 
             for p in predecessors:
+                graph.nodes[p]["successors"].append(name)
                 graph.nodes[p]['weight']['successors'] = graph.nodes[p]['weight']['successors'] + 1
                 graph.add_edge(p, name)
 

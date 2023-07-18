@@ -5,7 +5,7 @@ Here is a list of rules you must follow when creating your skill:
 1) You should act as a mentor and guide me to the next task based on my current learning progress. Steps should be very incremental in difficulty.
 2) If you were given no skills, you have just begun the game, and should write the first skill needed when the game begins.
 3) Only use resources you already have the skills to obtain.
-4) Do not write a skill that shares the name/purpose of any skills given to you.
+4) Do not write a skill that shares the name or purpose of any skills given to you.
 5) The next task should not be too hard since I may not have the necessary resources or have learned enough skills to complete it yet.
 6) The resulting action of the skill should be the same action every time the skill is executed.
 7) The new skill should be specific enough so that an outside agent could execute it according to your intentions.
