@@ -242,3 +242,130 @@ class GraphBuilder:
             new_node = graph.nodes[name]
 
         return new_node
+
+    def get_new_node_in_three(self, graph, trials, fail_nodes):
+        revisit_node = False
+        best_nodes = []
+        dont_use = fail_nodes.copy()
+        count = 0
+        for n in graph.nodes:
+            if graph.nodes[n]["file_path"] != "":
+                count = count + 1
+                if count >= 13:
+                    break
+        for n in graph.nodes:
+            if len(best_nodes) < 5 and graph.nodes[n]['weight']['depth'] != 0:
+                if count < 13 and graph.nodes[n]["file_path"] != "":
+                    best_nodes.append(n)
+                elif count >= 13:
+                    best_nodes.append(n)
+            else:
+                for count, element in enumerate(best_nodes):
+                    if self.calc_weight(n, trials, graph) > self.calc_weight(best_nodes[count], trials, graph) and \
+                            graph.nodes[n]['weight']['depth'] != 0:
+                        best_nodes[4] = n
+                        break
+                sorted(best_nodes, key=lambda x: self.calc_weight(x, trials, graph))
+
+        for count, element in enumerate(best_nodes):
+            if graph.nodes[element]['file_path'] == "" and graph.nodes[element]['weight']['depth'] != 0:
+                revisit_node = True
+                new_node = graph.nodes[element]
+            best_nodes[count] = graph.nodes[element]
+
+        if revisit_node:
+            best_nodes_string = ""
+            random.shuffle(best_nodes)
+            for node in best_nodes:
+                graph.nodes[node['node_name']]['weight']['appearances'] += 1
+                best_nodes_string += "{\n\"name\": \""
+                best_nodes_string += node['node_name'] + "\",\n\"knowledge\": \""
+                best_nodes_string += node['knowledge'] + "\",\n}"
+
+            if best_nodes_string != "":
+                skill_sm = SystemMessage(content=self.loadText("prompts/newTaskGeneration/skill-selection-SM.txt"))
+                skill_hm_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/newTaskGeneration/skill-selection-HM.txt"))
+                skill_hm = skill_hm_prompt.format(
+                    top_five=best_nodes_string
+                )
+                assert isinstance(skill_hm, HumanMessage)
+                skill_message = [skill_sm, skill_hm]
+                print(
+                    f"\033[32m****Skill Selection human message****\n{skill_hm.content}\033[0m"
+                )
+                ai_skill_message = self.llm(skill_message)
+                skill_string = ai_skill_message.content
+                print(f"\033[34m****Skill Selection ai message****\n{skill_string}\033[0m")
+                jText_skillList = json.loads(skill_string)
+
+            mand_skills = "[\n"
+            selected_list = jText_skillList['skill_list']
+            for s in selected_list:
+                mand_skills += "{\n\"name\": \""
+                mand_skills += s + "\",\n\"guide\": \""
+                mand_skills += graph.nodes[s]['knowledge'] + "\",\n}"
+            mand_skills += "\n]"
+            prev_desc = "[\n"
+            for s in selected_list:
+                prev_desc += graph.nodes[s]['knowledge'] + ",\n"
+            for f in fail_nodes:
+                prev_desc += graph.nodes[f]['knowledge'] + ",\n"
+            prev_desc += "\n]"
+            guide_sm = SystemMessage(content=self.loadText("prompts/newTaskGeneration/knowledge-SM.txt"))
+            guide_hm_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/newTaskGeneration/knowledge-HM.txt"))
+            guide_hm = guide_hm_prompt.format(
+                mand_skills=mand_skills,
+                prev_descriptions=prev_desc
+            )
+            assert isinstance(guide_hm, HumanMessage)
+            guide_message = [guide_sm, guide_hm]
+            print(
+                f"\033[32m****Graph Agent human message****\n{guide_hm.content}\033[0m"
+            )
+            ai_guide__message = self.llm(guide_message)
+            guide_string = ai_guide__message.content
+            print(f"\033[34m****Graph Agent ai message****\n{guide_string}\033[0m")
+            jText_guide = json.loads(guide_string)
+
+            title_sm = SystemMessage(content=self.loadText("prompts/newTaskGeneration/skill-title-SM.txt"))
+            title_hm_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/newTaskGeneration/skill-title-HM.txt"))
+            title_hm = title_hm_prompt.format(
+                guide=jText_guide
+            )
+            assert isinstance(title_hm, HumanMessage)
+            name_message = [title_sm, title_hm]
+            print(
+                f"\033[32m****Graph Agent human message****\n{title_hm.content}\033[0m"
+            )
+            ai_name_message = self.llm(name_message)
+            name_string = ai_name_message.content
+            print(f"\033[34m****Graph Agent ai message****\n{name_string}\033[0m")
+            jText_name = json.loads(name_string)
+
+            name = jText_name['name']
+            knowledge = jText_guide['guide']
+            successors = []
+            predecessors = jText_skillList['skill_list']
+            filepath = ""
+            weight_depth = -1
+            for p in predecessors:
+                if graph.nodes[p]['weight']['depth'] > weight_depth:
+                    weight_depth = graph.nodes[p]['weight']['depth']
+            weight_depth = weight_depth + 1
+            weight = {'depth': weight_depth, 'successors': 0, 'failures': 0, "appearances": 0}
+            graph.add_node(name, node_name=name, weight=weight,
+                           knowledge=knowledge, predecessors=predecessors,
+                           successors=successors, file_path=filepath)
+
+            for p in predecessors:
+                graph.nodes[p]["successors"].append(name)
+                graph.nodes[p]['weight']['successors'] = graph.nodes[p]['weight']['successors'] + 1
+                graph.add_edge(p, name)
+
+            new_node = graph.nodes[name]
+        else:
+            # use gpt to generate new guide for new_node
+
+
+            # new_node should be the node dictionary
+        return new_node

@@ -46,7 +46,7 @@ Code:
     10) If you are rewriting a function that previously failed due to not finding a specific item, the primary change you should make to the code is doubling the maxTime that is passed to the exploreUntil() method.
     11) `maxDistance` should always be 32 for `bot.findBlocks` and `bot.findBlock`. Do not cheat.
     12) Do not write infinite loops or recursive functions.
-    13) Do not use `bot.on` or `bot.once` to register event listeners. You definitely do not need them.
+    13) Do not use `bot.on` or `/bot.once` to register event listeners. You definitely do not need them.
     14) Name your function in a meaningful way (can infer the task from the name).
     15) If necessary, you may call prerequisite functions, multiple times, or in a loop, in order to obtain the required materials.
 Basics: A list of all the basic skills that you used when writing your code.
