@@ -334,7 +334,7 @@ class GraphBuilder:
             title_sm = SystemMessage(content=self.loadText("prompts/newTaskGeneration/skill-title-SM.txt"))
             title_hm_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/newTaskGeneration/skill-title-HM.txt"))
             title_hm = title_hm_prompt.format(
-                guide=jText_guide
+                desc=jText_guide['description']
             )
             assert isinstance(title_hm, HumanMessage)
             name_message = [title_sm, title_hm]
@@ -347,7 +347,7 @@ class GraphBuilder:
             jText_name = json.loads(name_string)
 
             name = jText_name['name']
-            knowledge = jText_guide['guide']
+            knowledge = jText_guide['description']
             successors = []
             predecessors = selected_list
             filepath = ""

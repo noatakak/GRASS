@@ -1,2 +1,2 @@
-Guide:
-{guide}
+Description:
+{desc}
