@@ -89,4 +89,21 @@ The answer should be returned only in the form:
     "knowledge": "specific instructions on how to complete the task at hand, including materials, items, or tools used"
     "prerequisites": ["a list of tasks needed to obtain all required materials, items, or tools, selected only from the list of usable tasks"]
 }
+
+
+
+
+
+
+Your description must adhere to the following rules.
+1) You should act as a mentor and guide me to the next skill based on my current learning progress. Steps should be very incremental in difficulty.
+2) Your guide must use all the "Mandatory Skills".
+3) If you are given nothing in the "Mandatory Skills", then you have just begun the game, and should write the first skill needed when the game begins.
+4) Do not write a description for a skill that accomplishes the same things as anything in the "Previous Descriptions" list.
+5) Your description should describe the process of using these "Mandatory Skills" to complete a new skill.
+6) Your description should include specific minimum quantities of all materials, items, and tools necessary to complete the new skill.
+7) Your skill should be as easy as possible, while still accomplishing something new.
+8) Do not describe the contents of the "Mandatory Skills" in your description.
+
+
 */

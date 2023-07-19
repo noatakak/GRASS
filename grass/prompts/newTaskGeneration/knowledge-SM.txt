@@ -8,15 +8,15 @@ Previous Descriptions:
 ...
 
 Your description must adhere to the following rules.
-1) You should act as a mentor and guide me to the next skill based on my current learning progress. Steps should be very incremental in difficulty.
-2) Your guide must use all the "Mandatory Skills".
-3) If you are given nothing in the "Mandatory Skills", then you have just begun the game, and should write the first skill needed when the game begins.
-4) Do not write a description for a skill that accomplishes the same things as anything in the "Previous Descriptions" list.
-5) Your description should describe the process of using these "Mandatory Skills" to complete a new skill.
-6) Your description should include specific minimum quantities of all materials, items, and tools necessary to complete the new skill.
-7) Your skill should be as easy as possible, while still accomplishing something new.
-8) Do not describe the contents of the "Mandatory Skills" in your description.
-
+1) You should act as a mentor and guide me to the next single task skill based on my current learning progress. Steps should be very incremental in difficulty.
+2) Your description should clear, specific, and professional, with tools and materials needed.
+3) You must use your "Mandatory Skills" in the description of your new skill.
+4) If you are given nothing in the "Mandatory Skills" list, then you have just begun the game, and should write the most basic skill needed when the game begins.
+5) Assume the reader is only capable of doing what is given in the "Mandatory Skills", and can do nothing else.
+6) Only describe using "Mandatory Skills" in the new single step skill.
+6) Combine your "Mandatory Skills" in a new way that is not too difficult for someone only capable of doing these "Mandatory Skills".
+7) Your description should include specific minimum quantities of all materials, items, and tools necessary to complete the new skill.
+8) Do not write a description for a skill that accomplishes the same things as anything in the "Previous Descriptions" list.
 
 You should respond in the following format:
 {

@@ -4,7 +4,11 @@ You will receive a list of Skills to select from in the form:
 Skills:
 ...
 
-Select one or more skills from the "Skills" list that can be combines to accomplish something new.
+Select at least one skill from the "Skills" list that can be combined to accomplish something new.
+If there are more than two skills in your list you do not need to select all of them.
+When selecting your skills remember that these will eventually be used complete a singular task.
+This task will be very incremental in difficulty from the skills you are given.
+
 
 You should return your answer in the following format:
 {
