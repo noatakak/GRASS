@@ -299,8 +299,7 @@ class GraphBuilder:
                 print(f"\033[34m****Skill Selection ai message****\n{skill_string}\033[0m")
                 jText_skillList = json.loads(skill_string)
 
-            mand_skills = "[\n"
-            #TODO jtext is string and needs to be list, same for other jtext instances
+            mand_skills = "["
             if not bool(jText_skillList):
                 selected_list = []
             else:
@@ -309,13 +308,13 @@ class GraphBuilder:
                 mand_skills += "{\n\"name\": \""
                 mand_skills += s + "\",\n\"guide\": \""
                 mand_skills += graph.nodes[s]['knowledge'] + "\",\n}"
-            mand_skills += "\n]"
-            prev_desc = "[\n"
+            mand_skills += "]"
+            prev_desc = "["
             for s in selected_list:
                 prev_desc += graph.nodes[s]['knowledge'] + ",\n"
             for f in fail_nodes:
                 prev_desc += graph.nodes[f]['knowledge'] + ",\n"
-            prev_desc += "\n]"
+            prev_desc += "]"
             guide_sm = SystemMessage(content=self.loadText("prompts/newTaskGeneration/knowledge-SM.txt"))
             guide_hm_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/newTaskGeneration/knowledge-HM.txt"))
             guide_hm = guide_hm_prompt.format(
