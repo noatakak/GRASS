@@ -301,7 +301,10 @@ class GraphBuilder:
 
             mand_skills = "[\n"
             #TODO jtext is string and needs to be list, same for other jtext instances
-            selected_list = jText_skillList['skill_list']
+            if not bool(jText_skillList):
+                selected_list = []
+            else:
+                selected_list = jText_skillList['skill_list']
             for s in selected_list:
                 mand_skills += "{\n\"name\": \""
                 mand_skills += s + "\",\n\"guide\": \""
@@ -347,7 +350,7 @@ class GraphBuilder:
             name = jText_name['name']
             knowledge = jText_guide['guide']
             successors = []
-            predecessors = jText_skillList['skill_list']
+            predecessors = selected_list
             filepath = ""
             weight_depth = -1
             for p in predecessors:
