@@ -15,7 +15,7 @@ Your guide must adhere to the following rules.
 4) Your guide should include specific quantities of all materials items and tools necessary to reach that goal.
 5) Your goal should increase in difficulty from the "Mandatory skills" as minimally as possible, while still accomplishing something new.
 6) Do not describe the contents of the "Mandatory skills" in your guide.
-6) If you are given no mandatory skills or can do nothing with the skills given, then you should describe the easiest goal to accomplish in the game that is not in the "Previous descriptions".
+7) If you are given no mandatory skills or can do nothing with the skills given, then you should describe the easiest goal to accomplish in the game that is not in "Previous descriptions".
 
 You should respond in the following format:
 {

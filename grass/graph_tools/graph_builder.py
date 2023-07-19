@@ -273,7 +273,7 @@ class GraphBuilder:
                 new_node = graph.nodes[element]
             best_nodes[count] = graph.nodes[element]
 
-        if revisit_node:
+        if not revisit_node:
             best_nodes_string = ""
             random.shuffle(best_nodes)
             for node in best_nodes:
@@ -282,6 +282,7 @@ class GraphBuilder:
                 best_nodes_string += node['node_name'] + "\",\n\"knowledge\": \""
                 best_nodes_string += node['knowledge'] + "\",\n}"
 
+            jText_skillList = []
             if best_nodes_string != "":
                 skill_sm = SystemMessage(content=self.loadText("prompts/newTaskGeneration/skill-selection-SM.txt"))
                 skill_hm_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/newTaskGeneration/skill-selection-HM.txt"))
@@ -299,6 +300,7 @@ class GraphBuilder:
                 jText_skillList = json.loads(skill_string)
 
             mand_skills = "[\n"
+            #TODO jtext is string and needs to be list, same for other jtext instances
             selected_list = jText_skillList['skill_list']
             for s in selected_list:
                 mand_skills += "{\n\"name\": \""
@@ -320,11 +322,11 @@ class GraphBuilder:
             assert isinstance(guide_hm, HumanMessage)
             guide_message = [guide_sm, guide_hm]
             print(
-                f"\033[32m****Graph Agent human message****\n{guide_hm.content}\033[0m"
+                f"\033[32m****Guide Creation human message****\n{guide_hm.content}\033[0m"
             )
             ai_guide__message = self.llm(guide_message)
             guide_string = ai_guide__message.content
-            print(f"\033[34m****Graph Agent ai message****\n{guide_string}\033[0m")
+            print(f"\033[34m****Guide Creation ai message****\n{guide_string}\033[0m")
             jText_guide = json.loads(guide_string)
 
             title_sm = SystemMessage(content=self.loadText("prompts/newTaskGeneration/skill-title-SM.txt"))
@@ -335,11 +337,11 @@ class GraphBuilder:
             assert isinstance(title_hm, HumanMessage)
             name_message = [title_sm, title_hm]
             print(
-                f"\033[32m****Graph Agent human message****\n{title_hm.content}\033[0m"
+                f"\033[32m****Skill Naming human message****\n{title_hm.content}\033[0m"
             )
             ai_name_message = self.llm(name_message)
             name_string = ai_name_message.content
-            print(f"\033[34m****Graph Agent ai message****\n{name_string}\033[0m")
+            print(f"\033[34m****Skill Naming ai message****\n{name_string}\033[0m")
             jText_name = json.loads(name_string)
 
             name = jText_name['name']
@@ -364,8 +366,22 @@ class GraphBuilder:
 
             new_node = graph.nodes[name]
         else:
-            # use gpt to generate new guide for new_node
+            regen_sm = SystemMessage(content=self.loadText("prompts/newTaskGeneration/failReGen-SM.txt"))
+            regen_hm_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/newTaskGeneration/failReGen-HM.txt"))
+            regen_hm = regen_hm_prompt.format(
+                skill_name=new_node['node_name'],
+                mand_skills=new_node['prerequisites'],
+            )
+            assert isinstance(regen_hm, HumanMessage)
+            regen_message = [regen_sm, regen_hm]
+            print(
+                f"\033[32m****Guide Regen human message****\n{regen_message.content}\033[0m"
+            )
+            ai_regen_message = self.llm(regen_message)
+            regen_string = ai_regen_message.content
+            print(f"\033[34m****Guide Regen ai message****\n{regen_string}\033[0m")
+            jText_regen = json.loads(regen_string)
+            graph.nodes[new_node['node_name']]['knowledge'] = jText_regen
 
 
-            # new_node should be the node dictionary
         return new_node
