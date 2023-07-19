@@ -311,7 +311,11 @@ class GraphBuilder:
             mand_skills += "]"
             prev_desc = "["
             for s in selected_list:
-                prev_desc += graph.nodes[s]['knowledge'] + ",\n"
+                # prev_desc += graph.nodes[s]['knowledge'] + ",\n"
+                for p in graph.successors(s):
+                    suc = graph.nodes[p]["knowledge"]
+                    if suc not in prev_desc and suc not in mand_skills:
+                        prev_desc += suc + ",\n"
             for f in fail_nodes:
                 prev_desc += graph.nodes[f]['knowledge'] + ",\n"
             prev_desc += "]"
