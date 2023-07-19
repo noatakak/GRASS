@@ -282,7 +282,7 @@ class GraphBuilder:
                 best_nodes_string += node['node_name'] + "\",\n\"knowledge\": \""
                 best_nodes_string += node['knowledge'] + "\",\n}"
 
-            jText_skillList = []
+            jText_skillList = {}
             if best_nodes_string != "":
                 skill_sm = SystemMessage(content=self.loadText("prompts/newTaskGeneration/skill-selection-SM.txt"))
                 skill_hm_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/newTaskGeneration/skill-selection-HM.txt"))
@@ -381,7 +381,7 @@ class GraphBuilder:
             regen_string = ai_regen_message.content
             print(f"\033[34m****Guide Regen ai message****\n{regen_string}\033[0m")
             jText_regen = json.loads(regen_string)
-            graph.nodes[new_node['node_name']]['knowledge'] = jText_regen
+            graph.nodes[new_node['node_name']]['knowledge'] = jText_regen['guide']
 
 
         return new_node
