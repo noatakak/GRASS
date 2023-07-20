@@ -376,7 +376,7 @@ class GraphBuilder:
             regen_hm_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/newTaskGeneration/failReGen-HM.txt"))
             regen_hm = regen_hm_prompt.format(
                 skill_name=new_node['node_name'],
-                mand_skills=new_node['prerequisites'],
+                mand_skills=new_node['predecessors'],
             )
             assert isinstance(regen_hm, HumanMessage)
             regen_message = [regen_sm, regen_hm]
