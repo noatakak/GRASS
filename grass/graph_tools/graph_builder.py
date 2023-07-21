@@ -248,6 +248,24 @@ class GraphBuilder:
                 graph.add_edge(p, name)
 
             new_node = graph.nodes[name]
+        else:
+            regen_sm = SystemMessage(content=self.loadText("prompts/newTaskGeneration/failReGen-SM.txt"))
+            regen_hm_prompt = HumanMessagePromptTemplate.from_template(
+                self.loadText("prompts/newTaskGeneration/failReGen-HM.txt"))
+            regen_hm = regen_hm_prompt.format(
+                skill_name=new_node['node_name'],
+                mand_skills=new_node['predecessors'],
+            )
+            assert isinstance(regen_hm, HumanMessage)
+            regen_message = [regen_sm, regen_hm]
+            print(
+                f"\033[32m****Guide Regen human message****\n{regen_hm.content}\033[0m"
+            )
+            ai_regen_message = self.llm(regen_message)
+            regen_string = ai_regen_message.content
+            print(f"\033[34m****Guide Regen ai message****\n{regen_string}\033[0m")
+            jText_regen = json.loads(regen_string)
+            graph.nodes[new_node['node_name']]['knowledge'] = jText_regen['guide']
 
         return new_node
 

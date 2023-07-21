@@ -4,7 +4,7 @@ The task you are looking to complete is:
 {task}
 
 Here are some useful programs selected to assist you in the making of your method.
-You must include a call to all of your core skills, in the code for your new skill.
+You must include a call to your core skills, in the code for your new skill.
 Your core skills include:
 {predecessors}
 
@@ -54,4 +54,3 @@ Basics: A list of all the basic skills that you used when writing your code.
 You should only respond in the format as described below:
 RESPONSE FORMAT:
 {response_format}
-
