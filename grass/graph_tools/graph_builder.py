@@ -381,7 +381,7 @@ class GraphBuilder:
             assert isinstance(regen_hm, HumanMessage)
             regen_message = [regen_sm, regen_hm]
             print(
-                f"\033[32m****Guide Regen human message****\n{regen_message.content}\033[0m"
+                f"\033[32m****Guide Regen human message****\n{regen_hm.content}\033[0m"
             )
             ai_regen_message = self.llm(regen_message)
             regen_string = ai_regen_message.content

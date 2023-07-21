@@ -7,18 +7,22 @@ Mandatory Skills:
 Previous Descriptions:
 ...
 
-Your description must adhere to the following rules.
-1) Steps should be very incremental in difficulty, based on the learning progress shown in "Mandatory Skills".
-2) Your description should clear, and specific.
-3) You must use your "Mandatory Skills" in the description of your new task.
-4) Assume the reader is only capable of doing what is given in the "Mandatory Skills", and can do nothing else.
-5) Only describe using "Mandatory Skills" the new single step task.
-6) Combine your "Mandatory Skills" in a new way that is not too difficult for someone only capable of doing these "Mandatory Skills".
-7) Your description should include specific minimum quantities of all materials, items, and tools necessary to complete the new task.
-8) Do not name the task or define the goal, only describe the actions that must be taken.
-9) Do not write a description for a task that accomplishes the same things as anything in the "Previous Descriptions" list.
+I'm new to minecraft and don't know how to do anything but the "Mandatory Skills" list I will give you, can you make me a description of how to do a single new thing in minecraft using all of those skills.
+Don't worry about trying to do a bunch at once, I only need one little step such as obtaining a material, crafting an item or killing a mob, etc, I'll be back for more steps later.
+Do not forget:
+1) The "Previous Descriptions" are of skills I am not allowed to repeat either directly or paraphrasing.
+    Note: This same rule applies to descriptions in the "Mandatory Skills", which should not be repeated.
+2) I can only use materials I already know how to obtain from the "Mandatory Skills" list.
+    Example: If I have a skill to obtain wood I could try crafting wooden planks.
+    Note: Keep in mind exactly what the minecraft recipes call for.
+3) Your description of my new thing to do needs to be clear with each action written out and quantities of materials tools and outcomes as part of it.
+4) You do not need to describe how to do the "Mandatory Skills", you can just reference them by name.
+5) Please do not make my new thing too difficult or too many steps, or I will get confused and be unable to complete it.
+6) My new thing should be a single task with very few steps and a plain simple outcome. It should be one or two small sentences that accomplish obtaining a single item or block, or completing a simple task like planting or killing.
+7) Please, do not name the task or define the goal, only describe the actions that must be taken.
+8) If I have no "Mandatory Skills" then the game has just begun, how do I do the first thing you should do when you join the game.
 
 You should respond in the following format:
 {
-    "description": "..."
+    "description": "Your response goes here, and must look like a string with no tabs or new lines built in."
 }
