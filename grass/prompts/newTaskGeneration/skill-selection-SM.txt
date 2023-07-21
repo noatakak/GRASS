@@ -18,7 +18,7 @@ Please follow these rules when selecting skills:
 6) Only select skills that are absolutely necessary to the task.
 7) Some skills include other skills, so only select the most advanced skill that you need, and you can ignore the simpler ones.
 8) Do not feel like you have to return every skill you are given, I want you to be picky about what skills you think you need.
-
+9) If a skill in the "Skills" list is an "internal_skill" for another skill, do not select the internal skill please.
 You should return your answer in the following format:
 {
     "task_name": "..."

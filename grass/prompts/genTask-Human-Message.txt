@@ -1,5 +1,5 @@
-Usable skills:
-[{top_five}]
-
-The following skill are inaccessible to you and should not be replicated:
+Available Skills:
+{top_five}
+----------------------
+Previous Descriptions:
 {failures}

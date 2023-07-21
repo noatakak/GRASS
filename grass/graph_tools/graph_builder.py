@@ -141,7 +141,7 @@ class GraphBuilder:
             content = file.read()
         return content
 
-    def get_new_node(self, graph, trials, fail_nodes, iterations):
+    def get_new_node(self, graph, trials, fail_nodes):
         revisit_node = False
         best_nodes = []
         dont_use = fail_nodes.copy()
@@ -172,13 +172,17 @@ class GraphBuilder:
 
         if not revisit_node:
             # if iterations > 2:
-            input_string = ""
+            best_nodes_string = ""
             random.shuffle(best_nodes)
             for node in best_nodes:
                 graph.nodes[node['node_name']]['weight']['appearances'] += 1
-                input_string += "{\n\"name\": \""
-                input_string += node['node_name'] + "\",\n\"knowledge\": \""
-                input_string += node['knowledge'] + "\",\n}"
+                best_nodes_string += "{\n\"name\": \""
+                best_nodes_string += node['node_name'] + "\",\n\"description\": \""
+                best_nodes_string += node['knowledge'] + "\",\n\"internal_skills\": ["
+                for p in graph.predecessors(node['node_name']):
+                    if graph.nodes[p]['weight']['depth'] > 0:
+                        best_nodes_string += p + ","
+                best_nodes_string += "]\n}"
                 #   input_string += "\"prerequisites\":" +str(node['predecessors']) + "\n}"
                 for suc in node['successors']:
                     if suc not in dont_use:
@@ -189,11 +193,15 @@ class GraphBuilder:
             for node in best_nodes:
                 if node['node_name'] in dont_use:
                     dont_use.remove(node['node_name'])
+            dont_use_string = ""
+            for d in dont_use:
+                dont_use_string += "{\n\"description\": \""
+                dont_use_string += graph.nodes[d]['knowledge'] +"\",\n}"
             system_message = SystemMessage(content=self.loadText("prompts/genTask-System-Message.txt"))
             human_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/genTask-Human-Message.txt"))
             human_message = human_prompt.format(
-                top_five=input_string,
-                failures=dont_use
+                top_five=best_nodes_string,
+                failures=dont_use_string
             )
             assert isinstance(human_message, HumanMessage)
             GRAPH_message = [system_message, human_message]
@@ -205,9 +213,9 @@ class GraphBuilder:
             print(f"\033[34m****Graph Agent ai message****\n{stringContent}\033[0m")
             jTextNode = json.loads(stringContent)
             name = jTextNode['name']
-            knowledge = jTextNode['knowledge']
+            knowledge = jTextNode['description']
             successors = []
-            predecessors = jTextNode['prerequisites']
+            predecessors = jTextNode['internal_skills']
             # elif iterations == 0:
             #     name = "gatherWood"
             #     knowledge = "Look for a tree of any type. When found, mine the logs of the tree and collect dropped items."
@@ -279,8 +287,12 @@ class GraphBuilder:
             for node in best_nodes:
                 graph.nodes[node['node_name']]['weight']['appearances'] += 1
                 best_nodes_string += "{\n\"name\": \""
-                best_nodes_string += node['node_name'] + "\",\n\"knowledge\": \""
-                best_nodes_string += node['knowledge'] + "\",\n}"
+                best_nodes_string += node['node_name'] + "\",\n\"description\": \""
+                best_nodes_string += node['knowledge'] + "\",\n\"internal_skills\": ["
+                for p in graph.predecessors(node['node_name']):
+                    if graph.nodes[p]['weight']['depth'] > 0:
+                        best_nodes_string += p + ","
+                best_nodes_string += "]\n}"
 
             jText_skillList = {}
             if best_nodes_string != "":
@@ -306,7 +318,7 @@ class GraphBuilder:
                 selected_list = jText_skillList['skill_list']
             for s in selected_list:
                 mand_skills += "{\n\"name\": \""
-                mand_skills += s + "\",\n\"guide\": \""
+                mand_skills += s + "\",\n\"description\": \""
                 mand_skills += graph.nodes[s]['knowledge'] + "\",\n}"
             mand_skills += "]"
             prev_desc = "["

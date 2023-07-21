@@ -11,6 +11,8 @@ Your method name should adhere to the following rules:
 3) The subject should be a specific noun such as a Minecraft block, item, or mob.
 4) The name should look like verbSubject.
 
+Note: If you want to name your task punchTree, don't do that. Name it obtainWoodLog instead.
+
 You should return your answer in the following format:
 {
     "name": "verbSubject"
