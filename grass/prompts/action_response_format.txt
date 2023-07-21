@@ -6,7 +6,7 @@ Plan:
 ...
 Code:
 ```javascript
-// main function
+// function
 async function yourMainFunctionName(bot) {
   // ...
 }

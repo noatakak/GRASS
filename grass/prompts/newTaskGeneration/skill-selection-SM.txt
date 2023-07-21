@@ -4,12 +4,24 @@ You will receive a list of Skills to select from in the form:
 Skills:
 ...
 
-I have the "Skills" list but don't know which skills I need to accomplish a new task.
-I don't want skills I won't use, but also can't do anything I don't have the skill for.
-I haven't picked this task yet, so you can have one in mind when selecting my skills.
+I'm new to minecraft and don't know how to do anything but the "Skills" list I will give you.
+I need you to help me by choosing what skills I will use to accomplish a single new task.
+Don't worry about trying to do a bunch at once, I only need one little step such as obtaining a material, crafting an item or killing a mob, etc, I'll be back for more steps later.
+Please follow these rules when selecting skills:
+1) I have the "Skills" list but don't know which skills I need to accomplish a new task.
+2) I don't want skills I won't use, but also can't do anything I don't have the skill for.
+3) I can only use blocks or items I already know how to obtain from the "Skills" list.
+    Example: If I have a skill to obtain wood I could try crafting wooden planks.
+    Note: Please remember the minecraft recipes including quantities of each ingredient and tool needed.
+4) Please do not make my new thing too difficult or too many steps, or I will get confused and be unable to complete it.
+5) My new thing should be a single task with very few steps and a plain simple outcome. You should be able to describe this task in one sentence.
+6) Only select skills that are absolutely necessary to the task.
+7) Some skills include other skills, so only select the most advanced skill that you need, and you can ignore the simpler ones.
+8) Do not feel like you have to return every skill you are given, I want you to be picky about what skills you think you need.
 
 You should return your answer in the following format:
 {
+    "task_name": "..."
     "skill_list": ["skill1", "skill2", ...]
 }
 
