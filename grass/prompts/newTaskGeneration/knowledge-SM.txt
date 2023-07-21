@@ -10,17 +10,17 @@ Previous Descriptions:
 I'm new to minecraft and don't know how to do anything but the "Mandatory Skills" list I will give you, can you make me a description of how to do a single new thing in minecraft using all of those skills.
 Don't worry about trying to do a bunch at once, I only need one little step such as obtaining a material, crafting an item or killing a mob, etc, I'll be back for more steps later.
 Do not forget:
-1) The "Previous Descriptions" are of skills I am not allowed to repeat either directly or paraphrasing.
-    Note: This same rule applies to descriptions in the "Mandatory Skills", which should not be repeated.
-2) I can only use materials I already know how to obtain from the "Mandatory Skills" list.
+1) The "Previous Descriptions" and "Mandatory Skills" are skills I am not allowed to repeat either directly or paraphrasing.
+2) I can only use blocks or items I already know how to obtain from the "Mandatory Skills" list.
     Example: If I have a skill to obtain wood I could try crafting wooden planks.
-    Note: Keep in mind exactly what the minecraft recipes call for.
-3) Your description of my new thing to do needs to be clear with each action written out and quantities of materials tools and outcomes as part of it.
+    Note: Please explain the minecraft recipe including quantities of each ingredient and tool needed.
+3) Your description of my new thing to do needs to be clear with each action written out and outcomes as part of it.
 4) You do not need to describe how to do the "Mandatory Skills", you can just reference them by name.
 5) Please do not make my new thing too difficult or too many steps, or I will get confused and be unable to complete it.
 6) My new thing should be a single task with very few steps and a plain simple outcome. It should be one or two small sentences that accomplish obtaining a single item or block, or completing a simple task like planting or killing.
-7) Please, do not name the task or define the goal, only describe the actions that must be taken.
-8) If I have no "Mandatory Skills" then the game has just begun, how do I do the first thing you should do when you join the game.
+7) Please, do not name the task or define the goal, only describe the actions that must be taken, including a statement about crafting the goal.
+8) In your description you may explain calling some of the "Mandatory Skills" more than once to get the correct quantity of blocks or items for crafting.
+9) If I have no "Mandatory Skills" then the game has just begun, how do I do the first thing you should do when you join the game.
 
 You should respond in the following format:
 {
