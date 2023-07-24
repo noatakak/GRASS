@@ -172,7 +172,7 @@ class GraphBuilder:
 
         if not revisit_node:
             # if iterations > 2:
-            best_nodes_string = ""
+            best_nodes_string = "["
             random.shuffle(best_nodes)
             for node in best_nodes:
                 graph.nodes[node['node_name']]['weight']['appearances'] += 1
@@ -193,10 +193,12 @@ class GraphBuilder:
             for node in best_nodes:
                 if node['node_name'] in dont_use:
                     dont_use.remove(node['node_name'])
-            dont_use_string = ""
+            best_nodes_string += "]"
+            dont_use_string = "["
             for d in dont_use:
-                dont_use_string += "{\n\"description\": \""
-                dont_use_string += graph.nodes[d]['knowledge'] +"\",\n}"
+                dont_use_string += "\n\"description\": \""
+                dont_use_string += graph.nodes[d]['knowledge'] +"\",\n"
+            dont_use_string += "]"
             system_message = SystemMessage(content=self.loadText("prompts/genTask-System-Message.txt"))
             human_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/genTask-Human-Message.txt"))
             human_message = human_prompt.format(
