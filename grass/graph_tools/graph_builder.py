@@ -146,6 +146,7 @@ class GraphBuilder:
         best_nodes = []
         dont_use = fail_nodes.copy()
         count = 0
+        new_node = ""
         for n in graph.nodes:
             if graph.nodes[n]["file_path"] != "":
                 count = count +1
@@ -167,7 +168,14 @@ class GraphBuilder:
         for count, element in enumerate(best_nodes):
             if graph.nodes[element]['file_path'] == "" and graph.nodes[element]['weight']['depth'] != 0:
                 revisit_node = True
-                new_node = graph.nodes[element]
+                if new_node == "":
+                    new_node = graph.nodes[element]
+                else:
+                    if self.calc_weight(element, trials, graph) > self.calc_weight(new_node['node_name'], trials, graph):
+                        new_node = graph.nodes[element]
+                        graph.nodes[new_node['node_name']]['weight']['appearances'] -= 1
+                graph.nodes[element]['weight']['appearances'] += 1
+
             best_nodes[count] = graph.nodes[element]
 
         if not revisit_node:
@@ -267,7 +275,7 @@ class GraphBuilder:
             regen_string = ai_regen_message.content
             print(f"\033[34m****Guide Regen ai message****\n{regen_string}\033[0m")
             jText_regen = json.loads(regen_string)
-            graph.nodes[new_node['node_name']]['knowledge'] = jText_regen['guide']
+            graph.nodes[new_node['node_name']]['knowledge'] = jText_regen['description']
 
         return new_node
 
