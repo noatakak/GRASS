@@ -87,7 +87,7 @@ class GraphBuilder:
         # four was chosen here because it has to be larger than two because of the increase in successors and trials
         # every iteration,we chose 4 over three because of the rapid increase in trials means that fails should make
         # more of a landmark
-        graph.nodes[info["task"]]["weight"]["failures"] = graph.nodes[info["task"]]["weight"]["failures"] + 4
+        graph.nodes[info["task"]]["weight"]["failures"] = graph.nodes[info["task"]]["weight"]["failures"] + 8
         #successor_list = graph.successors(info["task"])
         # for x in successor_list:
         #     graph.nodes[x["node_name"]]["weight"]["failures"] = graph.nodes[x["node_name"]]["weight"]["failures"] + 4
@@ -204,8 +204,8 @@ class GraphBuilder:
             best_nodes_string += "]"
             dont_use_string = "["
             for d in dont_use:
-                dont_use_string += "\n\"description\": \""
-                dont_use_string += graph.nodes[d]['knowledge'] +"\",\n"
+                dont_use_string += "\n\"name\": \""
+                dont_use_string += graph.nodes[d]['node_name'] +"\",\n"
             dont_use_string += "]"
             system_message = SystemMessage(content=self.loadText("prompts/genTask-System-Message.txt"))
             human_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/genTask-Human-Message.txt"))

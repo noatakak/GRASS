@@ -1,5 +1,5 @@
 Available Skills:
 {top_five}
 ----------------------
-Previous Descriptions:
+Previous Skills:
 {failures}

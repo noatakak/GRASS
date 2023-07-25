@@ -38,7 +38,7 @@ Code:
         - Use 'getItemFromChest(bot, chestPosition, itemsToGet)' to get items from a chest.
         - Use 'block.name.includes("terracotta")' to allow for using a shared substring to locate or reference a block by generic name.
     4) Your function will be reused for building more complex functions. Therefore, you should make it generic and reusable.
-    5) You should not make any assumption about the inventory (as it may be changed at a later time), and therefore you should always check whether you have the required items before using them.
+    5) You should not make any assumption about the inventory (as it may be changed at a later time), and therefore you should always check whether you have the required items before crafting or using them.
     6) Functions in the "Code from the last round" section will not be saved or executed. Do not reuse functions listed there.
     7) Anything defined outside a function will be ignored, define all your variables inside your functions.
     8) Call `bot.chat` to show the intermediate progress.
