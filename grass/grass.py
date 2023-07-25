@@ -341,7 +341,6 @@ class Grass:
             )
             self.resume = True
         self.last_events = self.env.step("")
-        learn_count = 0
         while True:
             # if len(sub_q) == 0:
             #     print("sub queue is empty")
@@ -368,7 +367,6 @@ class Grass:
             print(
                 f"\033[35mStarting task {task} for at most {self.action_agent_task_max_retries} times\033[0m"
             )
-            learn_count = learn_count + 1
             try:
                 messages, reward, done, info = self.rollout(
                     new_node=new_node,
@@ -408,6 +406,8 @@ class Grass:
             print(
                 f"\033[35mFailed tasks: {', '.join(self.curriculum_agent.failed_tasks)}\033[0m"
             )
+            with open(f"{self.ckpt_dir}/log.txt", 'a') as file:
+                file.write("Trial " + str(self.trial_count) + ": " + self.task + ", success = " + str(info['success']) + "\n")
 
         return {
             "completed_tasks": self.curriculum_agent.completed_tasks,
