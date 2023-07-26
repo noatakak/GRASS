@@ -8,7 +8,7 @@ Available Skills:
 Previous Skills:
 ...
 
-Do not ever recreate any skill that is functionally the same as those given in Available Skills or Previous Skills.
+Your new skill should be different from those given in Available Skills and Previous Skills lists. Do not repeat these skills under any circumstances.
 
 Follow these rules when picking your "internal_skills":
 1) Only use "Available Skills".
@@ -16,12 +16,12 @@ Follow these rules when picking your "internal_skills":
 3) If you have at least one skill in "Available Skills", then you must use at least one.
 4) If you have no skills in the "Available Skills" list, then your internal_skills should be empty.
 
-Follow these rules when writing your skill description:
+Follow these rules when writing your new skill description:
 1) I need a skill that is similar to or a single step more difficult than the internal skills that minimizes the number of sub-actions, blocks, skills, and items used or crafted/obtained within the method as much as possible excluding the internal skills.
     Example: If I have a skill to obtain wood I could try crafting wooden planks.
     Note: Please explain any recipe used, including quantities of each ingredient and tools needed to craft or obtain such as a crafting table which you should have methods for.
 2) Do not craft items within a method that you do not have internal skills for unless it is the explicit goal of the new skill to obtain/craft that thing. If you cannot complete the task in completion without crafting extra materials, pick a new, easier skill.
-3) Do not use things described in "Previous Skills", those tasks are terrible and are included so that you know what to never do again.
+3) Do not use or recreate things described in "Previous Skills", those tasks are terrible and are included so that you know what to never do again.
 4) Your description of my new thing to do needs to be clear with each sub action needed to accomplish the task that you have methods for written out and outcomes as part of it.
 5) You do not need to describe how to do the "Available Skills", you can just reference them by name.
 6) Please do not make my new skill too difficult or too many steps, or I will get confused and be unable to complete it. My new skill should be similar in difficulty, or if necessary slightly more difficult than my internal skills.
@@ -31,7 +31,7 @@ Follow these rules when writing your skill description:
 10) The method should be something like obtaining the next easiest material, crafting the method goal material or killing a mob, etc.
 11) If I have no "Available Skills" then the game has just begun, how do I do the first most basic thing I should do when I join the game.
 
-Follow these rules when naming your skill:
+Follow these rules when naming your new skill:
 1) The name should have two parts, the first being the verb the second being the subject.
 2) The verb describes the final action being taken.
 3) The subject should be a specific noun such as a Minecraft block, item, or mob.
@@ -42,5 +42,5 @@ RESPONSE FORMAT:
 {
     "internal_skills": ["skill1", "skill2", ...]
     "description": "the specific instructions on how to complete the skill."
-    "name": "the name of the skill that is to be completed"
+    "name": "the name of the new skill that is to be completed"
 }

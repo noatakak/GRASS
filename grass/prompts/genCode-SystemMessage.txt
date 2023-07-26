@@ -8,9 +8,9 @@ You must include a call to your core skills, in the code for your new skill.
 Your core skills include:
 {predecessors}
 
-Along with this, here are the basic skills at your disposal,
+Along with this, here are the primitive skills at your disposal,
 you may use these skills as well as your core to write code for solving the task at hand
-Your basic skills include:
+Your primitive skills include:
 {primitives}
 
 At each round of conversation, I will give you
@@ -49,7 +49,7 @@ Code:
     13) Do not use `bot.on` or `/bot.once` to register event listeners. You definitely do not need them.
     14) Name your function in a meaningful way (can infer the task from the name).
     15) If necessary, you may call prerequisite functions, multiple times, or in a loop, in order to obtain the required materials.
-Basics: A list of all the basic skills and core skills that you used when writing your code.
+Basics: A list of all functions used when writing your code.
 
 You should only respond in the format as described below:
 RESPONSE FORMAT:

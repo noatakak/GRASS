@@ -279,7 +279,7 @@ class Grass:
             #         skills.append(contents)
             system_message = self.action_agent.render_system_message(self.graph, self.new_node)
             human_message = self.action_agent.render_human_message(
-                events=events, code=parsed_result["program_code"], task=self.task, critique=""
+                events=events, code=parsed_result["program_code"], task=self.task, critique=critique
             )
             self.last_events = copy.deepcopy(events)
             self.messages = [system_message, human_message]

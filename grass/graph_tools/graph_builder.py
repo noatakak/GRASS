@@ -132,7 +132,7 @@ class GraphBuilder:
         successors = weight_vals['successors']
         failures = weight_vals['failures']
         appearances = weight_vals['appearances']
-        weight = (successors + trials + depth) / (appearances + failures + 1)
+        weight = (successors + trials + (depth/2)) / ((2*appearances) + failures + 1)
         return weight
 
     def loadText(self, textFile):
