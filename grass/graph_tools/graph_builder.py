@@ -132,7 +132,7 @@ class GraphBuilder:
         successors = weight_vals['successors']
         failures = weight_vals['failures']
         appearances = weight_vals['appearances']
-        weight = (successors + trials + (depth/2)) / ((2*appearances) + failures + 1)
+        weight = (successors + trials + (depth/2)) / ((4*appearances) + failures + 1)
         return weight
 
     def loadText(self, textFile):
@@ -204,8 +204,10 @@ class GraphBuilder:
             best_nodes_string += "]"
             dont_use_string = "["
             for d in dont_use:
-                dont_use_string += "\n\"name\": \""
-                dont_use_string += graph.nodes[d]['node_name'] +"\",\n"
+                dont_use_string += "{\n\"name\": \""
+                dont_use_string += graph.nodes[d]['node_name'] + "\",\n"
+                dont_use_string += "\n\"description\": \""
+                dont_use_string += graph.nodes[d]['knowledge'] + "\",\n}\n"
             dont_use_string += "]"
             system_message = SystemMessage(content=self.loadText("prompts/genTask-System-Message.txt"))
             human_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/genTask-Human-Message.txt"))
