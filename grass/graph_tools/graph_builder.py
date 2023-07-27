@@ -143,27 +143,41 @@ class GraphBuilder:
 
     def get_new_node(self, graph, trials, fail_nodes):
         revisit_node = False
+        all_nodes = []
         best_nodes = []
         dont_use = fail_nodes.copy()
-        count = 0
+        successful_count = 0
         new_node = ""
         for n in graph.nodes:
-            if graph.nodes[n]["file_path"] != "":
-                count = count +1
-                if count >= 13:
-                    break
-        for n in graph.nodes:
-            if len(best_nodes) < 5 and graph.nodes[n]['weight']['depth'] != 0:
-                if count < 13 and graph.nodes[n]["file_path"] != "":
-                    best_nodes.append(n)
-                elif count >= 13:
-                    best_nodes.append(n)
-            else:
-                for count, element in enumerate(best_nodes):
-                    if self.calc_weight(n, trials, graph) > self.calc_weight(best_nodes[count], trials, graph) and graph.nodes[n]['weight']['depth'] != 0:
-                        best_nodes[4] = n
-                        break
-                sorted(best_nodes, key = lambda x: self.calc_weight(x, trials, graph))
+            if graph.nodes[n]['weight']['depth'] != 0:
+                all_nodes.append(n)
+                if graph.nodes[n]["file_path"] != "":
+                    successful_count += 1
+        if successful_count < 5:
+            for b in all_nodes:
+                if graph.nodes[b]["file_path"] != "":
+                    best_nodes.append(b)
+        else:
+            sorted(all_nodes, key=lambda x: self.calc_weight(x, trials, graph))
+            for i in range(5):
+                best_nodes.append(all_nodes[i])
+        # for n in graph.nodes:
+        #     if graph.nodes[n]["file_path"] != "" and graph.nodes[n]['weight']['depth'] != 0:
+        #         count = count + 1
+        #         if count >= 5:
+        #             break
+        # for n in graph.nodes:
+        #     if len(best_nodes) < 5 and graph.nodes[n]['weight']['depth'] != 0:
+        #         if count < 5 and graph.nodes[n]["file_path"] != "":
+        #             best_nodes.append(n)
+        #         elif count >= 5:
+        #             best_nodes.append(n)
+        #     else:
+        #         for count, element in enumerate(best_nodes):
+        #             if self.calc_weight(n, trials, graph) > self.calc_weight(best_nodes[count], trials, graph) and graph.nodes[n]['weight']['depth'] != 0:
+        #                 best_nodes[4] = n
+        #                 break
+        #         sorted(best_nodes, key = lambda x: self.calc_weight(x, trials, graph))
 
         for count, element in enumerate(best_nodes):
             if graph.nodes[element]['file_path'] == "" and graph.nodes[element]['weight']['depth'] != 0:

@@ -406,9 +406,15 @@ class Grass:
             print(
                 f"\033[35mFailed tasks: {', '.join(self.curriculum_agent.failed_tasks)}\033[0m"
             )
+            score_string = "Scores:["
+            for n in self.graph:
+                if self.graph.nodes[n]['weight']['depth'] != 0:
+                    score_string += n + ": " + str(self.graph_agent.calc_weight(n, self.trial_count, self.graph)) + ", "
+            score_string += "]"
+            print(score_string)
             with open(f"{self.ckpt_dir}/log.txt", 'a') as file:
-                file.write("Trial " + str(self.trial_count) + ": " + self.task + ", success = " + str(info['success']) + "\n")
-
+                file.write("Trial " + str(self.trial_count) + ": " + self.task + ", success = " + str(
+                    info['success']) + "\n" + score_string + "\n")
         return {
             "completed_tasks": self.curriculum_agent.completed_tasks,
             "failed_tasks": self.curriculum_agent.failed_tasks,
