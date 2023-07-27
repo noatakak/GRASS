@@ -132,7 +132,7 @@ class GraphBuilder:
         successors = weight_vals['successors']
         failures = weight_vals['failures']
         appearances = weight_vals['appearances']
-        weight = (successors + trials + (depth/2)) / ((4*appearances) + failures + 1)
+        weight = (successors + trials + depth) / (appearances + failures + 1)
         return weight
 
     def loadText(self, textFile):
@@ -145,7 +145,7 @@ class GraphBuilder:
         revisit_node = False
         all_nodes = []
         best_nodes = []
-        dont_use = fail_nodes.copy()
+        dont_use = list(set(fail_nodes.copy()))
         successful_count = 0
         new_node = ""
         for n in graph.nodes:
@@ -158,9 +158,7 @@ class GraphBuilder:
                 if graph.nodes[b]["file_path"] != "":
                     best_nodes.append(b)
         else:
-            sorted(all_nodes, key=lambda x: self.calc_weight(x, trials, graph))
-            for i in range(5):
-                best_nodes.append(all_nodes[i])
+            best_nodes = sorted(all_nodes, key=lambda x: self.calc_weight(x, trials, graph), reverse=True)[:5]
         # for n in graph.nodes:
         #     if graph.nodes[n]["file_path"] != "" and graph.nodes[n]['weight']['depth'] != 0:
         #         count = count + 1
@@ -220,8 +218,8 @@ class GraphBuilder:
             for d in dont_use:
                 dont_use_string += "{\n\"name\": \""
                 dont_use_string += graph.nodes[d]['node_name'] + "\",\n"
-                dont_use_string += "\n\"description\": \""
-                dont_use_string += graph.nodes[d]['knowledge'] + "\",\n}\n"
+                # dont_use_string += "\n\"description\": \""
+                # dont_use_string += graph.nodes[d]['knowledge'] + "\",\n}\n"
             dont_use_string += "]"
             system_message = SystemMessage(content=self.loadText("prompts/genTask-System-Message.txt"))
             human_prompt = HumanMessagePromptTemplate.from_template(self.loadText("prompts/genTask-Human-Message.txt"))
