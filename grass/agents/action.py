@@ -90,7 +90,7 @@ class ActionAgent:
             "useChest",
             "mineflayer",
         ]
-        pred_nodes = new_node['predecessors']
+        pred_nodes = new_node['top_five']
         predecessors = [{"node_name": x, "knowledge": graph.nodes[x]['knowledge'], 'code': self.load_code_text(graph.nodes[x]['file_path'])} for x in pred_nodes]
         primitives = load_control_primitives_context(base_skills)
         response_format = load_prompt("action_response_format")
