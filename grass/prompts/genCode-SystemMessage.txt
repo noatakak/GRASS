@@ -36,17 +36,16 @@ Code:
         - Use `killMob(bot, name, timeout)` to kill mobs. Do not use `bot.attack` directly.
         - Use 'getItemFromChest(bot, chestPosition, itemsToGet)' to get items from a chest.
     4) Your function will be reused for building more complex functions. Therefore, you should make it generic and reusable.
-    5) Do not call core skills that are called within other core skills.
+    5) Core skills must be completed with an empty inventory, and are not influenced by previous code.
+        Example: When using craftWoodenPlanks, it does not need obtainWood to be used before it.
     6) Functions in the "Code from the last round" section will not be saved or executed. Do not reuse functions listed there.
     7) Anything defined outside a function will be ignored, define all your variables inside your functions.
     8) Call `bot.chat` to show the intermediate progress.
     9) Use `exploreUntil(bot, direction, maxDistance, callback)` when you cannot find something. You should frequently call this before mining blocks or killing mobs. You should select a direction at random every time instead of constantly using (1, 0, 1).
-    10) If you are rewriting a function that previously failed due to not finding a specific item, the primary change you should make to the code is doubling the maxTime that is passed to the exploreUntil() method.
-    11) `maxDistance` should always be 32 for `bot.findBlocks` and `bot.findBlock`. Do not cheat.
-    12) Do not write infinite loops or recursive functions.
-    13) Do not use `bot.on` or `/bot.once` to register event listeners. You definitely do not need them.
-    14) Name your function in a meaningful way (can infer the task from the name).
-    15) If necessary, you may call prerequisite functions, multiple times, or in a loop, in order to obtain the required materials.
+    10) `maxDistance` should always be 32 for `bot.findBlocks` and `bot.findBlock`. Do not cheat.
+    11) Do not write infinite loops or recursive functions.
+    12) Do not use `bot.on` or `/bot.once` to register event listeners. You definitely do not need them.
+    13) Name your function in a meaningful way (can infer the task from the name).
 Basics: A list of core skill and primitive skill methods used when writing your code.
 
 You should only respond in the format as described below:
