@@ -91,7 +91,8 @@ class ActionAgent:
             "mineflayer",
         ]
         pred_nodes = new_node['top_five']
-        predecessors = [{"node_name": x, "knowledge": graph.nodes[x]['knowledge'], 'code': self.load_code_text(graph.nodes[x]['file_path'])} for x in pred_nodes]
+        # "knowledge": graph.nodes[x]['knowledge'],
+        predecessors = [{"node_name": x, 'code': self.load_code_text(graph.nodes[x]['file_path'])} for x in pred_nodes]
         primitives = load_control_primitives_context(base_skills)
         response_format = load_prompt("action_response_format")
         system_message_prompt = SystemMessagePromptTemplate.from_template(
