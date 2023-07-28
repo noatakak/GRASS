@@ -228,6 +228,17 @@ class GraphBuilder:
                 if graph.nodes[p]['weight']['depth'] > weight_depth:
                     weight_depth = graph.nodes[p]['weight']['depth']
             weight_depth = weight_depth + 1
+            if name in graph:
+                print("\nGraph agent is duplicating node: " + name+ "\n")
+                if graph.nodes[name]['file_path'] == "":
+                    graph.nodes[name]['knowledge'] = knowledge
+                new_pred = jTextNode['internal_skills']
+                for p in new_pred:
+                    if p not in graph.nodes[name]['predecessors']:
+                        graph.nodes[name]['predecessors'].append(p)
+                new_node = graph.nodes[name]
+                graph.nodes[name]['weight']['appearances'] += 1
+                return new_node
             weight = {'depth': weight_depth, 'successors': 0, 'failures': 0, "appearances": 0}
             graph.add_node(name, node_name=name, weight=weight, top_five=[x['node_name'] for x in best_nodes],
                            knowledge=knowledge, predecessors=predecessors,
