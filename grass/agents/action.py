@@ -184,11 +184,11 @@ class ActionAgent:
         # else:
         #     observation += f"Inventory ({inventory_used}/36): Empty\n\n"
 
-        if not (
-            task == "Place and deposit useless items into a chest"
-            or task.startswith("Deposit useless items into the chest at")
-        ):
-            observation += self.render_chest_observation()
+        # if not (
+        #     task == "Place and deposit useless items into a chest"
+        #     or task.startswith("Deposit useless items into the chest at")
+        # ):
+        #      observation += self.render_chest_observation()
 
         observation += f"Task: {task}\n\n"
 
