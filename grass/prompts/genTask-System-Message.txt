@@ -26,7 +26,7 @@ Follow these rules when writing your new skill description:
 6) Please do not make my new skill too difficult or too many steps, or I will get confused and be unable to complete it. My new skill should be similar in difficulty, or if necessary slightly more difficult than my internal skills.
 7) My new thing should be a single task with very few steps and materials and a plain simple outcome. It should be one or two detailed sentences that accomplish obtaining a single item or block, or completing a simple task like planting or killing.
 8) In your description you may explain calling some of the "Available Skills" more than once to get the correct quantity of blocks or items for crafting.
-9) Some items require a crafting table, do not attempt these skills without a crafting table skill in your "Available Skills".
+9) Some items require a crafting table, as soon as you have a method for wooden planks make a crafting table skill.
 10) The method should be something like obtaining the next easiest material, crafting the method goal material or killing a mob, etc.
 11) If I have no "Available Skills" then the game has just begun, how do I do the first most basic thing I should do when I join the game.
 
