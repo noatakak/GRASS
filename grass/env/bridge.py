@@ -157,7 +157,7 @@ class GrassEnv(gym.Env):
         self.has_reset = True
         self.connected = True
         # All the reset in step will be soft
-        self.reset_options["reset"] = "soft"
+        self.reset_options["reset"] = "hard"
         self.pause()
         return json.loads(returned_data)
 

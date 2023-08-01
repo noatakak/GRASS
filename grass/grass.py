@@ -185,7 +185,7 @@ class Grass:
         if reset_env:
             self.env.reset(
                 options={
-                    "mode": "soft",
+                    "mode": "hard",
                     "wait_ticks": self.env_wait_ticks,
                 }
             )
