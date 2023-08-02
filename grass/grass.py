@@ -3,6 +3,8 @@ import os
 import time
 from typing import Dict
 
+import pandas as pd
+
 import grass.utils as U
 from .env import GrassEnv
 
@@ -172,7 +174,7 @@ class Grass:
         )
         system_message = self.action_agent.render_system_message(self.graph, new_node)
         human_message = self.action_agent.render_human_message(
-            events=events, code="", task=self.task, critique=""#, context=context
+            events=events, code="", task=self.task, critique=""  # , context=context
         )
         self.messages = [system_message, human_message]
         print(
@@ -351,8 +353,25 @@ class Grass:
             with open(f"{self.ckpt_dir}/log.txt", 'a') as file:
                 file.write("Trial " + str(self.trial_count) + ": " + self.task + ", success = " + str(
                     info['success']) + "\n" + score_string + "\n")
+            self.skillByIter()
         return {
             "completed_tasks": self.curriculum_agent.completed_tasks,
             "failed_tasks": self.curriculum_agent.failed_tasks,
             "skills": self.skill_manager.skills,
         }
+
+    def skillByIter(self):
+        iterations = self.trial_count
+        success = 0
+        fail = 0
+        for name in self.graph:
+            if self.graph.nodes[name]['file_path'] == "":
+                fail += 1
+            elif self.graph.nodes[name]['weight']['depth'] != 0:
+                success += 1
+        temp_arr = {"iterations": [iterations], "success": [success], "fail": [fail]}
+        df = pd.DataFrame(temp_arr)
+        if os.path.isfile(f"{self.ckpt_dir}/skillByIter.csv"):
+            df.to_csv(f"{self.ckpt_dir}/skillByIter.csv", mode='a', index=False, header=False)
+        else:
+            df.to_csv(f"{self.ckpt_dir}/skillByIter.csv", index=False)

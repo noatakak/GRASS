@@ -142,6 +142,19 @@ class ActionAgent:
             else:
                 observation += f"Chat log: None\n\n"
 
+        observation += f"Task: {task}\n\n"
+
+        if context:
+            observation += f"Context: {context}\n\n"
+        else:
+            observation += f"Context: None\n\n"
+
+        if critique:
+            observation += f"Critique: {critique}\n\n"
+        else:
+            observation += f"Critique: None\n\n"
+
+        return HumanMessage(content=observation)
 
     def process_new_ai_message(self, message):
         assert isinstance(message, AIMessage)
