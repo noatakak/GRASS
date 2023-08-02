@@ -41,6 +41,7 @@ class Grass:
             critic_agent_temperature: int = 0,
             critic_agent_mode: str = "auto",
             openai_api_request_timeout: int = 240,
+            test_id: str = "test",
             ckpt_dir: str = datetime.now().strftime("Tests/Date_%m-%d_Time_%H-%M"),
             skill_library_dir: str = None,
             resume: bool = False,
@@ -105,6 +106,10 @@ class Grass:
         # set openai api key
         os.environ["OPENAI_API_KEY"] = openai_api_key
 
+        if test_id != "test":
+            ckpt_dir = ckpt_dir + "-" + test_id
+        self.ckpt_dir = ckpt_dir
+
         # init agents
         self.action_agent = ActionAgent(
             model_name=action_agent_model_name,
@@ -150,7 +155,6 @@ class Grass:
             temperature=graph_agent_temperature,
             request_timout=graph_agent_request_timeout
         )
-        self.ckpt_dir = ckpt_dir
         self.graph = self.graph_agent.load_graph_json(
             (ckpt_dir + "/graph.json") if resume else "grass/graph_tools/primitive_graph.json")
 
@@ -392,9 +396,10 @@ class Grass:
 
 
     def save_weights_for_iter(self):
-        file_name = f"{self.ckpt_dir}/skill_name_for_iter.csv"
+        file_name = f"{self.ckpt_dir}/weights_for_iter.csv"
         iteration = self.trial_count
-        data = {node: self.graph_agent.calc_weight(node, iteration, self.graph) for node in self.graph.nodes}
+        #
+        data = {node: self.graph_agent.calc_weight(node, iteration, self.graph) for node in self.graph.nodes if self.graph.nodes[node]['weight']['depth'] != 0}
         df = pd.DataFrame(data, index=[0]).transpose()
         df.columns = [iteration]
         try:
@@ -402,4 +407,5 @@ class Grass:
             df = pd.concat([existing_df, df], axis=1)
         except FileNotFoundError:
             pass
+        df.index.name = 'skill'
         df.to_csv(file_name)
