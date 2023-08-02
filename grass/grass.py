@@ -32,20 +32,12 @@ class Grass:
             action_agent_task_max_retries: int = 4,
             action_agent_show_chat_log: bool = True,
             action_agent_show_execution_error: bool = True,
-            curriculum_agent_model_name: str = "gpt-4",
-            curriculum_agent_temperature: int = 0,
-            curriculum_agent_qa_model_name: str = "gpt-3.5-turbo",
-            curriculum_agent_qa_temperature: int = 0,
             curriculum_agent_warm_up: Dict[str, int] = None,
             curriculum_agent_core_inventory_items: str = r".*_log|.*_planks|stick|crafting_table|furnace"
                                                          r"|cobblestone|dirt|coal|.*_pickaxe|.*_sword|.*_axe",
-            curriculum_agent_mode: str = "auto",
             critic_agent_model_name: str = "gpt-4",
             critic_agent_temperature: int = 0,
             critic_agent_mode: str = "auto",
-            skill_manager_model_name: str = "gpt-3.5-turbo",
-            skill_manager_temperature: int = 0,
-            skill_manager_retrieval_top_k: int = 5,
             openai_api_request_timeout: int = 240,
             ckpt_dir: str = datetime.now().strftime("Tests/Date_%m-%d_Time_%H-%M"),
             skill_library_dir: str = None,
@@ -72,10 +64,6 @@ class Grass:
         :param action_agent_model_name: action agent model name
         :param action_agent_temperature: action agent temperature
         :param action_agent_task_max_retries: how many times to retry if failed
-        :param curriculum_agent_model_name: curriculum agent model name
-        :param curriculum_agent_temperature: curriculum agent temperature
-        :param curriculum_agent_qa_model_name: curriculum agent qa model name
-        :param curriculum_agent_qa_temperature: curriculum agent qa temperature
         :param curriculum_agent_warm_up: info will show in curriculum human message
         if completed task larger than the value in dict, available keys are:
         {
@@ -93,13 +81,9 @@ class Grass:
         }
         :param curriculum_agent_core_inventory_items: only show these items in inventory before optional_inventory_items
         reached in warm up
-        :param curriculum_agent_mode: "auto" for automatic curriculum, "manual" for human curriculum
         :param critic_agent_model_name: critic agent model name
         :param critic_agent_temperature: critic agent temperature
         :param critic_agent_mode: "auto" for automatic critic ,"manual" for human critic
-        :param skill_manager_model_name: skill manager model name
-        :param skill_manager_temperature: skill manager temperature
-        :param skill_manager_retrieval_top_k: how many skills to retrieve for each task
         :param openai_api_request_timeout: how many seconds to wait for openai api
         :param ckpt_dir: checkpoint dir
         :param skill_library_dir: skill library dir
@@ -131,14 +115,8 @@ class Grass:
         )
         self.action_agent_task_max_retries = action_agent_task_max_retries
         self.curriculum_agent = CurriculumAgent(
-            model_name=curriculum_agent_model_name,
-            temperature=curriculum_agent_temperature,
-            qa_model_name=curriculum_agent_qa_model_name,
-            qa_temperature=curriculum_agent_qa_temperature,
-            request_timout=openai_api_request_timeout,
             ckpt_dir=ckpt_dir,
             resume=resume,
-            mode=curriculum_agent_mode,
             warm_up=curriculum_agent_warm_up,
             core_inventory_items=curriculum_agent_core_inventory_items,
         )
@@ -149,10 +127,6 @@ class Grass:
             mode=critic_agent_mode,
         )
         self.skill_manager = SkillManager(
-            model_name=skill_manager_model_name,
-            temperature=skill_manager_temperature,
-            retrieval_top_k=skill_manager_retrieval_top_k,
-            request_timout=openai_api_request_timeout,
             ckpt_dir=skill_library_dir if skill_library_dir else ckpt_dir,
             resume=True if resume or skill_library_dir else False,
         )
@@ -181,7 +155,6 @@ class Grass:
     def reset(self, new_node, reset_env=True):
         self.action_agent_rollout_num_iter = 0
         self.task = new_node["node_name"]
-        # self.context = context
         if reset_env:
             self.env.reset(
                 options={
@@ -197,17 +170,6 @@ class Grass:
             "bot.chat(`/time set ${getNextTime()}`);\n"
             + f"bot.chat('/difficulty {difficulty}');"
         )
-        # skills = []
-        # preds = self.graph.predecessors(item_name)
-        # for p in preds:
-        #     prev_node = self.graph.nodes[p]
-        #     with open(self.ckpt_dir + '/skill_code/' + prev_node['script_path'], 'r') as file:
-        #         contents = file.read()
-        #         skills.append(contents)
-        # skills = self.skill_manager.retrieve_skills(query=self.context)
-        # print(
-        #     f"\033[33mRender Action Agent system message with {len(skills)} control_primitives\033[0m"
-        # )
         system_message = self.action_agent.render_system_message(self.graph, new_node)
         human_message = self.action_agent.render_human_message(
             events=events, code="", task=self.task, critique=""#, context=context
@@ -265,18 +227,6 @@ class Grass:
                 )
                 events[-1][1]["inventory"] = new_events[-1][1]["inventory"]
                 events[-1][1]["voxels"] = new_events[-1][1]["voxels"]
-            # new_skills = self.skill_manager.retrieve_skills(
-            #     query=self.context
-            #           + "\n\n"
-            #           + self.action_agent.summarize_chatlog(events)
-            # )
-            # skills = []
-            # preds = self.graph.predecessors(self.task)
-            # for p in preds:
-            #     prev_node = self.graph.nodes[p]
-            #     with open(self.ckpt_dir + '/skill_code/' + prev_node['script_path'], 'r') as file:
-            #         contents = file.read()
-            #         skills.append(contents)
             system_message = self.action_agent.render_system_message(self.graph, self.new_node)
             human_message = self.action_agent.render_human_message(
                 events=events, code=parsed_result["program_code"], task=self.task, critique=critique
@@ -342,20 +292,6 @@ class Grass:
             self.resume = True
         self.last_events = self.env.step("")
         while True:
-            # if len(sub_q) == 0:
-            #     print("sub queue is empty")
-            #     break
-            # parent_task = sub_q.pop()
-            # task = parent_task[1]
-            # context = self.graph.nodes[task]['info']
-            # node_name = task
-            # self.item_name = node_name
-            # task = "Obtain " + str(self.graph.nodes[task]["minimum_count"]) + " "+ task
-            # task, context = self.curriculum_agent.propose_next_task(
-            #     events=self.last_events,
-            #     chest_observation=self.action_agent.render_chest_observation(),
-            #     max_retries=5,
-            # )
             if self.recorder.iteration > self.max_iterations:
                 print("Iteration limit reached")
                 break
@@ -420,46 +356,3 @@ class Grass:
             "failed_tasks": self.curriculum_agent.failed_tasks,
             "skills": self.skill_manager.skills,
         }
-
-    def decompose_task(self, task):
-        if not self.last_events:
-            self.last_events = self.env.reset(
-                options={
-                    "mode": "hard",
-                    "wait_ticks": self.env_wait_ticks,
-                }
-            )
-        return self.curriculum_agent.decompose_task(task, self.last_events)
-
-    def inference(self, task=None, sub_goals=[], reset_mode="hard", reset_env=True):
-        if not task and not sub_goals:
-            raise ValueError("Either task or sub_goals must be provided")
-        if not sub_goals:
-            sub_goals = self.decompose_task(task)
-        self.env.reset(
-            options={
-                "mode": reset_mode,
-                "wait_ticks": self.env_wait_ticks,
-            }
-        )
-        self.curriculum_agent.completed_tasks = []
-        self.curriculum_agent.failed_tasks = []
-        self.last_events = self.env.step("")
-        while self.curriculum_agent.progress < len(sub_goals):
-            next_task = sub_goals[self.curriculum_agent.progress]
-            context = self.curriculum_agent.get_task_context(next_task)
-            print(
-                f"\033[35mStarting task {next_task} for at most {self.action_agent_task_max_retries} times\033[0m"
-            )
-            messages, reward, done, info = self.rollout(
-                task=next_task,
-                context=context,
-                reset_env=reset_env,
-            )
-            self.curriculum_agent.update_exploration_progress(info)
-            print(
-                f"\033[35mCompleted tasks: {', '.join(self.curriculum_agent.completed_tasks)}\033[0m"
-            )
-            print(
-                f"\033[35mFailed tasks: {', '.join(self.curriculum_agent.failed_tasks)}\033[0m"
-            )

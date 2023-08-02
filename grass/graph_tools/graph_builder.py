@@ -39,7 +39,6 @@ class GraphBuilder:
             json.dump(json_graph.node_link_data(graph), file, indent=4)
 
     def success_node(self, graph, info, ckpt_dir):
-        #successor_list = graph.successors(info["task"])
         for basic in info["basic_list"]:
             if graph.has_node(basic):
                 graph.nodes[basic]["weight"]["successors"] = graph.nodes[basic]["weight"]["successors"] + 1
@@ -63,13 +62,6 @@ class GraphBuilder:
                 graph.nodes[pred]["successors"].remove(info['task'])
             if info["program_name"] not in graph.nodes[pred]["successors"]:
                 graph.nodes[pred]["successors"].append(info['program_name'])
-        # graph.add_node(info["program_name"], node_name=info["program_name"],
-        #                weight=graph.nodes[info["task"]]["weight"],
-        #                knowledge=graph.nodes[info["task"]]["knowledge"],
-        #                predecessors=graph.nodes[info["task"]]["predecessors"],
-        #                successors=graph.nodes[info["task"]]["successors"],
-        #                file_path=graph.nodes[info["task"]]["file_path"])
-        # graph.remove_node(info["task"])
 
     def add_graph_skill(self, graph,  info, ckpt_dir):
         program_name = info["program_name"]
@@ -88,10 +80,6 @@ class GraphBuilder:
         # every iteration,we chose 4 over three because of the rapid increase in trials means that fails should make
         # more of a landmark
         graph.nodes[info["task"]]["weight"]["failures"] = graph.nodes[info["task"]]["weight"]["failures"] + 8
-        #successor_list = graph.successors(info["task"])
-        # for x in successor_list:
-        #     graph.nodes[x["node_name"]]["weight"]["failures"] = graph.nodes[x["node_name"]]["weight"]["failures"] + 4
-        #     graph.nodes[x["node_name"]]["weight"]["successors"] = graph.nodes[x["node_name"]]["weight"]["failures"] + 1
         max = -1
         for pred in graph.predecessors(info["task"]):
             graph.nodes[pred]
@@ -185,13 +173,9 @@ class GraphBuilder:
                     if graph.nodes[p]['weight']['depth'] > 0:
                         best_nodes_string += p + ","
                 best_nodes_string += "]\n}"
-                #   input_string += "\"prerequisites\":" +str(node['predecessors']) + "\n}"
                 for suc in node['successors']:
                     if suc not in dont_use:
                         dont_use.append(suc)
-                # for pred in node['predecessors']:
-                #     if pred not in dont_use and pred not in [x['node_name'] for x in best_nodes]:
-                #         dont_use.append(pred)
             for node in best_nodes:
                 if node['node_name'] in dont_use:
                     dont_use.remove(node['node_name'])
@@ -251,9 +235,9 @@ class GraphBuilder:
 
             new_node = graph.nodes[name]
         else:
-            regen_sm = SystemMessage(content=self.loadText("prompts/newTaskGeneration/failReGen-SM.txt"))
+            regen_sm = SystemMessage(content=self.loadText("prompts/failReGen-SM.txt"))
             regen_hm_prompt = HumanMessagePromptTemplate.from_template(
-                self.loadText("prompts/newTaskGeneration/failReGen-HM.txt"))
+                self.loadText("prompts/failReGen-HM.txt"))
             regen_hm = regen_hm_prompt.format(
                 skill_name=new_node['node_name'],
                 mand_skills=new_node['predecessors'],

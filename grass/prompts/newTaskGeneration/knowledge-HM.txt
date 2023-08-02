@@ -1,5 +1,0 @@
-Mandatory Skills:
-{mand_skills}
-----------------------
-Previous Descriptions:
-{prev_descriptions}

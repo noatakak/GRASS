@@ -91,8 +91,6 @@ class ActionAgent:
             "mineflayer",
         ]
         pred_nodes = new_node['top_five']
-        # 'code': self.load_code_text(graph.nodes[x]['file_path'])
-        # "knowledge": graph.nodes[x]['knowledge'],
         predecessors = [{"skill name": x, 'code': self.load_code_text(graph.nodes[x]['file_path']), "sub-skills": graph.nodes[x]['predecessors']} for x in pred_nodes]
         primitives = load_control_primitives_context(base_skills)
         response_format = load_prompt("action_response_format")
@@ -121,16 +119,6 @@ class ActionAgent:
             elif event_type == "onDamage":
                 damage_messages.append(event["onDamage"])
             elif event_type == "observe":
-                biome = event["status"]["biome"]
-                time_of_day = event["status"]["timeOfDay"]
-                voxels = event["voxels"]
-                entities = event["status"]["entities"]
-                health = event["status"]["health"]
-                hunger = event["status"]["food"]
-                position = event["status"]["position"]
-                equipment = event["status"]["equipment"]
-                inventory_used = event["status"]["inventoryUsed"]
-                inventory = event["inventory"]
                 assert i == len(events) - 1, "observe must be the last event"
 
         observation = ""
@@ -153,36 +141,6 @@ class ActionAgent:
                 observation += f"Chat log: {chat_log}\n\n"
             else:
                 observation += f"Chat log: None\n\n"
-
-        # observation += f"Biome: {biome}\n\n"
-        #
-        # observation += f"Time: {time_of_day}\n\n"
-        #
-        # if voxels:
-        #     observation += f"Nearby blocks: {', '.join(voxels)}\n\n"
-        # else:
-        #     observation += f"Nearby blocks: None\n\n"
-        #
-        # if entities:
-        #     nearby_entities = [
-        #         k for k, v in sorted(entities.items(), key=lambda x: x[1])
-        #     ]
-        #     observation += f"Nearby entities (nearest to farthest): {', '.join(nearby_entities)}\n\n"
-        # else:
-        #     observation += f"Nearby entities (nearest to farthest): None\n\n"
-        #
-        # observation += f"Health: {health:.1f}/20\n\n"
-        #
-        # observation += f"Hunger: {hunger:.1f}/20\n\n"
-        #
-        # observation += f"Position: x={position['x']:.1f}, y={position['y']:.1f}, z={position['z']:.1f}\n\n"
-        #
-        # observation += f"Equipment: {equipment}\n\n"
-        #
-        # if inventory:
-        #     observation += f"Inventory ({inventory_used}/36): {inventory}\n\n"
-        # else:
-        #     observation += f"Inventory ({inventory_used}/36): Empty\n\n"
 
         if not (
             task == "Place and deposit useless items into a chest"
@@ -260,63 +218,6 @@ class ActionAgent:
                     "program_name": main_function["name"],
                     "exec_code": exec_code,
                     "basic_list": basic_list,
-                }
-            except Exception as e:
-                retry -= 1
-                error = e
-                time.sleep(1)
-        return f"Error parsing action response (before program execution): {error}"
-
-    def process_ai_message(self, message):
-        assert isinstance(message, AIMessage)
-
-        retry = 3
-        error = None
-        while retry > 0:
-            try:
-                babel = require("@babel/core")
-                babel_generator = require("@babel/generator").default
-
-                code_pattern = re.compile(r"```(?:javascript|js)(.*?)```", re.DOTALL)
-                code = "\n".join(code_pattern.findall(message.content))
-                parsed = babel.parse(code)
-                functions = []
-                assert len(list(parsed.program.body)) > 0, "No functions found"
-                for i, node in enumerate(parsed.program.body):
-                    if node.type != "FunctionDeclaration":
-                        continue
-                    node_type = (
-                        "AsyncFunctionDeclaration"
-                        if node["async"]
-                        else "FunctionDeclaration"
-                    )
-                    functions.append(
-                        {
-                            "name": node.id.name,
-                            "type": node_type,
-                            "body": babel_generator(node).code,
-                            "params": list(node["params"]),
-                        }
-                    )
-                # find the last async function
-                main_function = None
-                for function in reversed(functions):
-                    if function["type"] == "AsyncFunctionDeclaration":
-                        main_function = function
-                        break
-                assert (
-                    main_function is not None
-                ), "No async function found. Your main function must be async."
-                assert (
-                    len(main_function["params"]) == 1
-                    and main_function["params"][0].name == "bot"
-                ), f"Main function {main_function['name']} must take a single argument named 'bot'"
-                program_code = "\n\n".join(function["body"] for function in functions)
-                exec_code = f"await {main_function['name']}(bot);"
-                return {
-                    "program_code": program_code,
-                    "program_name": main_function["name"],
-                    "exec_code": exec_code,
                 }
             except Exception as e:
                 retry -= 1
