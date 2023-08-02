@@ -20,7 +20,7 @@ Follow these rules when writing your new skill description:
 1) I need a skill that is similar to or a single step more difficult than the internal skills that minimizes the number of sub-actions, blocks, skills, and items used or crafted/obtained within the method as much as possible excluding the internal skills.
     Example: If I have a skill to obtain wood I should try crafting wooden planks.
 2) Do not craft items within a method that you do not have internal skills for unless it is the explicit goal of the new skill to obtain/craft that thing. If you cannot complete the task in completion without crafting extra materials, pick a new, easier skill.
-3) Do not use or recreate things listed in "Previous Skills", those tasks are unavailable and are included, so you know what not to do.
+3) Do not use or recreate things listed in "Previous Skills", those tasks are unavailable and are included, so you know what not to do or use.
 4) Your description of my new thing to do needs to be clear with each sub action needed to accomplish the task that you have methods for written out and outcomes as part of it.
 5) You do not need to describe how to do the "Available Skills", you can just reference them by name.
 6) Please do not make my new skill too difficult or too many steps, or I will get confused and be unable to complete it. My new skill should be similar in difficulty, or if necessary slightly more difficult than my internal skills.
@@ -28,7 +28,7 @@ Follow these rules when writing your new skill description:
 8) In your description you may explain calling some of the "Available Skills" more than once to get the correct quantity of blocks or items for crafting.
 9) Some items require a crafting table, as soon as you have a method for wooden planks make a crafting table skill.
 10) The method should be something like obtaining the next easiest material, crafting the method goal material or killing a mob, etc.
-11) If I have no "Available Skills" then the game has just begun, how do I do the first most basic thing I should do when I join the game.
+11) If I have no "Available Skills" or "Previous Skills" then the game has just begun, how do I do the first most basic thing I should do when I join the game.
 
 Follow these rules when naming your new skill:
 1) The name should have two parts, the first being the verb the second being the subject.

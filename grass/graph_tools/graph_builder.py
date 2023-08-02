@@ -47,15 +47,15 @@ class GraphBuilder:
                 graph.add_edge(basic, info["task"])
             if info['task'] not in graph.nodes[basic]["successors"]:
                 graph.nodes[basic]["successors"].append(info["program_name"])
-        max = -1
+        max_depth = -1
         for pred in graph.predecessors(info["task"]):
             if graph.nodes[pred]["weight"]["depth"] > max:
-                max = graph.nodes[pred]["weight"]["depth"]
-        max = max + 1
+                max_depth = graph.nodes[pred]["weight"]["depth"]
+        max_depth = max_depth + 1
         file_name = self.add_graph_skill(graph, info, ckpt_dir)
         nx.relabel_nodes(graph, {info["task"]: info["program_name"]}, False)
         graph.nodes[info["program_name"]]["node_name"] = info["program_name"]
-        graph.nodes[info["program_name"]]["weight"]["depth"] = max
+        graph.nodes[info["program_name"]]["weight"]["depth"] = max_depth
         graph.nodes[info["program_name"]]["file_path"] = file_name
         for pred in graph.predecessors(info["program_name"]):
             if info["task"] in graph.nodes[pred]["successors"]:
@@ -76,22 +76,26 @@ class GraphBuilder:
         return f"{ckpt_dir}/skill_code/{program_name}.js"
 
     def fail_node(self, graph, info, ckpt_dir):
-        # four was chosen here because it has to be larger than two because of the increase in successors and trials
-        # every iteration,we chose 4 over three because of the rapid increase in trials means that fails should make
-        # more of a landmark
+        for basic in info["basic_list"]:
+            if graph.has_node(basic):
+                graph.nodes[basic]["weight"]["successors"] = graph.nodes[basic]["weight"]["successors"] + 1
+            if basic not in graph.nodes[info["task"]]["predecessors"]:
+                graph.nodes[info["task"]]["predecessors"].append(basic)
+                graph.add_edge(basic, info["task"])
+            if info['task'] not in graph.nodes[basic]["successors"]:
+                graph.nodes[basic]["successors"].append(info["task"])
         graph.nodes[info["task"]]["weight"]["failures"] = graph.nodes[info["task"]]["weight"]["failures"] + 8
-        max = -1
         for pred in graph.predecessors(info["task"]):
-            graph.nodes[pred]
             if info["task"] not in graph.nodes[pred]["successors"]:
                 graph.nodes[pred]["successors"].append(info["task"])
                 graph.nodes[pred]["weight"]["successors"] = graph.nodes[pred]["weight"]["successors"] + 1
             graph.nodes[pred]["weight"]["failures"] = graph.nodes[pred]["weight"]["failures"] + 3
+        max_depth = -1
         for pred in graph.predecessors(info["task"]):
-            if graph.nodes[pred]["weight"]["depth"] > max:
-                max = graph.nodes[pred]["weight"]["depth"]
-        max = max + 1
-        graph.nodes[info["task"]]["weight"]["depth"] = max
+            if graph.nodes[pred]["weight"]["depth"] > max_depth:
+                max_depth = graph.nodes[pred]["weight"]["depth"]
+        max_depth = max_depth + 1
+        graph.nodes[info["task"]]["weight"]["depth"] = max_depth
         with open(f"{ckpt_dir}/graph.json", 'w') as file:
             json.dump(json_graph.node_link_data(graph), file, indent=4)
 
