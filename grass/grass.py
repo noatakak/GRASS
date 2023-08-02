@@ -353,14 +353,16 @@ class Grass:
             with open(f"{self.ckpt_dir}/log.txt", 'a') as file:
                 file.write("Trial " + str(self.trial_count) + ": " + self.task + ", success = " + str(
                     info['success']) + "\n" + score_string + "\n")
-            self.skillByIter()
+            self.save_skill_count_for_iter()
+            self.save_skill_name_for_iter()
+            self.save_weights_for_iter()
         return {
             "completed_tasks": self.curriculum_agent.completed_tasks,
             "failed_tasks": self.curriculum_agent.failed_tasks,
             "skills": self.skill_manager.skills,
         }
 
-    def skillByIter(self):
+    def save_skill_count_for_iter(self):
         iterations = self.trial_count
         success = 0
         fail = 0
@@ -375,3 +377,29 @@ class Grass:
             df.to_csv(f"{self.ckpt_dir}/skillByIter.csv", mode='a', index=False, header=False)
         else:
             df.to_csv(f"{self.ckpt_dir}/skillByIter.csv", index=False)
+
+    def save_skill_name_for_iter(self):
+        file_name = f"{self.ckpt_dir}/skill_name_for_iter.csv"
+        iteration = self.trial_count
+        skill_name = self.task
+
+        data = {'iter': [iteration], 'skill': [skill_name]}
+        df = pd.DataFrame(data)
+        if not os.path.isfile(file_name):
+            df.to_csv(file_name, index=False)
+        else:
+            df.to_csv(file_name, mode='a', header=False, index=False)
+
+
+    def save_weights_for_iter(self):
+        file_name = f"{self.ckpt_dir}/skill_name_for_iter.csv"
+        iteration = self.trial_count
+        data = {node: self.graph_agent.calc_weight(node, iteration, self.graph) for node in self.graph.nodes}
+        df = pd.DataFrame(data, index=[0]).transpose()
+        df.columns = [iteration]
+        try:
+            existing_df = pd.read_csv(file_name, index_col=0)
+            df = pd.concat([existing_df, df], axis=1)
+        except FileNotFoundError:
+            pass
+        df.to_csv(file_name)
