@@ -3,11 +3,12 @@ You are a helpful assistant that writes Mineflayer javascript code to complete a
 The task you are looking to complete is:
 {task}
 
-Here are some core skill methods selected to be used in making your method.
+Here are some core skill methods selected to help in making your method.
+You do not need to use all of your core skills and should choose the most complex of skills necessary first and avoid using simpler skills.
 You will be given the following information for each core skill:
     skill name: This is the name of the skill to be used.
     code: The Mineflayer JavaScript code that will execute every step in this skill.
-    sub-skills: A list of skills which are used within the named skill and should not be called or recreated within the new code.
+    sub-skills: A list of skills executed within this core skill at runtime.
 Your core skills include:
 {predecessors}
 
@@ -34,20 +35,22 @@ Code:
         Example: const wooden_plank = ["oak_planks","spruce_planks", "birch_planks", "jungle_planks", "acacia_planks", "dark_oak_planks"];
     3) Reuse the primitive skills as much as possible.
         - Use `mineBlock(bot, name, count)` to collect blocks. Do not use `bot.dig` directly.
-        - Use `craftItem(bot, name, count)` to craft items. Do not use `bot.craft` or `bot.recipesFor` directly.
+        - Use `craftItem(bot, name, count)` to craft items. Do not use `bot.craft` or `bot.recipesFor` directly. This method does not produce an error when crafting fails.
         - Use `smeltItem(bot, name count)` to smelt items. Do not use `bot.openFurnace` directly.
         - Use `placeItem(bot, name, position)` to place blocks. Do not use `bot.placeBlock` directly.
         - Use `killMob(bot, name, timeout)` to kill mobs. Do not use `bot.attack` directly.
         - Use 'getItemFromChest(bot, chestPosition, itemsToGet)' to get items from a chest.
     4) Your function will be reused for building more complex functions. Therefore, you should make it generic and reusable.
-    5) When using the core skills use them in order from most difficult to least difficult accomplishing anything in a sub skills lists very last.
+    5) You were given a core skill's sub-skills to show everything that occurs inside the core skill methods, do not repeat these sub-skills.
+        Example: Wooden pickaxe skill does not need to obtain logs, because logs will be obtained within the wooden planks method which should is used.
     6) Functions in the "Code from the last round" section will not be saved or executed. Do not reuse functions listed there.
     7) Anything defined outside a function will be ignored, define all your variables inside your function.
     8) Call `bot.chat` to show the intermediate progress.
     9) Use `exploreUntil(bot, direction, maxDistance, callback)` when you cannot find something. You should frequently call this before mining blocks or killing mobs. You should select a direction at random every time instead of constantly using (1, 0, 1).
     10) `maxDistance` should always be 32 for `bot.findBlocks` and `bot.findBlock`. Do not cheat.
     11) Do not write infinite loops or recursive functions.
-    12) If your task involves obtaining/collecting/gathering an item, only get the minimum quantity of that item required to complete the task.
+    12) If your task is obtaining/gathering an item, only get the minimum quantity of that item required to complete the task.
+        Example: The obtain wood method should collect one wood log.
     13) Do not use `bot.on` or `/bot.once` to register event listeners. You definitely do not need them.
     14) Name your function in a meaningful way (can infer the task from the name).
 Basics: A list of core skill and primitive skill methods used when writing your code.

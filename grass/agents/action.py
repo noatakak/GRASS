@@ -142,25 +142,6 @@ class ActionAgent:
             else:
                 observation += f"Chat log: None\n\n"
 
-        if not (
-            task == "Place and deposit useless items into a chest"
-            or task.startswith("Deposit useless items into the chest at")
-        ):
-            observation += self.render_chest_observation()
-
-        observation += f"Task: {task}\n\n"
-
-        if context:
-            observation += f"Context: {context}\n\n"
-        else:
-            observation += f"Context: None\n\n"
-
-        if critique:
-            observation += f"Critique: {critique}\n\n"
-        else:
-            observation += f"Critique: None\n\n"
-
-        return HumanMessage(content=observation)
 
     def process_new_ai_message(self, message):
         assert isinstance(message, AIMessage)
