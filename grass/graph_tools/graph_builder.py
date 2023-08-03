@@ -49,7 +49,7 @@ class GraphBuilder:
                 graph.nodes[basic]["successors"].append(info["program_name"])
         max_depth = -1
         for pred in graph.predecessors(info["task"]):
-            if graph.nodes[pred]["weight"]["depth"] > max:
+            if graph.nodes[pred]["weight"]["depth"] > max_depth:
                 max_depth = graph.nodes[pred]["weight"]["depth"]
         max_depth = max_depth + 1
         file_name = self.add_graph_skill(graph, info, ckpt_dir)
