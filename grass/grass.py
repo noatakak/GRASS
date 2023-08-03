@@ -350,7 +350,7 @@ class Grass:
             )
             score_string = "Scores:["
             for n in self.graph:
-                if self.graph.nodes[n]['weight']['depth'] != 0:
+                if 'weight' in self.graph.nodes[n] and self.graph.nodes[n]['weight']['depth'] != 0:
                     score_string += n + ": " + str(self.graph_agent.calc_weight(n, self.trial_count, self.graph)) + ", "
             score_string += "]"
             print(score_string)
