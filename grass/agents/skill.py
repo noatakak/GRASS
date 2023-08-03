@@ -24,7 +24,7 @@ class SkillManager:
         self.control_primitives = load_control_primitives()
         if resume:
             print(f"\033[33mLoading Skill Manager from {ckpt_dir}/skill\033[0m")
-            self.coded_skills = U.load_json(f"{ckpt_dir}/graph.json")
+            self.coded_skills = U.load_json(f"{ckpt_dir}/skill/skills.json")
         else:
             self.coded_skills = {}
         self.ckpt_dir = ckpt_dir
@@ -46,3 +46,4 @@ class SkillManager:
             "code": program_code,
             "description": graph.nodes[info["program_name"]]["knowledge"],
         }
+        U.dump_json(self.coded_skills, f"{self.ckpt_dir}/skill/skills.json")
